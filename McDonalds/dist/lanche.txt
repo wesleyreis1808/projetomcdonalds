@@ -1,6 +1,0 @@
-X-Tudo%Lanche%11.0%null%Ovo%1.0%Maionese%0.5%Presunto%0.5%Mussarela%0.5%Tomate%0.5%Milho%0.5%Alface%0.5%Hamburger%2.0%Bacon%2.0
-Americano%Lanche%8.0%null%Ovo%1.0%Mussarela%0.5%Presunto%0.5%Maionese%0.5%Batata Palha%0.5
-X-Bacon%Lanche%9.0%null%Maionese%0.5%Batata Palha%0.5%Presunto%0.5%Mussarela%0.5%Tomate%0.5%Milho%0.5%Hamburger%2.0%Bacon%2.0
-X-Egg Bacon Presunto%Lanche%13.0%null%Batata Palha%0.5%Presunto%0.5%Mussarela%0.5%Tomate%0.5%Milho%0.5%Alface%0.5%Bacon%2.0%Ketchup%0.1
-X-Azeitona%Lanche%10.0%null%Maionese%0.5%Batata Palha%0.5%Azeitona%0.5
-X-Mama%Lanche%15.0%null%Mama%5.0%Ketchup%0.1

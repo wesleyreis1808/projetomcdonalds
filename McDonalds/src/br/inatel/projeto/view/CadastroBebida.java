@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.inatel.projetoec.view;
+package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
