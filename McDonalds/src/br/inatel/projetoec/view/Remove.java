@@ -5,12 +5,6 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.ArquivoBebidas;
-import br.inatel.projetoec.model.ArquivoIngrediente;
-import br.inatel.projetoec.model.ArquivoLanche;
-import br.inatel.projetoec.model.Bebida;
-import br.inatel.projetoec.model.Ingrediente;
-import br.inatel.projetoec.model.Lanche;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,20 +21,10 @@ public class Remove extends javax.swing.JFrame {
     /**
      * Creates new form Remove
      */
-    private List<Ingrediente> ingredientes = new ArrayList<>();
-    private List<Lanche> lanches = new ArrayList<>();
-    private List<Bebida> bebidas = new ArrayList<>();
-    private DefaultListModel dlm1 = new DefaultListModel();
-    private DefaultListModel dlm2 = new DefaultListModel();
-    private DefaultListModel dlm3 = new DefaultListModel();
-
     public Remove() {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        prencheListaIngrediente();
-        prencheListaLanche();
-        prencheListaBebida();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
 
     }
@@ -79,7 +63,6 @@ public class Remove extends javax.swing.JFrame {
 
         painel_Lanche.setLayout(null);
 
-        lista_lanche.setModel(dlm2);
         lista_lanche.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         jScrollPane3.setViewportView(lista_lanche);
 
@@ -92,11 +75,6 @@ public class Remove extends javax.swing.JFrame {
         jLabel2.setBounds(10, 11, 152, 22);
 
         btm_removerLanche.setText("REMOVER");
-        btm_removerLanche.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_removerLancheActionPerformed(evt);
-            }
-        });
         painel_Lanche.add(btm_removerLanche);
         btm_removerLanche.setBounds(10, 230, 130, 23);
 
@@ -104,17 +82,6 @@ public class Remove extends javax.swing.JFrame {
 
         painel_bebida.setLayout(null);
 
-        lista_bebida.setModel(dlm3);
-        lista_bebida.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lista_bebidaMouseClicked(evt);
-            }
-        });
-        lista_bebida.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lista_bebidaValueChanged(evt);
-            }
-        });
         jScrollPane2.setViewportView(lista_bebida);
 
         painel_bebida.add(jScrollPane2);
@@ -126,11 +93,6 @@ public class Remove extends javax.swing.JFrame {
         jLabel1.setBounds(10, 11, 147, 22);
 
         btm_removeBebida.setText("REMOVER");
-        btm_removeBebida.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_removeBebidaActionPerformed(evt);
-            }
-        });
         painel_bebida.add(btm_removeBebida);
         btm_removeBebida.setBounds(10, 230, 130, 23);
 
@@ -141,11 +103,6 @@ public class Remove extends javax.swing.JFrame {
 
         buttonGroup1.add(Rbtn_tamanho3);
         Rbtn_tamanho3.setText("1 L");
-        Rbtn_tamanho3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Rbtn_tamanho3ActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(Rbtn_tamanho2);
         Rbtn_tamanho2.setText("600 ml");
@@ -188,7 +145,6 @@ public class Remove extends javax.swing.JFrame {
 
         painel_ingrediente.setLayout(null);
 
-        lista_ingrediente.setModel(dlm1);
         jScrollPane1.setViewportView(lista_ingrediente);
 
         painel_ingrediente.add(jScrollPane1);
@@ -200,11 +156,6 @@ public class Remove extends javax.swing.JFrame {
         lebel_titulo.setBounds(10, 11, 194, 22);
 
         btm_remover.setText("REMOVER");
-        btm_remover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_removerActionPerformed(evt);
-            }
-        });
         painel_ingrediente.add(btm_remover);
         btm_remover.setBounds(10, 229, 120, 23);
 
@@ -214,84 +165,6 @@ public class Remove extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void Rbtn_tamanho3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_tamanho3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Rbtn_tamanho3ActionPerformed
-
-    private void lista_bebidaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lista_bebidaValueChanged
-
-    }//GEN-LAST:event_lista_bebidaValueChanged
-
-    private void btm_removeBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_removeBebidaActionPerformed
-
-        try {
-            if (bebidas.isEmpty()) {
-                return;
-            }
-            if (JOptionPane.showConfirmDialog(rootPane, "DESEJA REMOVER??") == 0) {
-                removeBebida();
-                prencheListaBebida();
-            }
-
-        } catch (ArrayIndexOutOfBoundsException a) {
-            JOptionPane.showMessageDialog(rootPane, " LISTA VAZIA ");
-        }
-    }//GEN-LAST:event_btm_removeBebidaActionPerformed
-
-    private void lista_bebidaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lista_bebidaMouseClicked
-        ArquivoBebidas a3 = new ArquivoBebidas();
-        this.bebidas = a3.resgatarArquivo();
-
-        Bebida b1 = bebidas.get(lista_bebida.getSelectedIndex());
-        if (b1.getTamanho().contains("Lata")) {
-            Rbtn_tamanho1.setSelected(true);
-        } else if (b1.getTamanho().contains("600 ml")) {
-            Rbtn_tamanho2.setSelected(true);
-        } else if (b1.getTamanho().contains("1 L")) {
-            Rbtn_tamanho3.setSelected(true);
-        } else if (b1.getTamanho().contains("2 L")) {
-            Rbtn_tamanho4.setSelected(true);
-        }
-    }//GEN-LAST:event_lista_bebidaMouseClicked
-
-    private void btm_removerLancheActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_removerLancheActionPerformed
-
-        try {
-            if (lanches.isEmpty()) {
-                return;
-
-            }
-            if (JOptionPane.showConfirmDialog(rootPane, "DESEJA REMOVER??") == 0) {
-                removeLanche();
-                prencheListaLanche();
-
-            }
-        } catch (ArrayIndexOutOfBoundsException b) {
-            JOptionPane.showMessageDialog(rootPane, " LISTA VAZIA ");
-        }
-
-
-    }//GEN-LAST:event_btm_removerLancheActionPerformed
-
-    private void btm_removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_removerActionPerformed
-        if (!verificaUtilizacao()) {
-            try {
-                if (ingredientes.isEmpty()) {
-                    return;
-                }
-                if (JOptionPane.showConfirmDialog(rootPane, "DESEJA REMOVER??") == 0) {
-                    removeIngrediente();
-                    prencheListaIngrediente();
-                }
-
-            } catch (ArrayIndexOutOfBoundsException c) {
-                JOptionPane.showMessageDialog(rootPane, " LISTA VAZIA ");
-                c.printStackTrace();
-            }
-        }
-
-    }//GEN-LAST:event_btm_removerActionPerformed
 
     /**
      * @param args the command line arguments
@@ -349,87 +222,6 @@ public class Remove extends javax.swing.JFrame {
     private javax.swing.JPanel painel_tamanho;
     // End of variables declaration//GEN-END:variables
 
-    private void prencheListaIngrediente() {
-
-        dlm1.clear();
-        this.repaint();
-        ArquivoIngrediente a1 = new ArquivoIngrediente();
-        this.ingredientes = a1.resgatarArquivo();
-        for (int i = 0; i < ingredientes.size(); i++) {
-            dlm1.add(i, ingredientes.get(i).getNome());
-        }
-
-    }
-
-    private void prencheListaLanche() {
-
-        dlm2.clear();
-        this.repaint();
-        ArquivoLanche a2 = new ArquivoLanche();
-        this.lanches = a2.resgatarArquivo();
-        for (int i = 0; i < lanches.size(); i++) {
-            dlm2.add(i, lanches.get(i).getNome());
-        }
-
-    }
-
-    private void prencheListaBebida() {
-
-        dlm3.clear();
-        this.repaint();
-        ArquivoBebidas a3 = new ArquivoBebidas();
-        this.bebidas = a3.resgatarArquivo();
-        for (int i = 0; i < bebidas.size(); i++) {
-            dlm3.add(i, bebidas.get(i).getNome());
-        }
-
-    }
-
-    private void removeLanche() {
-
-        ArquivoLanche a2 = new ArquivoLanche();
-        this.lanches = a2.resgatarArquivo();
-
-        Lanche l1 = lanches.get(lista_lanche.getSelectedIndex());
-        this.lanches.remove(l1);
-        a2.salvarArquivo((ArrayList) this.lanches, false);
-
-    }
-
-    private void removeBebida() {
-
-        ArquivoBebidas a3 = new ArquivoBebidas();
-        this.bebidas = a3.resgatarArquivo();
-
-        Bebida b1 = bebidas.get(lista_bebida.getSelectedIndex());
-        this.bebidas.remove(b1);
-        a3.salvarArquivo((ArrayList) this.bebidas, false);
-
-    }
-
-    private void removeIngrediente() {
-
-        ArquivoIngrediente a1 = new ArquivoIngrediente();
-        this.ingredientes = a1.resgatarArquivo();
-
-        Ingrediente i1 = ingredientes.get(lista_ingrediente.getSelectedIndex());
-        this.ingredientes.remove(i1);
-        a1.salvarArquivo((ArrayList) this.ingredientes, false);
-
-    }
-
-    private boolean verificaUtilizacao() {
-        for (Lanche lan : this.lanches) {
-
-            for (Ingrediente ing : lan.getIngredientes()) {
-                if (ing.getNome().equals(ingredientes.get(lista_ingrediente.getSelectedIndex()).getNome())) {
-                    JOptionPane.showMessageDialog(rootPane, "Ingrediente não pode ser removido!\nO lanche "
-                            + lan.getNome() + " possui esse ingrediente.", "Aviso", JOptionPane.WARNING_MESSAGE);
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
+    
 
 }

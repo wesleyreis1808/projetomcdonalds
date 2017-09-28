@@ -137,17 +137,11 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="SALVAR"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btm_salvarActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btm_cancelar">
           <Properties>
             <Property name="text" type="java.lang.String" value="CANCELAR"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btm_cancelarActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

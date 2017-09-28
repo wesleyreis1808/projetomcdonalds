@@ -5,7 +5,6 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.*;
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -21,35 +20,14 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Vendas extends javax.swing.JFrame {
 
-    // Crinando variaveis da tela de vendas
-    private AlteracaoLanche alteracao;
-    private ArrayList<Lanche> lanches = new ArrayList<>();  //Array que contem todos lanche cadastraddos
-    private ArrayList<Bebida> bebidas = new ArrayList<>();  //Array que contem todas bebidas cadastradas
-    private ArrayList<JButton> botoesLanche = new ArrayList<>();
-    private ArrayList<JButton> botoesBebidas = new ArrayList<>();
-    private ArquivoLanche arqLanche = new ArquivoLanche();
-    private ArquivoBebidas arqBebida = new ArquivoBebidas();
-    private DefaultTableModel dtm = new DefaultTableModel();
-
-    private ArrayList<Produto> produtos; // Array para guardar todos os produtos de uma venda 
-
     /**
      * Creates new form Vendas
      */
     public Vendas() {
         initComponents();
 
-        criarArrayProdutos();
-
-        inicializarBotoes();
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);  // abre a tela maximizada
-
-        lanches = arqLanche.resgatarArquivo();
-        bebidas = arqBebida.resgatarArquivo();
-
-        dtm = (DefaultTableModel) tbl_Carrinho.getModel();
-        ativarBotoes();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
     }
 
@@ -181,11 +159,6 @@ public class Vendas extends javax.swing.JFrame {
         jLabel1.setText("Endereço:");
 
         txt_Endereco.setEnabled(false);
-        txt_Endereco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_EnderecoActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Número: ");
 
@@ -194,18 +167,8 @@ public class Vendas extends javax.swing.JFrame {
         jLabel4.setText("Telefone: ");
 
         txt_Telefone.setEnabled(false);
-        txt_Telefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_TelefoneActionPerformed(evt);
-            }
-        });
 
         clb_Entregar.setText("Entregar");
-        clb_Entregar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clb_EntregarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnl_EntregaLayout = new javax.swing.GroupLayout(pnl_Entrega);
         pnl_Entrega.setLayout(pnl_EntregaLayout);
@@ -255,11 +218,6 @@ public class Vendas extends javax.swing.JFrame {
         tbp_Entrega.setBounds(10, 230, 370, 120);
 
         btn_Remover.setText("Remover");
-        btn_Remover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_RemoverActionPerformed(evt);
-            }
-        });
         pnl_Venda.add(btn_Remover);
         btn_Remover.setBounds(283, 210, 90, 23);
 
@@ -287,25 +245,10 @@ public class Vendas extends javax.swing.JFrame {
         lbl_Troco.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         btn_Finalizar.setText("Finalizar");
-        btn_Finalizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_FinalizarActionPerformed(evt);
-            }
-        });
 
         btn_Cancelar.setText("Cancelar");
-        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CancelarActionPerformed(evt);
-            }
-        });
 
         btn_Calcular.setText("Calcular");
-        btn_Calcular.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CalcularActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnl_PagamentoLayout = new javax.swing.GroupLayout(pnl_Pagamento);
         pnl_Pagamento.setLayout(pnl_PagamentoLayout);
@@ -368,12 +311,6 @@ public class Vendas extends javax.swing.JFrame {
 
         jLabel3.setText("Responsável:");
 
-        txt_Responsavel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_ResponsavelActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout pnl_ResponsavelLayout = new javax.swing.GroupLayout(pnl_Responsavel);
         pnl_Responsavel.setLayout(pnl_ResponsavelLayout);
         pnl_ResponsavelLayout.setHorizontalGroup(
@@ -408,182 +345,82 @@ public class Vendas extends javax.swing.JFrame {
         pnl_Lanche.setLayout(null);
 
         btn_Lanche5.setText("jButton1");
-        btn_Lanche5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche5ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche5);
         btn_Lanche5.setBounds(730, 10, 170, 120);
 
         btn_Lanche1.setText("jButton1");
-        btn_Lanche1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche1ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche1);
         btn_Lanche1.setBounds(10, 10, 170, 120);
 
         btn_Lanche2.setText("jButton1");
-        btn_Lanche2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche2ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche2);
         btn_Lanche2.setBounds(190, 10, 170, 120);
 
         btn_Lanche3.setText("jButton1");
-        btn_Lanche3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche3ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche3);
         btn_Lanche3.setBounds(370, 10, 170, 120);
 
         btn_Lanche4.setText("jButton1");
-        btn_Lanche4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche4ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche4);
         btn_Lanche4.setBounds(550, 10, 170, 120);
 
         btn_Lanche6.setText("jButton1");
-        btn_Lanche6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche6ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche6);
         btn_Lanche6.setBounds(10, 140, 170, 120);
 
         btn_Lanche7.setText("jButton1");
-        btn_Lanche7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche7ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche7);
         btn_Lanche7.setBounds(190, 140, 170, 120);
 
         btn_Lanche8.setText("jButton1");
-        btn_Lanche8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche8ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche8);
         btn_Lanche8.setBounds(370, 140, 170, 120);
 
         btn_Lanche9.setText("jButton1");
-        btn_Lanche9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche9ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche9);
         btn_Lanche9.setBounds(550, 140, 170, 120);
 
         btn_Lanche10.setText("jButton1");
-        btn_Lanche10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche10ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche10);
         btn_Lanche10.setBounds(730, 140, 170, 120);
 
         btn_Lanche11.setText("jButton1");
-        btn_Lanche11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche11ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche11);
         btn_Lanche11.setBounds(10, 270, 170, 120);
 
         btn_Lanche12.setText("jButton1");
-        btn_Lanche12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche12ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche12);
         btn_Lanche12.setBounds(190, 270, 170, 120);
 
         btn_Lanche13.setText("jButton1");
-        btn_Lanche13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche13ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche13);
         btn_Lanche13.setBounds(370, 270, 170, 120);
 
         btn_Lanche14.setText("jButton1");
-        btn_Lanche14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche14ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche14);
         btn_Lanche14.setBounds(550, 270, 170, 120);
 
         btn_Lanche15.setText("jButton1");
-        btn_Lanche15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche15ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche15);
-        btn_Lanche15.setBounds(730, 270, 170, 120);
+        btn_Lanche15.setBounds(730, 280, 170, 120);
 
         btn_Lanche16.setText("jButton1");
-        btn_Lanche16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche16ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche16);
         btn_Lanche16.setBounds(10, 400, 170, 120);
 
         btn_Lanche17.setText("jButton1");
-        btn_Lanche17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche17ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche17);
         btn_Lanche17.setBounds(190, 400, 170, 120);
 
         btn_Lanche18.setText("jButton1");
-        btn_Lanche18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche18ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche18);
         btn_Lanche18.setBounds(370, 400, 170, 120);
 
         btn_Lanche19.setText("jButton1");
-        btn_Lanche19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche19ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche19);
         btn_Lanche19.setBounds(550, 400, 170, 120);
 
         btn_Lanche20.setText("jButton1");
-        btn_Lanche20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Lanche20ActionPerformed(evt);
-            }
-        });
         pnl_Lanche.add(btn_Lanche20);
         btn_Lanche20.setBounds(730, 400, 170, 120);
 
@@ -593,182 +430,82 @@ public class Vendas extends javax.swing.JFrame {
         pnl_Bebida.setLayout(null);
 
         btn_Bebida5.setText("jButton1");
-        btn_Bebida5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida5ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida5);
         btn_Bebida5.setBounds(730, 10, 170, 120);
 
         btn_Bebida1.setText("jButton1");
-        btn_Bebida1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida1ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida1);
         btn_Bebida1.setBounds(10, 10, 170, 120);
 
         btn_Bebida2.setText("jButton1");
-        btn_Bebida2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida2ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida2);
         btn_Bebida2.setBounds(190, 10, 170, 120);
 
         btn_Bebida3.setText("jButton1");
-        btn_Bebida3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida3ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida3);
         btn_Bebida3.setBounds(370, 10, 170, 120);
 
         btn_Bebida4.setText("jButton1");
-        btn_Bebida4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida4ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida4);
         btn_Bebida4.setBounds(550, 10, 170, 120);
 
         btn_Bebida10.setText("jButton1");
-        btn_Bebida10.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida10ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida10);
         btn_Bebida10.setBounds(730, 140, 170, 120);
 
         btn_Bebida6.setText("jButton1");
-        btn_Bebida6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida6ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida6);
         btn_Bebida6.setBounds(10, 140, 170, 120);
 
         btn_Bebida7.setText("jButton1");
-        btn_Bebida7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida7ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida7);
         btn_Bebida7.setBounds(190, 140, 170, 120);
 
         btn_Bebida8.setText("jButton1");
-        btn_Bebida8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida8ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida8);
         btn_Bebida8.setBounds(370, 140, 170, 120);
 
         btn_Bebida9.setText("jButton1");
-        btn_Bebida9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida9ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida9);
         btn_Bebida9.setBounds(550, 140, 170, 120);
 
         btn_Bebida15.setText("jButton1");
-        btn_Bebida15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida15ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida15);
         btn_Bebida15.setBounds(730, 270, 170, 120);
 
         btn_Bebida11.setText("jButton1");
-        btn_Bebida11.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida11ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida11);
         btn_Bebida11.setBounds(10, 270, 170, 120);
 
         btn_Bebida12.setText("jButton1");
-        btn_Bebida12.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida12ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida12);
         btn_Bebida12.setBounds(190, 270, 170, 120);
 
         btn_Bebida13.setText("jButton1");
-        btn_Bebida13.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida13ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida13);
         btn_Bebida13.setBounds(370, 270, 170, 120);
 
         btn_Bebida14.setText("jButton1");
-        btn_Bebida14.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida14ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida14);
         btn_Bebida14.setBounds(550, 270, 170, 120);
 
         btn_Bebida20.setText("jButton1");
-        btn_Bebida20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida20ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida20);
         btn_Bebida20.setBounds(730, 400, 170, 120);
 
         btn_Bebida16.setText("jButton1");
-        btn_Bebida16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida16ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida16);
         btn_Bebida16.setBounds(10, 400, 170, 120);
 
         btn_Bebida17.setText("jButton1");
-        btn_Bebida17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida17ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida17);
         btn_Bebida17.setBounds(190, 400, 170, 120);
 
         btn_Bebida18.setText("jButton1");
-        btn_Bebida18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida18ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida18);
         btn_Bebida18.setBounds(370, 400, 170, 120);
 
         btn_Bebida19.setText("jButton1");
-        btn_Bebida19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_Bebida19ActionPerformed(evt);
-            }
-        });
         pnl_Bebida.add(btn_Bebida19);
         btn_Bebida19.setBounds(550, 400, 170, 120);
 
@@ -780,9 +517,9 @@ public class Vendas extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(tbp_Venda, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(tbp_Guias, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addGap(33, 33, 33))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -808,276 +545,6 @@ public class Vendas extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btn_Lanche5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche5ActionPerformed
-        alteraLanche(btn_Lanche5.getText());
-    }//GEN-LAST:event_btn_Lanche5ActionPerformed
-
-    private void btn_Lanche1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche1ActionPerformed
-        alteraLanche(btn_Lanche1.getText());
-
-    }//GEN-LAST:event_btn_Lanche1ActionPerformed
-
-    private void btn_Lanche2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche2ActionPerformed
-        alteraLanche(btn_Lanche2.getText());
-    }//GEN-LAST:event_btn_Lanche2ActionPerformed
-
-    private void btn_Lanche3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche3ActionPerformed
-        alteraLanche(btn_Lanche3.getText());
-    }//GEN-LAST:event_btn_Lanche3ActionPerformed
-
-    private void btn_Lanche4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche4ActionPerformed
-        alteraLanche(btn_Lanche4.getText());
-    }//GEN-LAST:event_btn_Lanche4ActionPerformed
-
-    private void btn_Lanche6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche6ActionPerformed
-        alteraLanche(btn_Lanche6.getText());
-    }//GEN-LAST:event_btn_Lanche6ActionPerformed
-
-    private void btn_Lanche7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche7ActionPerformed
-        alteraLanche(btn_Lanche7.getText());
-    }//GEN-LAST:event_btn_Lanche7ActionPerformed
-
-    private void btn_Lanche8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche8ActionPerformed
-        alteraLanche(btn_Lanche8.getText());
-    }//GEN-LAST:event_btn_Lanche8ActionPerformed
-
-    private void btn_Lanche9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche9ActionPerformed
-        alteraLanche(btn_Lanche9.getText());
-    }//GEN-LAST:event_btn_Lanche9ActionPerformed
-
-    private void btn_Lanche10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche10ActionPerformed
-        alteraLanche(btn_Lanche10.getText());
-    }//GEN-LAST:event_btn_Lanche10ActionPerformed
-
-    private void btn_Lanche11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche11ActionPerformed
-        alteraLanche(btn_Lanche11.getText());
-    }//GEN-LAST:event_btn_Lanche11ActionPerformed
-
-    private void btn_Lanche12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche12ActionPerformed
-        alteraLanche(btn_Lanche12.getText());
-    }//GEN-LAST:event_btn_Lanche12ActionPerformed
-
-    private void btn_Lanche13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche13ActionPerformed
-        alteraLanche(btn_Lanche13.getText());
-    }//GEN-LAST:event_btn_Lanche13ActionPerformed
-
-    private void btn_Lanche14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche14ActionPerformed
-        alteraLanche(btn_Lanche14.getText());
-    }//GEN-LAST:event_btn_Lanche14ActionPerformed
-
-    private void btn_Lanche15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche15ActionPerformed
-        alteraLanche(btn_Lanche15.getText());
-    }//GEN-LAST:event_btn_Lanche15ActionPerformed
-
-    private void btn_Lanche16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche16ActionPerformed
-        alteraLanche(btn_Lanche16.getText());
-    }//GEN-LAST:event_btn_Lanche16ActionPerformed
-
-    private void btn_Lanche17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche17ActionPerformed
-        alteraLanche(btn_Lanche17.getText());
-    }//GEN-LAST:event_btn_Lanche17ActionPerformed
-
-    private void btn_Lanche18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche18ActionPerformed
-        alteraLanche(btn_Lanche18.getText());
-    }//GEN-LAST:event_btn_Lanche18ActionPerformed
-
-    private void btn_Lanche19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche19ActionPerformed
-        alteraLanche(btn_Lanche19.getText());
-    }//GEN-LAST:event_btn_Lanche19ActionPerformed
-
-    private void btn_Lanche20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Lanche20ActionPerformed
-        alteraLanche(btn_Lanche20.getText());
-    }//GEN-LAST:event_btn_Lanche20ActionPerformed
-
-    private void btn_Bebida5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida5ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida5.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida5.getText()));
-    }//GEN-LAST:event_btn_Bebida5ActionPerformed
-
-    private void btn_Bebida1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida1ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida1.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida1.getText()));
-
-    }//GEN-LAST:event_btn_Bebida1ActionPerformed
-
-    private void btn_Bebida2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida2ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida2.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida2.getText()));
-    }//GEN-LAST:event_btn_Bebida2ActionPerformed
-
-    private void btn_Bebida3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida3ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida3.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida3.getText()));
-    }//GEN-LAST:event_btn_Bebida3ActionPerformed
-
-    private void btn_Bebida4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida4ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida4.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida4.getText()));
-    }//GEN-LAST:event_btn_Bebida4ActionPerformed
-
-    private void btn_Bebida10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida10ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida10.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida10.getText()));
-    }//GEN-LAST:event_btn_Bebida10ActionPerformed
-
-    private void btn_Bebida6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida6ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida6.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida6.getText()));
-    }//GEN-LAST:event_btn_Bebida6ActionPerformed
-
-    private void btn_Bebida7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida7ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida7.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida7.getText()));
-    }//GEN-LAST:event_btn_Bebida7ActionPerformed
-
-    private void btn_Bebida8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida8ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida8.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida8.getText()));
-    }//GEN-LAST:event_btn_Bebida8ActionPerformed
-
-    private void btn_Bebida9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida9ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida9.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida9.getText()));
-    }//GEN-LAST:event_btn_Bebida9ActionPerformed
-
-    private void btn_Bebida15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida15ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida15.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida15.getText()));
-    }//GEN-LAST:event_btn_Bebida15ActionPerformed
-
-    private void btn_Bebida11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida11ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida11.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida11.getText()));
-    }//GEN-LAST:event_btn_Bebida11ActionPerformed
-
-    private void btn_Bebida12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida12ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida12.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida12.getText()));
-    }//GEN-LAST:event_btn_Bebida12ActionPerformed
-
-    private void btn_Bebida13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida13ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida13.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida13.getText()));
-    }//GEN-LAST:event_btn_Bebida13ActionPerformed
-
-    private void btn_Bebida14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida14ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida14.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida14.getText()));
-    }//GEN-LAST:event_btn_Bebida14ActionPerformed
-
-    private void btn_Bebida20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida20ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida20.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida20.getText()));
-    }//GEN-LAST:event_btn_Bebida20ActionPerformed
-
-    private void btn_Bebida16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida16ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida16.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida16.getText()));
-    }//GEN-LAST:event_btn_Bebida16ActionPerformed
-
-    private void btn_Bebida17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida17ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida17.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida17.getText()));
-    }//GEN-LAST:event_btn_Bebida17ActionPerformed
-
-    private void btn_Bebida18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida18ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida18.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida18.getText()));
-    }//GEN-LAST:event_btn_Bebida18ActionPerformed
-
-    private void btn_Bebida19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Bebida19ActionPerformed
-        this.produtos.add(bebidaEcolhida(btn_Bebida19.getText()));
-        adicionaTabela(bebidaEcolhida(btn_Bebida19.getText()));
-    }//GEN-LAST:event_btn_Bebida19ActionPerformed
-
-    private void txt_ResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_ResponsavelActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_ResponsavelActionPerformed
-
-    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
-        limpar();
-    }//GEN-LAST:event_btn_CancelarActionPerformed
-
-    private void btn_FinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_FinalizarActionPerformed
-        if (this.produtos.isEmpty()) {
-            JOptionPane.showMessageDialog(rootPane, "Nenhum produto adicionado!", "Aviso", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        if (clb_Entregar.isSelected()) {
-            if (txt_Endereco.getText().equals("") || txt_Numero.getText().equals("") || txt_Telefone.getText().equals("")) {
-                JOptionPane.showMessageDialog(rootPane, "Todos os dados de entrega devem ser preenchidos", "Aviso", JOptionPane.WARNING_MESSAGE);
-                return;
-            }
-        }
-
-        if (!txt_Responsavel.getText().equals("")) {
-            float troco = Float.parseFloat(lbl_Troco.getText());
-            if (troco < 0) {
-                JOptionPane.showMessageDialog(rootPane, "Troco inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-            try {
-                float dinheiro = Float.parseFloat(txt_Dinheiro.getText());
-
-                finaliza();
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(rootPane, "Dinheiro inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Informe o responsável!", "Aviso", JOptionPane.INFORMATION_MESSAGE);
-        }
-    }//GEN-LAST:event_btn_FinalizarActionPerformed
-
-    private void clb_EntregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clb_EntregarActionPerformed
-        if (clb_Entregar.isSelected()) {
-            pnl_Entrega.setEnabled(true);
-            tbp_Entrega.setEnabled(true);
-            txt_Endereco.setEnabled(true);
-            txt_Numero.setEnabled(true);
-            txt_Telefone.setEnabled(true);
-
-        } else {
-            pnl_Entrega.setEnabled(false);
-            tbp_Entrega.setEnabled(false);
-            txt_Endereco.setEnabled(false);
-            txt_Numero.setEnabled(false);
-            txt_Telefone.setEnabled(false);
-        }
-    }//GEN-LAST:event_clb_EntregarActionPerformed
-
-    private void txt_TelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_TelefoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_TelefoneActionPerformed
-
-    private void txt_EnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_EnderecoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_EnderecoActionPerformed
-
-    private void btn_RemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_RemoverActionPerformed
-        DecimalFormat df = new DecimalFormat("0.00");
-
-        if (tbl_Carrinho.getSelectedRow() >= 0) {
-            this.produtos.remove(tbl_Carrinho.getSelectedRow());
-            dtm.removeRow(tbl_Carrinho.getSelectedRow());
-            tbl_Carrinho.setModel(dtm);
-            tbl_Carrinho.repaint();
-
-            lbl_ValorCompra.setText(df.format(calculaTotal()));
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Nenhuma linha não selecionada!");
-        }
-    }//GEN-LAST:event_btn_RemoverActionPerformed
-
-    private void btn_CalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CalcularActionPerformed
-        try{
-            String troco = txt_Dinheiro.getText().replace(",", ".");
-            lbl_Troco.setText("" + (Float.parseFloat(troco) - calculaTotal()));
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(rootPane, "Dinheiro inválido!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btn_CalcularActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -1175,239 +642,7 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Telefone;
     // End of variables declaration//GEN-END:variables
 
-    // Método que oculta os botoes e os adiciona em um array
-    private void inicializarBotoes() {
-
-        botoesLanche.add(btn_Lanche1);
-        botoesLanche.add(btn_Lanche2);
-        botoesLanche.add(btn_Lanche3);
-        botoesLanche.add(btn_Lanche4);
-        botoesLanche.add(btn_Lanche5);
-        botoesLanche.add(btn_Lanche6);
-        botoesLanche.add(btn_Lanche7);
-        botoesLanche.add(btn_Lanche8);
-        botoesLanche.add(btn_Lanche9);
-        botoesLanche.add(btn_Lanche10);
-        botoesLanche.add(btn_Lanche11);
-        botoesLanche.add(btn_Lanche12);
-        botoesLanche.add(btn_Lanche13);
-        botoesLanche.add(btn_Lanche14);
-        botoesLanche.add(btn_Lanche15);
-        botoesLanche.add(btn_Lanche16);
-        botoesLanche.add(btn_Lanche17);
-        botoesLanche.add(btn_Lanche18);
-        botoesLanche.add(btn_Lanche19);
-        botoesLanche.add(btn_Lanche20);
-
-        botoesBebidas.add(btn_Bebida1);
-        botoesBebidas.add(btn_Bebida2);
-        botoesBebidas.add(btn_Bebida3);
-        botoesBebidas.add(btn_Bebida4);
-        botoesBebidas.add(btn_Bebida5);
-        botoesBebidas.add(btn_Bebida6);
-        botoesBebidas.add(btn_Bebida7);
-        botoesBebidas.add(btn_Bebida8);
-        botoesBebidas.add(btn_Bebida9);
-        botoesBebidas.add(btn_Bebida10);
-        botoesBebidas.add(btn_Bebida11);
-        botoesBebidas.add(btn_Bebida12);
-        botoesBebidas.add(btn_Bebida13);
-        botoesBebidas.add(btn_Bebida14);
-        botoesBebidas.add(btn_Bebida15);
-        botoesBebidas.add(btn_Bebida16);
-        botoesBebidas.add(btn_Bebida17);
-        botoesBebidas.add(btn_Bebida18);
-        botoesBebidas.add(btn_Bebida19);
-        botoesBebidas.add(btn_Bebida20);
-
-        for (int i = 0; i < botoesLanche.size(); i++) {
-            botoesLanche.get(i).setVisible(false);
-            botoesBebidas.get(i).setVisible(false);
-        }
-    }
 
     // método para adicionar lanche e bebida aos botoes
-    private void ativarBotoes() {
-        DecimalFormat df = new DecimalFormat("00.00");
-        for (int i = 0; i < this.lanches.size(); i++) {
-            if (lanches.get(i) != null) {
-                botoesLanche.get(i).setVisible(true);
-                botoesLanche.get(i).setText(this.lanches.get(i).getNome());
-            }
-        }
-        for (int i = 0; i < this.bebidas.size(); i++) {
-            if (bebidas.get(i) != null) {
-                botoesBebidas.get(i).setVisible(true);
-                botoesBebidas.get(i).setText(this.bebidas.get(i).getNome() + "  " + this.bebidas.get(i).getTamanho());
-            }
-        }
-    }
-
-    private Lanche lancheEscolhido(String nome) {
-        Lanche lanche = new Lanche();
-
-        for (Lanche lan : this.lanches) {
-            if (lan.getNome().equalsIgnoreCase(nome)) {
-                lanche.setNome(lan.getNome());
-                lanche.setPreco(lan.getPreco());
-                lanche.setTipo(lan.getTipo());
-                lanche.setIngredientes(lan.getIngredientes());
-                break;
-            }
-        }
-
-        return lanche;
-    }
-
-    private Bebida bebidaEcolhida(String nome) {
-        Bebida bebida = new Bebida();
-
-        for (Bebida beb : bebidas) {
-            if (nome.contains(beb.getNome())) {
-                bebida.setNome(beb.getNome());
-                bebida.setPreco((float) beb.getPreco());
-                bebida.setTipo(beb.getTipo());
-                bebida.setTamanho(beb.getTamanho());
-                break;
-            }
-        }
-
-        return bebida;
-    }
-
-    private void limpar() {
-        lbl_Troco.setText("0,00");
-        txt_Dinheiro.setText("");
-        lbl_ValorCompra.setText("");
-
-        txt_Endereco.setText("");
-        txt_Numero.setText("");
-        txt_Telefone.setText("");
-        txt_Responsavel.setText("");
-        clb_Entregar.setSelected(false);
-
-        produtos.removeAll(produtos);
-        dtm.getDataVector().removeAllElements();
-
-        this.repaint();
-    }
-
-    private void alteraLanche(String nomeLanche) {
-
-        Lanche lanche = lancheEscolhido(nomeLanche);
-
-        alteracao = new AlteracaoLanche(lanche, this);
-
-        alteracao.toFront();
-        alteracao.setLocationRelativeTo(this);
-        alteracao.setVisible(true);
-
-    }
-
-    public void adicionaTabela(Produto produ) {
-        DecimalFormat df = new DecimalFormat("0.00");
-
-        if (produ instanceof Lanche) {
-
-            String op = (((Lanche) produ).isRepartir()) ? "Sim" : "Não";
-            String op2 = (((AlteracaoLanche) alteracao).isModificacao()) ? "Não" : "Sim";
-            ((Lanche) produ).setModificacao(op2);
-
-            dtm.insertRow(dtm.getRowCount(), new Object[]{
-                produ.getNome(),
-                ((float) produ.getPreco()),
-                ((float) ((Lanche) produ).getAdicional()),
-                op,
-                op2
-            });
-            lbl_ValorCompra.setText(df.format(calculaTotal()));
-
-        } else if (produ instanceof Bebida) {
-            dtm.insertRow(dtm.getRowCount(), new Object[]{
-                produ.getNome(),
-                produ.getPreco(),
-                0,
-                "Não",
-                "Não"
-            });
-            lbl_ValorCompra.setText(df.format(calculaTotal()));
-        }
-
-        // mostrarProdutos();
-    }
-
-    private float calculaTotal() {
-        float total = 0;
-        for (Produto prod : this.produtos) {
-            if (prod instanceof Lanche) {
-                total += prod.getPreco() + ((Lanche) prod).getAdicional();
-            } else if (prod instanceof Bebida) {
-                total += prod.getPreco();
-            }
-        }
-        return total;
-    }
-
-    private void mostraTotal() {
-        lbl_ValorCompra.setText("" + calculaTotal());
-    }
-
-    private void mostrarProdutos() {
-        for (Produto prod : this.produtos) {
-            if (prod instanceof Lanche) {
-                System.out.println(" \n\n" + prod.getNome());
-                System.out.println(prod.getPreco());
-                System.out.println(((Lanche) prod).getAdicional());
-                System.out.println(prod.getTipo());
-                for (Ingrediente ing : ((Lanche) prod).getIngredientes()) {
-                    System.out.println("\t" + ing.getNome());
-                    System.out.println("\t" + ing.getPrecoAdicional());
-                }
-            } else if (prod instanceof Bebida) {
-                System.out.println("\n\n" + prod.getNome());
-                System.out.println(prod.getPreco());
-                System.out.println(prod.getTipo());
-                System.out.println(((Bebida) prod).getTamanho());
-            }
-        }
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++");
-    }
-
-    public ArrayList<Produto> getProdutos() {
-        return produtos;
-    }
-
-    private void criarArrayProdutos() {
-        produtos = new ArrayList<>();
-    }
-
-    private void finaliza() {
-        ArrayList<Venda> venda = new ArrayList<>();
-        ArquivoVendas arqVendas = new ArquivoVendas();
-
-        venda = arqVendas.resgatarArquivo();
-
-        Venda ven = new Venda();
-
-        if (clb_Entregar.isSelected()) {
-            Entrega entrega = new Entrega();
-            entrega.setEndereco(txt_Endereco.getText());
-            entrega.setNum(txt_Numero.getText());
-            entrega.setTelefone(txt_Telefone.getText());
-            ven.setEntrega(entrega);
-        }
-
-        ven.setComprador(txt_Responsavel.getText());
-        ven.setTotal(calculaTotal());
-        ven.setProdutos(produtos);
-
-        venda.add(ven);
-
-        arqVendas.salvarArquivo(venda, false);
-
-        limpar();
-        criarArrayProdutos();
-
-        JOptionPane.showMessageDialog(rootPane, "Venda Concluída!", "Venda", JOptionPane.INFORMATION_MESSAGE);
-    }
+   
 }

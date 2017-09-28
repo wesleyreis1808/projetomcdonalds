@@ -5,11 +5,7 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.ArquivoVendas;
-import br.inatel.projetoec.model.Bebida;
-import br.inatel.projetoec.model.Lanche;
-import br.inatel.projetoec.model.Produto;
-import br.inatel.projetoec.model.Venda;
+
 import java.awt.Toolkit;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -23,23 +19,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Pedidos extends javax.swing.JFrame {
 
-    ArquivoVendas arqVenda = new ArquivoVendas();
-    private ArrayList<Venda> vendas;
-    private DefaultTableModel dtm = new DefaultTableModel();
-    private boolean pedidosPendentes;
-
     public Pedidos() {
         initComponents();
 
-        dtm = (DefaultTableModel) tbl_Pedidos.getModel();
-        this.vendas = arqVenda.resgatarArquivo();
+        
         this.setLocationRelativeTo(null);
         
         tbl_Pedidos.getColumnModel().getColumn(0).setPreferredWidth(130);
         tbl_Pedidos.getColumnModel().getColumn(1).setPreferredWidth(110);
         tbl_Pedidos.getColumnModel().getColumn(2).setPreferredWidth(585);
-
-        atualiza(vendas);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
     }
 
@@ -234,47 +222,17 @@ public class Pedidos extends javax.swing.JFrame {
 
         btn_Primeiro.setText("Primeiro");
         btn_Primeiro.setEnabled(false);
-        btn_Primeiro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_PrimeiroActionPerformed(evt);
-            }
-        });
 
         btn_Anterior.setText("Anterior");
         btn_Anterior.setEnabled(false);
-        btn_Anterior.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_AnteriorActionPerformed(evt);
-            }
-        });
 
         btn_Proximo.setText("Próximo");
-        btn_Proximo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ProximoActionPerformed(evt);
-            }
-        });
 
         btn_Ultimo.setText("Último");
-        btn_Ultimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_UltimoActionPerformed(evt);
-            }
-        });
 
         btn_Cancelar.setText("Cancelar");
-        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CancelarActionPerformed(evt);
-            }
-        });
 
         btn_Entregue.setText("Entregue");
-        btn_Entregue.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_EntregueActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnl_BotoesLayout = new javax.swing.GroupLayout(pnl_Botoes);
         pnl_Botoes.setLayout(pnl_BotoesLayout);
@@ -317,11 +275,6 @@ public class Pedidos extends javax.swing.JFrame {
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
         jMenuItem1.setText("Atualizar Pedidos");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
-            }
-        });
         jMenu1.add(jMenuItem1);
 
         mnu_Menu.add(jMenu1);
@@ -330,54 +283,6 @@ public class Pedidos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        atualiza(vendas);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
-    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btn_CancelarActionPerformed
-
-    private void btn_EntregueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EntregueActionPerformed
-        ArrayList<Venda> todasVend = new ArrayList<>();
-        todasVend = arqVenda.resgatarArquivo();
-
-        for (Venda v : vendas) {
-            String codigo = "" + v.getCodigo();
-            if (codigo.equals(lbl_Codigo.getText()) && lbl_Responsavel.getText().equals(v.getComprador())) {
-                v.setEntregue(true);
-
-                for (Venda v2 : todasVend) {
-                    if (v2.getCodigo() == v.getCodigo() && v2.getComprador().equals(v.getComprador()) && v2.getHora().equals(v.getHora())) {
-                        v2.setEntregue(true);
-                        arqVenda.salvarArquivo(todasVend, false);
-                        break;
-                    }
-                }
-
-                break;
-            }
-        }
-
-        atualiza(vendas);
-    }//GEN-LAST:event_btn_EntregueActionPerformed
-
-    private void btn_UltimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_UltimoActionPerformed
-        this.ultimo();
-    }//GEN-LAST:event_btn_UltimoActionPerformed
-
-    private void btn_PrimeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrimeiroActionPerformed
-        this.primeiro();
-    }//GEN-LAST:event_btn_PrimeiroActionPerformed
-
-    private void btn_ProximoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ProximoActionPerformed
-        this.proximo();
-    }//GEN-LAST:event_btn_ProximoActionPerformed
-
-    private void btn_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AnteriorActionPerformed
-        this.anterior();
-    }//GEN-LAST:event_btn_AnteriorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -441,163 +346,6 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JTable tbl_Pedidos;
     // End of variables declaration//GEN-END:variables
 
-    private void atualiza(ArrayList<Venda> vend) {
-
-        ArrayList<Venda> vendaN = new ArrayList<>();
-
-        for (Venda v : vend) {
-            if (!v.isEntregue()) {
-                vendaN.add(v);
-            }
-        }
-
-        if (vendaN.isEmpty()) {
-            this.pedidosPendentes = false;
-            JOptionPane.showMessageDialog(rootPane, "Não existem pedidos a serem feitos", "Aviso!", JOptionPane.WARNING_MESSAGE);
-            this.dispose();
-            desabilitaBotoes();
-            return;
-        }
-
-        this.pedidosPendentes = true;
-        this.vendas = vendaN;
-        setPedido(0);
-
-    }
-
-    private void setPedido(int num) {
-        Venda venda = new Venda();
-        venda = this.vendas.get(num);
-
-        lbl_Responsavel.setText(venda.getComprador());
-        lbl_Codigo.setText("" + venda.getCodigo());
-        lbl_Data.setText(venda.getData());
-        lbl_Hora.setText(venda.getHora());
-
-        if (venda.getEntrega() != null) {
-            lbl_Endereco.setText(venda.getEntrega().getEndereco());
-            lbl_Numero.setText(venda.getEntrega().getNum());
-            lbl_Telefone.setText(venda.getEntrega().getTelefone());
-        }
-        else{
-            lbl_Endereco.setText("");
-            lbl_Numero.setText("");
-            lbl_Telefone.setText("");
-        }
-        adicionarTabela(venda.getProdutos());
-
-    }
-
-    private void adicionarTabela(ArrayList<Produto> produtos) {
-        DecimalFormat df = new DecimalFormat("0.00");
-
-        dtm.getDataVector().removeAllElements();
-        this.repaint();
-
-        for (Produto produ : produtos) {
-            if (produ instanceof Lanche) {
-                String repartir = (((Lanche) produ).isRepartir()) ? "Sim" : "Não";
-
-                dtm.insertRow(dtm.getRowCount(), new Object[]{
-                    produ.getNome(),
-                    repartir,
-                    ((Lanche) produ).getObservacao()
-                });
-
-            } else if (produ instanceof Bebida) {
-                dtm.insertRow(dtm.getRowCount(), new Object[]{
-                    produ.getNome(),
-                    "-",
-                    "-"
-                });
-            }
-
-        }
-        this.repaint();
-    }
-
-    private void desabilitaBotoes() {
-        btn_Anterior.setEnabled(false);
-        btn_Entregue.setEnabled(false);
-        btn_Primeiro.setEnabled(false);
-        btn_Proximo.setEnabled(false);
-        btn_Ultimo.setEnabled(false);
-    }
-
-    private void habilitaBotoes() {
-        btn_Anterior.setEnabled(true);
-        btn_Primeiro.setEnabled(true);
-        btn_Proximo.setEnabled(true);
-        btn_Ultimo.setEnabled(true);
-    }
-
-    private void primeiro() {
-
-        if (this.pedidosPendentes) {
-            setPedido(0);
-            btn_Anterior.setEnabled(false);
-            btn_Primeiro.setEnabled(false);
-            btn_Proximo.setEnabled(true);
-            btn_Ultimo.setEnabled(true);
-        }
-    }
-
-    private void anterior() {
-        if (this.pedidosPendentes) {
-            if (posicao() == 1 || posicao() == 0 ) {
-                setPedido(0);
-                btn_Anterior.setEnabled(false);
-                btn_Primeiro.setEnabled(false);
-                btn_Proximo.setEnabled(true);
-                btn_Ultimo.setEnabled(true);
-            } else {
-                setPedido(posicao() - 1);
-                btn_Anterior.setEnabled(true);
-                btn_Primeiro.setEnabled(true);
-                btn_Proximo.setEnabled(true);
-                btn_Ultimo.setEnabled(true);
-            }
-        }
-    }
-
-    private void proximo() {
-        if (this.pedidosPendentes) {
-            if (posicao() == (this.vendas.size()-1) || posicao() == (this.vendas.size()-2)) {
-                setPedido(this.vendas.size()-1);
-                btn_Anterior.setEnabled(true);
-                btn_Primeiro.setEnabled(true);
-                btn_Proximo.setEnabled(false);
-                btn_Ultimo.setEnabled(false);
-            } else {
-                setPedido(posicao() + 1);
-                btn_Anterior.setEnabled(true);
-                btn_Primeiro.setEnabled(true);
-                btn_Proximo.setEnabled(true);
-                btn_Ultimo.setEnabled(true);
-            }
-        }
-    }
-
-    private void ultimo() {
-        if (this.pedidosPendentes) {
-            setPedido(vendas.size() - 1);
-            btn_Anterior.setEnabled(true);
-            btn_Primeiro.setEnabled(true);
-            btn_Proximo.setEnabled(false);
-            btn_Ultimo.setEnabled(false);
-        }
-    }
-
-    private int posicao() {
-        int pos = 0;
-
-        for (Venda v : this.vendas) {
-            if (v.getComprador().equals(lbl_Responsavel.getText()) && v.getCodigo() == Integer.parseInt(lbl_Codigo.getText()) && v.getHora().equals(lbl_Hora.getText())) {
-                pos = vendas.indexOf(v);
-                break;
-            }
-        }
-        return pos;
-    }
+   
 
 }

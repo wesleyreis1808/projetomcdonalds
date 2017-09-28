@@ -5,8 +5,6 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.ArquivoBebidas;
-import br.inatel.projetoec.model.Bebida;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,8 +24,6 @@ public class CadastroBebida extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
     }
-
-    Bebida beber;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -62,11 +58,6 @@ public class CadastroBebida extends javax.swing.JFrame {
         label_Refri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/Coca-Cola.png"))); // NOI18N
 
         ComBox_Refri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Coca-Cola", "7Up", "Coca-Cola_Light", "Coca-Cola_Zero", "Fanta_Laranja", "Pepsi", "Sprite", "Suco", "Vita-Cola" }));
-        ComBox_Refri.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComBox_RefriActionPerformed(evt);
-            }
-        });
 
         label_Titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         label_Titulo.setText("CADASTRAR BEBIDA");
@@ -74,46 +65,21 @@ public class CadastroBebida extends javax.swing.JFrame {
         label_Preco.setText("PREÇO R$");
 
         txf_preco.setText("0,00");
-        txf_preco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txf_precoActionPerformed(evt);
-            }
-        });
 
         btm_salvar.setText("SALVAR");
-        btm_salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_salvarActionPerformed(evt);
-            }
-        });
 
         btm_cancelar.setText("CANCELAR");
-        btm_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_cancelarActionPerformed(evt);
-            }
-        });
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         GrupoDeBotão_Tamanho.add(Rbtn_tamanho1);
         Rbtn_tamanho1.setText("Lata");
-        Rbtn_tamanho1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Rbtn_tamanho1ActionPerformed(evt);
-            }
-        });
 
         GrupoDeBotão_Tamanho.add(Rbtn_tamanho2);
         Rbtn_tamanho2.setText("600 ml");
 
         GrupoDeBotão_Tamanho.add(Rbtn_tamanho3);
         Rbtn_tamanho3.setText("1 L");
-        Rbtn_tamanho3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Rbtn_tamanho3ActionPerformed(evt);
-            }
-        });
 
         GrupoDeBotão_Tamanho.add(Rbtn_tamanho4);
         Rbtn_tamanho4.setText("2 L");
@@ -221,89 +187,6 @@ public class CadastroBebida extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ComBox_RefriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComBox_RefriActionPerformed
-
-        String nome;
-
-        nome = (ComBox_Refri.getItemAt(ComBox_Refri.getSelectedIndex()));
-        label_Refri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/"+ nome+".png")));
-        this.repaint();
-    }//GEN-LAST:event_ComBox_RefriActionPerformed
-
-    private void txf_precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_precoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_precoActionPerformed
-
-    private void Rbtn_tamanho3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_tamanho3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Rbtn_tamanho3ActionPerformed
-
-    private void btm_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_salvarActionPerformed
-        try {
-            String valor = txf_preco.getText();
-            valor = valor.replace(",", ".");
-            //try c
-            float precoBebida = (float) Double.parseDouble(valor);
-
-            if (precoBebida > 0) {
-
-                if ((Rbtn_tamanho1.getSelectedObjects() != null) || (Rbtn_tamanho2.getSelectedObjects() != null)
-                        || (Rbtn_tamanho3.getSelectedObjects() != null)
-                        || (Rbtn_tamanho4.getSelectedObjects() != null)) {
-
-                    beber = new Bebida();
-                    beber.setNome(ComBox_Refri.getItemAt(ComBox_Refri.getSelectedIndex()));
-                    beber.setPreco(precoBebida);
-                    beber.setTipo("Bebida");
-
-                    if (Rbtn_tamanho1.getSelectedObjects() != null) {
-
-                        beber.setTamanho(Rbtn_tamanho1.getText());
-                    } else if (Rbtn_tamanho2.getSelectedObjects() != null) {
-                        beber.setTamanho(Rbtn_tamanho2.getText());
-                    } else if (Rbtn_tamanho3.getSelectedObjects() != null) {
-                        beber.setTamanho(Rbtn_tamanho3.getText());
-                    } else if (Rbtn_tamanho4.getSelectedObjects() != null) {
-                        beber.setTamanho(Rbtn_tamanho4.getText());
-                    }
-
-                    salvar(beber);
-
-                    JOptionPane.showMessageDialog(rootPane, "SALVO COM SUCESSO",
-                            "AVISO", JOptionPane.PLAIN_MESSAGE);
-
-                    this.dispose();
-
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "TAMANHO NÃO SELICIONADO",
-                            "AVISO", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "PREÇO " + valor + " É INVALIDO",
-                        "AVISO", JOptionPane.ERROR_MESSAGE);
-            }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(rootPane,"Preço Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btm_salvarActionPerformed
-
-    private void btm_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_cancelarActionPerformed
-
-        int op;
-
-        op = JOptionPane.showConfirmDialog(rootPane, "DESEJA SAIR?");
-        if (op == 0) {
-            this.dispose();
-        }
-
-    }//GEN-LAST:event_btm_cancelarActionPerformed
-
-    private void Rbtn_tamanho1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rbtn_tamanho1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Rbtn_tamanho1ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -358,17 +241,5 @@ public class CadastroBebida extends javax.swing.JFrame {
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
-    private void salvar(Bebida b) {
 
-        ArquivoBebidas arq = new ArquivoBebidas();
-
-        ArrayList<Bebida> b1 = new ArrayList<>();
-
-        b1 = arq.resgatarArquivo();
-
-        b1.add(b);
-
-        arq.salvarArquivo(b1, false);
-
-    }
 }

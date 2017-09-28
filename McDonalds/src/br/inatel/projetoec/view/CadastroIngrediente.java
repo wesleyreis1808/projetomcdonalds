@@ -5,10 +5,6 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.ArquivoIngrediente;
-import br.inatel.projetoec.model.ArquivoLanche;
-import br.inatel.projetoec.model.Ingrediente;
-import br.inatel.projetoec.model.Lanche;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -65,18 +61,8 @@ public class CadastroIngrediente extends javax.swing.JFrame {
         label_titulo.setText("INGREDIENTES");
 
         btm_salvar.setText("SALVAR");
-        btm_salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_salvarActionPerformed(evt);
-            }
-        });
 
         btm_cancelar.setText("CANCELAR");
-        btm_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_cancelarActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout Painel_IngredienteLayout = new javax.swing.GroupLayout(Painel_Ingrediente);
         Painel_Ingrediente.setLayout(Painel_IngredienteLayout);
@@ -141,41 +127,6 @@ public class CadastroIngrediente extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btm_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_cancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btm_cancelarActionPerformed
-
-    private void btm_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_salvarActionPerformed
-        try {
-            String valor = txf_precoAdd.getText();
-            valor = valor.replace(",", ".");
-            //try c
-            float adicional = (float) Double.parseDouble(valor);
-
-            if (!txf_Nome.getText().equals("")) {
-
-                if (adicional > 0) {
-                    salvarIngrediente();
-                    JOptionPane.showMessageDialog(rootPane, "SALVO COM SUCESSO",
-                            "AVISO", JOptionPane.PLAIN_MESSAGE);
-                    this.dispose();
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "PREÇO " + valor + " É INVALIDO",
-                            "AVISO", JOptionPane.ERROR_MESSAGE);
-
-                }
-            } else {
-
-                JOptionPane.showMessageDialog(rootPane, "CAMPO DE NOME VAZIO",
-                        "AVISO", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(rootPane, "Preço Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-
-
-    }//GEN-LAST:event_btm_salvarActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -218,24 +169,6 @@ public class CadastroIngrediente extends javax.swing.JFrame {
     private javax.swing.JTextField txf_precoAdd;
     // End of variables declaration//GEN-END:variables
 
-    private void salvarIngrediente() {
-
-        ArquivoIngrediente i1 = new ArquivoIngrediente();
-
-        ArrayList<Ingrediente> ingredientes = new ArrayList<>();
-
-        ingredientes = i1.resgatarArquivo();
-        Ingrediente in1 = new Ingrediente();
-
-        in1.setNome(txf_Nome.getText());
-        String valor = txf_precoAdd.getText();
-        valor = valor.replace(",", ".");
-        in1.setPrecoAdicional(Float.parseFloat(valor));
-
-        ingredientes.add(in1);
-
-        i1.salvarArquivo(ingredientes, false);
-
-    }
+   
 
 }

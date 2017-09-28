@@ -5,10 +5,7 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.ArquivoIngrediente;
-import br.inatel.projetoec.model.ArquivoLanche;
-import br.inatel.projetoec.model.Ingrediente;
-import br.inatel.projetoec.model.Lanche;
+
 import java.awt.Toolkit;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -28,15 +25,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class CadastroLanche extends javax.swing.JFrame {
 
-    private List<Ingrediente> ingredientes = new ArrayList<>();
-    private List<Ingrediente> ingredientesS = new ArrayList<>();
-    private DefaultListModel dlm1 = new DefaultListModel();
-    private DefaultListModel dlm2 = new DefaultListModel();
+ 
 
     public CadastroLanche() {
 
         initComponents();
-        prencheLista();
         this.setLocationRelativeTo(null);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
     }
@@ -73,45 +66,19 @@ public class CadastroLanche extends javax.swing.JFrame {
         painel_cadastro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btm_salvar.setText("SALVAR");
-        btm_salvar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_salvarActionPerformed(evt);
-            }
-        });
         painel_cadastro.add(btm_salvar, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, -1, -1));
 
         btm_cancelar.setText("CANCELAR");
-        btm_cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_cancelarActionPerformed(evt);
-            }
-        });
         painel_cadastro.add(btm_cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 350, -1, -1));
 
-        lista_ingredientes.setModel(dlm1);
-        lista_ingredientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                lista_ingredientesValueChanged(evt);
-            }
-        });
         jScrollPane1.setViewportView(lista_ingredientes);
 
         painel_cadastro.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 210, -1));
 
         btm_adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/right-arrow.png"))); // NOI18N
-        btm_adicionar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_adicionarActionPerformed(evt);
-            }
-        });
         painel_cadastro.add(btm_adicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 110, -1));
 
         txf_preco.setText("0,00 ");
-        txf_preco.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txf_precoActionPerformed(evt);
-            }
-        });
         painel_cadastro.add(txf_preco, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 100, 164, -1));
 
         label_preco.setText("PREÇO R$");
@@ -125,7 +92,6 @@ public class CadastroLanche extends javax.swing.JFrame {
         label_nome.setText("NOME");
         painel_cadastro.add(label_nome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 50, -1));
 
-        lista_lanche.setModel(dlm2);
         jScrollPane2.setViewportView(lista_lanche);
 
         painel_cadastro.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 200, 210, -1));
@@ -136,11 +102,6 @@ public class CadastroLanche extends javax.swing.JFrame {
         painel_cadastro.add(label_imagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 90, -1, 100));
 
         btm_imagem.setText("IMAGEM");
-        btm_imagem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_imagemActionPerformed(evt);
-            }
-        });
         painel_cadastro.add(btm_imagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -148,11 +109,6 @@ public class CadastroLanche extends javax.swing.JFrame {
         painel_cadastro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         btm_remover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/left-pointing-arrow.png"))); // NOI18N
-        btm_remover.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btm_removerActionPerformed(evt);
-            }
-        });
         painel_cadastro.add(btm_remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -175,98 +131,6 @@ public class CadastroLanche extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txf_precoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txf_precoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txf_precoActionPerformed
-
-    private void btm_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_salvarActionPerformed
-
-        float precoLanche;
-        String valor = txf_preco.getText();
-        valor = valor.replace(",", ".");
-        try {
-            precoLanche = (float) Double.parseDouble(valor);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(rootPane, "Preço Inválido", "Erro", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        if (!txf_nome.getText().equals("")) {
-            if (precoLanche > 0) {
-
-                if (!ingredientesS.isEmpty()) {
-
-                    salvar();
-                    JOptionPane.showMessageDialog(rootPane, "SALVO COM SUCESSO",
-                            "AVISO", JOptionPane.PLAIN_MESSAGE);
-                    this.dispose();
-
-                } else {
-                    JOptionPane.showMessageDialog(rootPane, "INGREDIENTE NÃO SELICIONADO",
-                            "AVISO", JOptionPane.ERROR_MESSAGE);
-                }
-
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "PREÇO " + valor + " É INVALIDO",
-                        "AVISO", JOptionPane.ERROR_MESSAGE);
-
-            }
-        } else {
-
-            JOptionPane.showMessageDialog(rootPane, "CAMPO DE NOME VAZIO",
-                    "AVISO", JOptionPane.ERROR_MESSAGE);
-
-        }
-
-    }//GEN-LAST:event_btm_salvarActionPerformed
-
-
-    private void lista_ingredientesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_lista_ingredientesValueChanged
-
-
-    }//GEN-LAST:event_lista_ingredientesValueChanged
-
-    private void btm_imagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_imagemActionPerformed
-
-        JFileChooser chooser = new JFileChooser();//cria uma instancia do JFileChooser
-        //filtro para as imagend
-        FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG & GIF & PNG Images", "jpg", "gif", "png");
-        //altera o filtro
-        chooser.setFileFilter(filtro);
-
-        String local;
-        //localização padrão ("sem imagem")
-        local = "C:\\Users\\francisco\\Documents\\NetBeansProjects\\projetoEc\\build\\classes\\Imagens\\sem_imagem.png";
-
-        int returnVal = chooser.showOpenDialog(label_imagem);//abre JFileChooser
-        if (returnVal == JFileChooser.APPROVE_OPTION) {//verifica se clicou em ok
-            local = (chooser.getSelectedFile().getAbsolutePath());//local recebe a localização da imagem           
-        }
-
-        label_imagem.setIcon(new javax.swing.ImageIcon(local));//mudar o icone do label
-
-
-    }//GEN-LAST:event_btm_imagemActionPerformed
-
-    private void btm_adicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_adicionarActionPerformed
-
-        adicionaArray(lista_ingredientes.getSelectedIndex());
-
-    }//GEN-LAST:event_btm_adicionarActionPerformed
-
-    private void btm_removerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_removerActionPerformed
-
-        try {
-            removeArray(lista_lanche.getSelectedIndex());
-        } catch (ArrayIndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(this, "NENHUM INGREDIENTE NA LISTA");
-        }
-
-    }//GEN-LAST:event_btm_removerActionPerformed
-
-    private void btm_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_cancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btm_cancelarActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -309,57 +173,6 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
-    private void prencheLista() {
-
-        ArquivoIngrediente a1 = new ArquivoIngrediente();
-        this.ingredientes = a1.resgatarArquivo();
-        for (int i = 0; i < ingredientes.size(); i++) {
-            dlm1.add(i, ingredientes.get(i).getNome());
-        }
-
-    }
-
-    private void adicionaArray(int num) {
-
-        ingredientesS.add(this.ingredientes.get(num));
-        prencheLista2();
-    }
-
-    private void removeArray(int num) {
-
-        ingredientesS.remove(this.ingredientesS.get(num));
-        prencheLista2();
-
-    }
-
-    private void prencheLista2() {
-        dlm2.clear();
-        for (int i = 0; i < ingredientesS.size(); i++) {
-            dlm2.add(i, ingredientesS.get(i).getNome());
-        }
-
-    }
-
-    private void salvar() {
-
-        ArquivoLanche l1 = new ArquivoLanche();
-
-        ArrayList<Lanche> a1 = new ArrayList<>();
-
-        a1 = l1.resgatarArquivo();
-
-        Lanche lan1 = new Lanche();
-
-        lan1.setNome(txf_nome.getText());
-        String valor = txf_preco.getText();
-        valor = valor.replace(",", ".");
-        lan1.setPreco(Float.parseFloat(valor));
-        lan1.setIngredientes((ArrayList<Ingrediente>) ingredientesS);
-        lan1.setTipo("Lanche");
-
-        a1.add(lan1);
-        l1.salvarArquivo(a1, false);
-
-    }
+  
 
 }

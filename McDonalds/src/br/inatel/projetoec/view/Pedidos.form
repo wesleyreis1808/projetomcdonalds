@@ -16,9 +16,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Atualizar Pedidos"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItem1ActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -347,50 +344,32 @@
                 <Property name="text" type="java.lang.String" value="Primeiro"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_PrimeiroActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Anterior">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Anterior"/>
                 <Property name="enabled" type="boolean" value="false"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_AnteriorActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Proximo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Pr&#xf3;ximo"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_ProximoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Ultimo">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#xda;ltimo"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_UltimoActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Cancelar">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cancelar"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_CancelarActionPerformed"/>
-              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="btn_Entregue">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Entregue"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_EntregueActionPerformed"/>
-              </Events>
             </Component>
           </SubComponents>
         </Container>

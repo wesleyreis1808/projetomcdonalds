@@ -5,11 +5,7 @@
  */
 package br.inatel.projetoec.view;
 
-import br.inatel.projetoec.model.ArquivoVendas;
-import br.inatel.projetoec.model.Bebida;
-import br.inatel.projetoec.model.Lanche;
-import br.inatel.projetoec.model.Produto;
-import br.inatel.projetoec.model.Venda;
+
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -26,14 +22,7 @@ public class Historico extends javax.swing.JFrame {
 
     public Historico() {
         initComponents();
-        tbl_Historico.getColumnModel().getColumn(2).setPreferredWidth(100);
-        tbl_Historico.getColumnModel().getColumn(5).setPreferredWidth(485);
-
-        dtm = (DefaultTableModel) tbl_Historico.getModel();
-
-        this.setLocationRelativeTo(null);
-        preencheTabela();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        
     }
 
     /**
@@ -103,11 +92,6 @@ public class Historico extends javax.swing.JFrame {
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Limpar.setText("Limpar Histótico");
-        btn_Limpar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_LimparActionPerformed(evt);
-            }
-        });
         jPanel2.add(btn_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 130, 50));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
@@ -115,29 +99,14 @@ public class Historico extends javax.swing.JFrame {
         buttonGroup1.add(rbt_Todas);
         rbt_Todas.setSelected(true);
         rbt_Todas.setText("Todas");
-        rbt_Todas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt_TodasActionPerformed(evt);
-            }
-        });
 
         buttonGroup1.add(rbt_Data);
         rbt_Data.setText("Data");
-        rbt_Data.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbt_DataActionPerformed(evt);
-            }
-        });
 
         txt_Data.setEnabled(false);
 
         btn_Ok.setText("OK");
         btn_Ok.setEnabled(false);
-        btn_Ok.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_OkActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -169,11 +138,6 @@ public class Historico extends javax.swing.JFrame {
         jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 60));
 
         btn_Cancelar.setText("Cancelar");
-        btn_Cancelar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_CancelarActionPerformed(evt);
-            }
-        });
         jPanel2.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 107, 50));
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Total"));
@@ -259,52 +223,6 @@ public class Historico extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbt_TodasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_TodasActionPerformed
-        if (rbt_Todas.isSelected()) {
-            txt_Data.setEnabled(false);
-            btn_Ok.setEnabled(false);
-            preencheTabela();
-        } else {
-            txt_Data.setEnabled(true);
-            btn_Ok.setEnabled(true);
-        }
-    }//GEN-LAST:event_rbt_TodasActionPerformed
-
-    private void btn_CancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CancelarActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btn_CancelarActionPerformed
-
-    private void btn_LimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_LimparActionPerformed
-        if (JOptionPane.showConfirmDialog(rootPane, "Você realmente deseja apagar o histórico de vendas?", "Limpar Historico", JOptionPane.YES_NO_OPTION) == 0) {
-
-            ArrayList<Venda> vend = new ArrayList<>();
-            ArquivoVendas v = new ArquivoVendas();
-
-            v.salvarArquivo(vend, false);
-            
-            preencheTabela();
-
-        }
-    }//GEN-LAST:event_btn_LimparActionPerformed
-
-    private void rbt_DataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbt_DataActionPerformed
-        if (rbt_Data.isSelected()) {
-            txt_Data.setEnabled(true);
-            btn_Ok.setEnabled(true);
-        } else {
-            txt_Data.setEnabled(false);
-            btn_Ok.setEnabled(false);
-        }
-    }//GEN-LAST:event_rbt_DataActionPerformed
-
-    private void btn_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_OkActionPerformed
-        if (!txt_Data.getText().equals("")) {
-            preencheTabelaData(txt_Data.getText());
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Data em branco!", "Erro", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btn_OkActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -354,93 +272,6 @@ public class Historico extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Data;
     // End of variables declaration//GEN-END:variables
 
-    private void preencheTabela() {
-
-        float total = 0;
-        int entre = 0;
-
-        ArquivoVendas arqVenda = new ArquivoVendas();
-        ArrayList<Venda> vendas = new ArrayList<>();
-
-        vendas = arqVenda.resgatarArquivo();
-
-        dtm.getDataVector().removeAllElements();
-        this.repaint();
-
-        for (Venda v : vendas) {
-            String entrega = (v.getEntrega() == null) ? "Não" : "Sim";
-
-            String produtos = produtos(v);
-
-            if (entrega.equals("Sim")) {
-                entre++;
-            }
-            total += v.getTotal();
-
-            dtm.insertRow(dtm.getRowCount(), new Object[]{
-                v.getData(),
-                v.getHora(),
-                v.getComprador(),
-                "" + v.getTotal(),
-                entrega,
-                produtos
-            });
-        }
-        lbl_Total.setText("R$ " + total);
-        lbl_Entega.setText("" + entre);
-        this.repaint();
-
-    }
-
-    private String produtos(Venda vend) {
-        String prod = "";
-        for (Produto p : vend.getProdutos()) {
-            if (p instanceof Lanche) {
-                prod += p.getNome() + " - ";
-            } else if (p instanceof Bebida) {
-                prod += p.getNome() + " " + ((Bebida) p).getTamanho() + " - ";
-            }
-        }
-        return prod;
-    }
-
-    private void preencheTabelaData(String data) {
-
-        float total = 0;
-        int entre = 0;
-
-        ArquivoVendas arqVenda = new ArquivoVendas();
-        ArrayList<Venda> vendas = new ArrayList<>();
-
-        vendas = arqVenda.resgatarArquivo();
-
-        dtm.getDataVector().removeAllElements();
-        this.repaint();
-
-        for (Venda v : vendas) {
-            String entrega = (v.getEntrega() == null) ? "Não" : "Sim";
-
-            String produtos = produtos(v);
-            if (v.getData().equals(data)) {
-                if (entrega.equals("Sim")) {
-                    entre++;
-                }
-                total += v.getTotal();
-
-                dtm.insertRow(dtm.getRowCount(), new Object[]{
-                    v.getData(),
-                    v.getHora(),
-                    v.getComprador(),
-                    "" + v.getTotal(),
-                    entrega,
-                    produtos
-                });
-            }
-        }
-        lbl_Total.setText("R$ " + total);
-        lbl_Entega.setText("" + entre);
-        this.repaint();
-
-    }
+   
 
 }
