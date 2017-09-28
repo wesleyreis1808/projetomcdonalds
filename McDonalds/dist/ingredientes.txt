@@ -1,0 +1,21 @@
+Salsicha%1.5
+Molho%0.5
+Maionese%0.5
+Batata Palha%0.5
+Presunto%0.5
+Mussarela%0.5
+Tomate%0.5
+Milho%0.5
+Alface%0.5
+Hamburger%2.0
+Bacon%2.0
+Lombo%2.5
+Frango%2.5
+Cebola%0.5
+Catupity%2.0
+Cheddar%2.0
+Azeitona%0.5
+Ovo%1.0
+Ketchup%0.1
+Azeitona%0.5
+Mama%5.0
