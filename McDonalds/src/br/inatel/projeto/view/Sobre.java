@@ -48,16 +48,16 @@ public class Sobre extends javax.swing.JFrame {
             }
         });
 
-        versao.setText("Versão : 1.0");
+        versao.setText("Versão : 2.0");
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setText("JAVAiLanches");
 
-        imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/icon_final.png"))); // NOI18N
+        imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/icon_final.png"))); // NOI18N
         imagem.setPreferredSize(new java.awt.Dimension(250, 250));
 
-        jLabel1.setText("Desenvolvido : Wesley Reis Da Silva &  Bruno de Lima Oiveira");
+        jLabel1.setText("Desenvolvido : Wesley Reis, Emerson Faria e Jefferson Cleison ");
 
         javax.swing.GroupLayout VersãoLayout = new javax.swing.GroupLayout(Versão);
         Versão.setLayout(VersãoLayout);
@@ -68,7 +68,7 @@ public class Sobre extends javax.swing.JFrame {
                 .addGroup(VersãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VersãoLayout.createSequentialGroup()
-                        .addGap(0, 62, Short.MAX_VALUE)
+                        .addGap(0, 50, Short.MAX_VALUE)
                         .addGroup(VersãoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VersãoLayout.createSequentialGroup()
                                 .addComponent(btm_fechar)

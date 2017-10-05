@@ -6,9 +6,14 @@
 package br.inatel.projeto.view;
 
 
-import java.awt.Toolkit;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,8 +22,6 @@ import javax.swing.table.DefaultTableModel;
  * @author WesleyReis
  */
 public class Historico extends javax.swing.JFrame {
-
-    DefaultTableModel dtm = new DefaultTableModel();
 
     public Historico() {
         initComponents();
@@ -271,6 +274,70 @@ public class Historico extends javax.swing.JFrame {
     private javax.swing.JTable tbl_Historico;
     private javax.swing.JTextField txt_Data;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public JButton getBtn_Limpar() {
+        return btn_Limpar;
+    }
+
+    public JButton getBtn_Ok() {
+        return btn_Ok;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JPanel getjPanel2() {
+        return jPanel2;
+    }
+
+    public JPanel getjPanel3() {
+        return jPanel3;
+    }
+
+    public JPanel getjPanel4() {
+        return jPanel4;
+    }
+
+    public JPanel getjPanel5() {
+        return jPanel5;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JLabel getLbl_Entega() {
+        return lbl_Entega;
+    }
+
+    public JLabel getLbl_Total() {
+        return lbl_Total;
+    }
+
+    public JRadioButton getRbt_Data() {
+        return rbt_Data;
+    }
+
+    public JRadioButton getRbt_Todas() {
+        return rbt_Todas;
+    }
+
+    public JTable getTbl_Historico() {
+        return tbl_Historico;
+    }
+
+    public JTextField getTxt_Data() {
+        return txt_Data;
+    }
 
    
 

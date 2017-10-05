@@ -6,10 +6,14 @@
 package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
 import javax.swing.UIManager;
 
 /**
@@ -25,7 +29,7 @@ public class Remove extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
 
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
 
     }
 
@@ -54,7 +58,7 @@ public class Remove extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         lista_ingrediente = new javax.swing.JList();
         lebel_titulo = new javax.swing.JLabel();
-        btm_remover = new javax.swing.JButton();
+        btm_removeIngredientes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -155,13 +159,13 @@ public class Remove extends javax.swing.JFrame {
         painel_ingrediente.add(lebel_titulo);
         lebel_titulo.setBounds(10, 11, 194, 22);
 
-        btm_remover.setText("REMOVER");
-        painel_ingrediente.add(btm_remover);
-        btm_remover.setBounds(10, 229, 120, 23);
+        btm_removeIngredientes.setText("REMOVER");
+        painel_ingrediente.add(btm_removeIngredientes);
+        btm_removeIngredientes.setBounds(10, 229, 120, 23);
 
         jTabbedPane1.addTab("Ingredientes", painel_ingrediente);
 
-        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 400, 300));
+        getContentPane().add(jTabbedPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -203,7 +207,7 @@ public class Remove extends javax.swing.JFrame {
     private javax.swing.JRadioButton Rbtn_tamanho3;
     private javax.swing.JRadioButton Rbtn_tamanho4;
     private javax.swing.JButton btm_removeBebida;
-    private javax.swing.JButton btm_remover;
+    private javax.swing.JButton btm_removeIngredientes;
     private javax.swing.JButton btm_removerLanche;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
@@ -221,6 +225,95 @@ public class Remove extends javax.swing.JFrame {
     private javax.swing.JPanel painel_ingrediente;
     private javax.swing.JPanel painel_tamanho;
     // End of variables declaration//GEN-END:variables
+
+    public JRadioButton getRbtn_tamanho1() {
+        return Rbtn_tamanho1;
+    }
+
+    public JRadioButton getRbtn_tamanho2() {
+        return Rbtn_tamanho2;
+    }
+
+    public JRadioButton getRbtn_tamanho3() {
+        return Rbtn_tamanho3;
+    }
+
+    public JRadioButton getRbtn_tamanho4() {
+        return Rbtn_tamanho4;
+    }
+
+    public JButton getBtm_removeBebida() {
+        return btm_removeBebida;
+    }
+
+    public JButton getBtm_removeIngredientes() {
+        return btm_removeIngredientes;
+    }
+
+    public JButton getBtm_removerLanche() {
+        return btm_removerLanche;
+    }
+
+    public ButtonGroup getButtonGroup1() {
+        return buttonGroup1;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JScrollPane getjScrollPane3() {
+        return jScrollPane3;
+    }
+
+    public JTabbedPane getjTabbedPane1() {
+        return jTabbedPane1;
+    }
+
+    public JLabel getLebel_titulo() {
+        return lebel_titulo;
+    }
+
+    public JList getLista_bebida() {
+        return lista_bebida;
+    }
+
+    public JList getLista_ingrediente() {
+        return lista_ingrediente;
+    }
+
+    public JList getLista_lanche() {
+        return lista_lanche;
+    }
+
+    public JPanel getPainel_Lanche() {
+        return painel_Lanche;
+    }
+
+    public JPanel getPainel_bebida() {
+        return painel_bebida;
+    }
+
+    public JPanel getPainel_ingrediente() {
+        return painel_ingrediente;
+    }
+
+    public JPanel getPainel_tamanho() {
+        return painel_tamanho;
+    }
+
 
     
 

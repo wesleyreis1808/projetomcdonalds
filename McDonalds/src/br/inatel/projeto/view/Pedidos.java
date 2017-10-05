@@ -7,11 +7,15 @@ package br.inatel.projeto.view;
 
 
 import java.awt.Toolkit;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +32,7 @@ public class Pedidos extends javax.swing.JFrame {
         tbl_Pedidos.getColumnModel().getColumn(0).setPreferredWidth(130);
         tbl_Pedidos.getColumnModel().getColumn(1).setPreferredWidth(110);
         tbl_Pedidos.getColumnModel().getColumn(2).setPreferredWidth(585);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
     @SuppressWarnings("unchecked")
@@ -63,7 +67,7 @@ public class Pedidos extends javax.swing.JFrame {
         btn_Entregue = new javax.swing.JButton();
         mnu_Menu = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        mnu_atualizar_pedidos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Pedidos");
@@ -273,9 +277,9 @@ public class Pedidos extends javax.swing.JFrame {
 
         jMenu1.setText("Pedidos");
 
-        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
-        jMenuItem1.setText("Atualizar Pedidos");
-        jMenu1.add(jMenuItem1);
+        mnu_atualizar_pedidos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F5, 0));
+        mnu_atualizar_pedidos.setText("Atualizar Pedidos");
+        jMenu1.add(mnu_atualizar_pedidos);
 
         mnu_Menu.add(jMenu1);
 
@@ -328,7 +332,6 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_Codigo;
     private javax.swing.JLabel lbl_Data;
@@ -338,6 +341,7 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Responsavel;
     private javax.swing.JLabel lbl_Telefone;
     private javax.swing.JMenuBar mnu_Menu;
+    private javax.swing.JMenuItem mnu_atualizar_pedidos;
     private javax.swing.JPanel pnl_Botoes;
     private javax.swing.JPanel pnl_Entrega;
     private javax.swing.JPanel pnl_Fundo;
@@ -346,6 +350,125 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JTable tbl_Pedidos;
     // End of variables declaration//GEN-END:variables
 
+    public JButton getBtn_Anterior() {
+        return btn_Anterior;
+    }
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public JButton getBtn_Entregue() {
+        return btn_Entregue;
+    }
+
+    public JButton getBtn_Primeiro() {
+        return btn_Primeiro;
+    }
+
+    public JButton getBtn_Proximo() {
+        return btn_Proximo;
+    }
+
+    public JButton getBtn_Ultimo() {
+        return btn_Ultimo;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JLabel getjLabel2() {
+        return jLabel2;
+    }
+
+    public JLabel getjLabel3() {
+        return jLabel3;
+    }
+
+    public JLabel getjLabel4() {
+        return jLabel4;
+    }
+
+    public JLabel getjLabel5() {
+        return jLabel5;
+    }
+
+    public JLabel getjLabel6() {
+        return jLabel6;
+    }
+
+    public JMenu getjMenu1() {
+        return jMenu1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JLabel getLbl_Codigo() {
+        return lbl_Codigo;
+    }
+
+    public JLabel getLbl_Data() {
+        return lbl_Data;
+    }
+
+    public JLabel getLbl_Endereco() {
+        return lbl_Endereco;
+    }
+
+    public JLabel getLbl_Hora() {
+        return lbl_Hora;
+    }
+
+    public JLabel getLbl_Numero() {
+        return lbl_Numero;
+    }
+
+    public JLabel getLbl_Responsavel() {
+        return lbl_Responsavel;
+    }
+
+    public JLabel getLbl_Telefone() {
+        return lbl_Telefone;
+    }
+
+    public JMenuBar getMnu_Menu() {
+        return mnu_Menu;
+    }
+
+    public JMenuItem getMnu_atualizar_pedidos() {
+        return mnu_atualizar_pedidos;
+    }
+
+    public JPanel getPnl_Botoes() {
+        return pnl_Botoes;
+    }
+
+    public JPanel getPnl_Entrega() {
+        return pnl_Entrega;
+    }
+
+    public JPanel getPnl_Fundo() {
+        return pnl_Fundo;
+    }
+
+    public JPanel getPnl_Informacoes() {
+        return pnl_Informacoes;
+    }
+
+    public JPanel getPnl_Produtos() {
+        return pnl_Produtos;
+    }
+
+    public JTable getTbl_Pedidos() {
+        return tbl_Pedidos;
+    }
+
    
 
+    
+    
+    
 }

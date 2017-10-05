@@ -1,0 +1,48 @@
+// seta imagens
+ try {
+            // TODO add your handling code here:    
+            JFileChooser chooser = new JFileChooser();//cria uma instancia do JFileChooser
+            //filtro para as imagend
+            FileNameExtensionFilter filtro = new FileNameExtensionFilter("JPG & GIF & PNG Images", "jpg", "gif", "png");
+            //altera o filtro
+            chooser.setFileFilter(filtro);
+
+            String local = "";
+            int returnVal = chooser.showOpenDialog(lbl_imagem);//abre JFileChooser
+            if (returnVal == JFileChooser.APPROVE_OPTION) {//verifica se clicou em ok
+                local = (chooser.getSelectedFile().getAbsolutePath());//local recebe a localização da imagem           
+            }
+
+            File origem = new File(local);
+            File destino = new File("C:\\Users\\Administrator\\Pictures\\telaFundo.png");
+            copiarArquivo(origem, destino);
+
+            ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Administrator\\Pictures\\telaFundo.png");
+            img.setImage(img.getImage().getScaledInstance(617, 447, 100));
+
+            lbl_imagem.setIcon(img);
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+
+// copia arquivo para pasta
+  public void copiarArquivo(File source, File destination) throws IOException {
+        if (destination.exists()) {
+            destination.delete();
+        }
+        FileChannel sourceChannel = null;
+        FileChannel destinationChannel = null;
+        try {
+            sourceChannel = new FileInputStream(source).getChannel();
+            destinationChannel = new FileOutputStream(destination).getChannel();
+            sourceChannel.transferTo(0, sourceChannel.size(),
+                    destinationChannel);
+        } finally {
+            if (sourceChannel != null && sourceChannel.isOpen()) {
+                sourceChannel.close();
+            }
+            if (destinationChannel != null && destinationChannel.isOpen()) {
+                destinationChannel.close();
+            }
+        }
+    }

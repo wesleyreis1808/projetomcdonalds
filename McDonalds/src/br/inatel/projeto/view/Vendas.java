@@ -6,13 +6,8 @@
 package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
-import java.text.DecimalFormat;
-import java.util.ArrayList;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,7 +23,7 @@ public class Vendas extends javax.swing.JFrame {
 
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);  // abre a tela maximizada
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
     @SuppressWarnings("unchecked")
@@ -424,7 +419,7 @@ public class Vendas extends javax.swing.JFrame {
         pnl_Lanche.add(btn_Lanche20);
         btn_Lanche20.setBounds(730, 400, 170, 120);
 
-        tbp_Guias.addTab("", new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/icone_lanche(final)_1.png")), pnl_Lanche); // NOI18N
+        tbp_Guias.addTab("", new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/icone_lanche(final)_1.png")), pnl_Lanche); // NOI18N
 
         pnl_Bebida.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_Bebida.setLayout(null);
@@ -509,7 +504,7 @@ public class Vendas extends javax.swing.JFrame {
         pnl_Bebida.add(btn_Bebida19);
         btn_Bebida19.setBounds(550, 400, 170, 120);
 
-        tbp_Guias.addTab("", new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/bebidaIcone.png")), pnl_Bebida); // NOI18N
+        tbp_Guias.addTab("", new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/bebidaIcone.png")), pnl_Bebida); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
