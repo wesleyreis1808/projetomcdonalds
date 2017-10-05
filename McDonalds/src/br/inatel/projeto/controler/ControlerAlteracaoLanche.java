@@ -20,7 +20,7 @@ public class ControlerAlteracaoLanche implements ActionListener {
     public ControlerAlteracaoLanche(AlteracaoLanche alteracaoLanche) {
         this.alteracaoLanche = alteracaoLanche;
         
-        this.alteracaoLanche;
+        
         
         this.alteracaoLanche.setVisible(true);
     }
