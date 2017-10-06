@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.inatel.projeto.view;
 
 
@@ -15,10 +11,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
-/**
- *
- * @author francisco
- */
 public class CadastroLanche extends javax.swing.JFrame {
 
  
@@ -50,9 +42,9 @@ public class CadastroLanche extends javax.swing.JFrame {
         lista_lanche = new javax.swing.JList<>();
         label_lanche = new javax.swing.JLabel();
         label_imagem = new javax.swing.JLabel();
-        btm_imagem = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         btm_remover = new javax.swing.JButton();
+        _lblLancheImagem = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -97,15 +89,13 @@ public class CadastroLanche extends javax.swing.JFrame {
         painel_cadastro.add(label_lanche, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 170, -1, -1));
         painel_cadastro.add(label_imagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(381, 90, -1, 100));
 
-        btm_imagem.setText("IMAGEM");
-        painel_cadastro.add(btm_imagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 60, -1, -1));
-
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel1.setText("CADASTRO DE LANCHES");
         painel_cadastro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         btm_remover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/left-pointing-arrow.png"))); // NOI18N
         painel_cadastro.add(btm_remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, -1));
+        painel_cadastro.add(_lblLancheImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 30, 200, 120));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -149,9 +139,9 @@ public class CadastroLanche extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel _lblLancheImagem;
     private javax.swing.JButton btm_adicionar;
     private javax.swing.JButton btm_cancelar;
-    private javax.swing.JButton btm_imagem;
     private javax.swing.JButton btm_remover;
     private javax.swing.JButton btm_salvar;
     private javax.swing.JLabel jLabel1;
@@ -175,10 +165,6 @@ public class CadastroLanche extends javax.swing.JFrame {
 
     public JButton getBtm_cancelar() {
         return btm_cancelar;
-    }
-
-    public JButton getBtm_imagem() {
-        return btm_imagem;
     }
 
     public JButton getBtm_remover() {
@@ -239,6 +225,10 @@ public class CadastroLanche extends javax.swing.JFrame {
 
     public JTextField getTxf_preco() {
         return txf_preco;
+    }
+
+    public JLabel getLblLancheImagem() {
+        return _lblLancheImagem;
     }
 
     
