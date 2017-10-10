@@ -126,7 +126,7 @@
         <Component class="javax.swing.JLabel" name="label_Refri">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/inatel/projetoec/imagens/Coca-Cola.png"/>
+              <Image iconType="3" name="/br/inatel/projeto/imagens/Coca-Cola.png"/>
             </Property>
           </Properties>
         </Component>

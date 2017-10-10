@@ -161,7 +161,7 @@ public class Remove extends javax.swing.JFrame {
 
         btm_removeIngredientes.setText("REMOVER");
         painel_ingrediente.add(btm_removeIngredientes);
-        btm_removeIngredientes.setBounds(10, 229, 120, 23);
+        btm_removeIngredientes.setBounds(10, 230, 130, 23);
 
         jTabbedPane1.addTab("Ingredientes", painel_ingrediente);
 

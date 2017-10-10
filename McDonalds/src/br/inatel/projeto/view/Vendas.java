@@ -37,15 +37,6 @@ public class Vendas extends javax.swing.JFrame {
         pnl_Venda = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tbl_Carrinho = new javax.swing.JTable();
-        tbp_Entrega = new javax.swing.JTabbedPane();
-        pnl_Entrega = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txt_Endereco = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        txt_Numero = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txt_Telefone = new javax.swing.JTextField();
-        clb_Entregar = new javax.swing.JCheckBox();
         btn_Remover = new javax.swing.JButton();
         pnl_Pagamento = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -144,77 +135,11 @@ public class Vendas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbl_Carrinho);
 
         pnl_Venda.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 370, 190);
-
-        tbp_Entrega.setEnabled(false);
-
-        pnl_Entrega.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        pnl_Entrega.setEnabled(false);
-
-        jLabel1.setText("Endereço:");
-
-        txt_Endereco.setEnabled(false);
-
-        jLabel2.setText("Número: ");
-
-        txt_Numero.setEnabled(false);
-
-        jLabel4.setText("Telefone: ");
-
-        txt_Telefone.setEnabled(false);
-
-        clb_Entregar.setText("Entregar");
-
-        javax.swing.GroupLayout pnl_EntregaLayout = new javax.swing.GroupLayout(pnl_Entrega);
-        pnl_Entrega.setLayout(pnl_EntregaLayout);
-        pnl_EntregaLayout.setHorizontalGroup(
-            pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                        .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
-                        .addGap(0, 14, Short.MAX_VALUE))
-                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                        .addComponent(txt_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(clb_Entregar, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
-        pnl_EntregaLayout.setVerticalGroup(
-            pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txt_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txt_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
-                    .addComponent(clb_Entregar))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        tbp_Entrega.addTab("Entrega", pnl_Entrega);
-
-        pnl_Venda.add(tbp_Entrega);
-        tbp_Entrega.setBounds(10, 230, 370, 120);
+        jScrollPane2.setBounds(10, 10, 370, 310);
 
         btn_Remover.setText("Remover");
         pnl_Venda.add(btn_Remover);
-        btn_Remover.setBounds(283, 210, 90, 23);
+        btn_Remover.setBounds(290, 330, 90, 23);
 
         pnl_Pagamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Pagamento"));
 
@@ -607,11 +532,7 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JButton btn_Lanche8;
     private javax.swing.JButton btn_Lanche9;
     private javax.swing.JButton btn_Remover;
-    private javax.swing.JCheckBox clb_Entregar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -621,20 +542,15 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JLabel lbl_Troco;
     private javax.swing.JLabel lbl_ValorCompra;
     private javax.swing.JPanel pnl_Bebida;
-    private javax.swing.JPanel pnl_Entrega;
     private javax.swing.JPanel pnl_Lanche;
     private javax.swing.JPanel pnl_Pagamento;
     private javax.swing.JPanel pnl_Responsavel;
     private javax.swing.JPanel pnl_Venda;
     private javax.swing.JTable tbl_Carrinho;
-    private javax.swing.JTabbedPane tbp_Entrega;
     private javax.swing.JTabbedPane tbp_Guias;
     private javax.swing.JTabbedPane tbp_Venda;
     private javax.swing.JTextField txt_Dinheiro;
-    private javax.swing.JTextField txt_Endereco;
-    private javax.swing.JTextField txt_Numero;
     private javax.swing.JTextField txt_Responsavel;
-    private javax.swing.JTextField txt_Telefone;
     // End of variables declaration//GEN-END:variables
 
 

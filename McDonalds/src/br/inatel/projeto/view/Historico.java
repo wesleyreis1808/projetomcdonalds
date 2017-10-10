@@ -25,7 +25,7 @@ public class Historico extends javax.swing.JFrame {
 
     public Historico() {
         initComponents();
-        
+        this.setLocationRelativeTo(null);
     }
 
     /**

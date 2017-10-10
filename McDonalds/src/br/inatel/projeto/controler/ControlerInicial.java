@@ -44,9 +44,9 @@ public class ControlerInicial implements ActionListener {
         }else if(obj == this.inicial.getMnu_alterar_imagem()){
             
         }else if(obj == this.inicial.getMnu_cadastro_bebidas()){
-            
+            mnu_cadastro_bebidas();
         }else if(obj == this.inicial.getMnu_cadastro_ingredientes()){
-            
+            mnu_cadastro_ingredientes();
         }else if(obj == this.inicial.getMnu_cadastro_lanches()){
             mnu_cadastro_lanche();
         }else if(obj == this.inicial.getMnu_historico()){
@@ -74,5 +74,13 @@ public class ControlerInicial implements ActionListener {
     
     private void mnu_cadastro_lanche(){
         new ControlerCadastroLanche(new CadastroLanche());
+    }
+
+    private void mnu_cadastro_ingredientes() {
+        new ControlerCadastroIngrediente(new CadastroIngrediente());
+    }
+
+    private void mnu_cadastro_bebidas() {
+        new ControlerCadastroBebidas(new CadastroBebida());
     }
 }

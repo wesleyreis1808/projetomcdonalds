@@ -7,7 +7,14 @@ package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 /**
@@ -22,7 +29,7 @@ public class CadastroBebida extends javax.swing.JFrame {
     public CadastroBebida() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
     /**
@@ -55,7 +62,7 @@ public class CadastroBebida extends javax.swing.JFrame {
 
         Painel_Bebidas.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        label_Refri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/Coca-Cola.png"))); // NOI18N
+        label_Refri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/Coca-Cola.png"))); // NOI18N
 
         ComBox_Refri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Coca-Cola", "7Up", "Coca-Cola_Light", "Coca-Cola_Zero", "Fanta_Laranja", "Pepsi", "Sprite", "Suco", "Vita-Cola" }));
 
@@ -241,5 +248,63 @@ public class CadastroBebida extends javax.swing.JFrame {
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
+    public JComboBox<String> getComBox_Refri() {
+        return ComBox_Refri;
+    }
 
+    public ButtonGroup getGrupoDeBotão_Tamanho() {
+        return GrupoDeBotão_Tamanho;
+    }
+
+    public JPanel getPainel_Bebidas() {
+        return Painel_Bebidas;
+    }
+
+    public JRadioButton getRbtn_tamanho1() {
+        return Rbtn_tamanho1;
+    }
+
+    public JRadioButton getRbtn_tamanho2() {
+        return Rbtn_tamanho2;
+    }
+
+    public JRadioButton getRbtn_tamanho3() {
+        return Rbtn_tamanho3;
+    }
+
+    public JRadioButton getRbtn_tamanho4() {
+        return Rbtn_tamanho4;
+    }
+
+    public JButton getBtm_cancelar() {
+        return btm_cancelar;
+    }
+
+    public JButton getBtm_salvar() {
+        return btm_salvar;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JLabel getLabel_Preco() {
+        return label_Preco;
+    }
+
+    public JLabel getLabel_Refri() {
+        return label_Refri;
+    }
+
+    public JLabel getLabel_Titulo() {
+        return label_Titulo;
+    }
+
+    public JTextField getTxf_preco() {
+        return txf_preco;
+    }
+
+
+    
+    
 }

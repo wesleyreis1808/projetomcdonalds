@@ -20,14 +20,22 @@ public class ControlerAlteracaoLanche implements ActionListener {
     public ControlerAlteracaoLanche(AlteracaoLanche alteracaoLanche) {
         this.alteracaoLanche = alteracaoLanche;
         
-        
+        this.alteracaoLanche.getBtn_Cancelar().addActionListener(this);
+        this.alteracaoLanche.getBtn_Finalizar().addActionListener(this);
         
         this.alteracaoLanche.setVisible(true);
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-
+        Object obj = e.getSource();
+        
+        if(obj == this.alteracaoLanche.getBtn_Cancelar()){
+            
+        }else if(obj == this.alteracaoLanche.getBtn_Finalizar()){
+            
+        }
+       
     }
     
 }

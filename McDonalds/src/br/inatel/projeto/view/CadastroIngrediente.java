@@ -7,7 +7,11 @@ package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 /**
@@ -23,7 +27,7 @@ public class CadastroIngrediente extends javax.swing.JFrame {
         initComponents();
 
         this.setLocationRelativeTo(null);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
     /**
@@ -169,6 +173,35 @@ public class CadastroIngrediente extends javax.swing.JFrame {
     private javax.swing.JTextField txf_precoAdd;
     // End of variables declaration//GEN-END:variables
 
-   
+    public JPanel getPainel_Ingrediente() {
+        return Painel_Ingrediente;
+    }
 
+    public JButton getBtm_cancelar() {
+        return btm_cancelar;
+    }
+
+    public JButton getBtm_salvar() {
+        return btm_salvar;
+    }
+
+    public JLabel getLabel_Nome() {
+        return label_Nome;
+    }
+
+    public JLabel getLabel_precoAdd() {
+        return label_precoAdd;
+    }
+
+    public JLabel getLabel_titulo() {
+        return label_titulo;
+    }
+
+    public JTextField getTxf_Nome() {
+        return txf_Nome;
+    }
+
+    public JTextField getTxf_precoAdd() {
+        return txf_precoAdd;
+    }
 }

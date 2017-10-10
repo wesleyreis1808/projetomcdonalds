@@ -8,9 +8,11 @@ package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
@@ -223,4 +225,125 @@ public class AlteracaoLanche extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_Opcoes;
     // End of variables declaration//GEN-END:variables
 
+    public ArrayList<JCheckBox> getBotoes() {
+        return botoes;
+    }
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public JButton getBtn_Finalizar() {
+        return btn_Finalizar;
+    }
+
+    public JCheckBox getCkb_Ingrediente1() {
+        return ckb_Ingrediente1;
+    }
+
+    public JCheckBox getCkb_Ingrediente10() {
+        return ckb_Ingrediente10;
+    }
+
+    public JCheckBox getCkb_Ingrediente11() {
+        return ckb_Ingrediente11;
+    }
+
+    public JCheckBox getCkb_Ingrediente12() {
+        return ckb_Ingrediente12;
+    }
+
+    public JCheckBox getCkb_Ingrediente13() {
+        return ckb_Ingrediente13;
+    }
+
+    public JCheckBox getCkb_Ingrediente14() {
+        return ckb_Ingrediente14;
+    }
+
+    public JCheckBox getCkb_Ingrediente15() {
+        return ckb_Ingrediente15;
+    }
+
+    public JCheckBox getCkb_Ingrediente16() {
+        return ckb_Ingrediente16;
+    }
+
+    public JCheckBox getCkb_Ingrediente17() {
+        return ckb_Ingrediente17;
+    }
+
+    public JCheckBox getCkb_Ingrediente18() {
+        return ckb_Ingrediente18;
+    }
+
+    public JCheckBox getCkb_Ingrediente19() {
+        return ckb_Ingrediente19;
+    }
+
+    public JCheckBox getCkb_Ingrediente2() {
+        return ckb_Ingrediente2;
+    }
+
+    public JCheckBox getCkb_Ingrediente20() {
+        return ckb_Ingrediente20;
+    }
+
+    public JCheckBox getCkb_Ingrediente21() {
+        return ckb_Ingrediente21;
+    }
+
+    public JCheckBox getCkb_Ingrediente22() {
+        return ckb_Ingrediente22;
+    }
+
+    public JCheckBox getCkb_Ingrediente23() {
+        return ckb_Ingrediente23;
+    }
+
+    public JCheckBox getCkb_Ingrediente24() {
+        return ckb_Ingrediente24;
+    }
+
+    public JCheckBox getCkb_Ingrediente3() {
+        return ckb_Ingrediente3;
+    }
+
+    public JCheckBox getCkb_Ingrediente4() {
+        return ckb_Ingrediente4;
+    }
+
+    public JCheckBox getCkb_Ingrediente5() {
+        return ckb_Ingrediente5;
+    }
+
+    public JCheckBox getCkb_Ingrediente6() {
+        return ckb_Ingrediente6;
+    }
+
+    public JCheckBox getCkb_Ingrediente7() {
+        return ckb_Ingrediente7;
+    }
+
+    public JCheckBox getCkb_Ingrediente8() {
+        return ckb_Ingrediente8;
+    }
+
+    public JCheckBox getCkb_Ingrediente9() {
+        return ckb_Ingrediente9;
+    }
+
+    public JCheckBox getCkb_Repartir() {
+        return ckb_Repartir;
+    }
+
+    public JPanel getPnl_Ingredientes() {
+        return pnl_Ingredientes;
+    }
+
+    public JPanel getPnl_Opcoes() {
+        return pnl_Opcoes;
+    }
+
+    
 }
