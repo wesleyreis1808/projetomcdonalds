@@ -104,7 +104,7 @@
                       </AuxValues>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="10" y="10" width="370" height="190"/>
+                          <AbsoluteConstraints x="10" y="10" width="370" height="280"/>
                         </Constraint>
                       </Constraints>
 
@@ -152,135 +152,13 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Container class="javax.swing.JTabbedPane" name="tbp_Entrega">
-                      <Properties>
-                        <Property name="enabled" type="boolean" value="false"/>
-                      </Properties>
-                      <Constraints>
-                        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="10" y="230" width="370" height="120"/>
-                        </Constraint>
-                      </Constraints>
-
-                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
-                      <SubComponents>
-                        <Container class="javax.swing.JPanel" name="pnl_Entrega">
-                          <Properties>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                                <TitledBorder/>
-                              </Border>
-                            </Property>
-                            <Property name="enabled" type="boolean" value="false"/>
-                          </Properties>
-                          <Constraints>
-                            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-                              <JTabbedPaneConstraints tabName="Entrega">
-                                <Property name="tabTitle" type="java.lang.String" value="Entrega"/>
-                              </JTabbedPaneConstraints>
-                            </Constraint>
-                          </Constraints>
-
-                          <Layout>
-                            <DimensionLayout dim="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="jLabel2" max="32767" attributes="0"/>
-                                                  <Component id="jLabel1" pref="69" max="32767" attributes="0"/>
-                                              </Group>
-                                              <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txt_Numero" min="-2" pref="85" max="-2" attributes="0"/>
-                                          <Component id="txt_Endereco" alignment="0" min="-2" pref="236" max="-2" attributes="0"/>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="txt_Telefone" min="-2" pref="152" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="clb_Entregar" min="-2" pref="100" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                            <DimensionLayout dim="1">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_Endereco" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="txt_Numero" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="txt_Telefone" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="clb_Entregar" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                            </DimensionLayout>
-                          </Layout>
-                          <SubComponents>
-                            <Component class="javax.swing.JLabel" name="jLabel1">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Endere&#xe7;o:"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txt_Endereco">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel2">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="N&#xfa;mero: "/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txt_Numero">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JLabel" name="jLabel4">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Telefone: "/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JTextField" name="txt_Telefone">
-                              <Properties>
-                                <Property name="enabled" type="boolean" value="false"/>
-                              </Properties>
-                            </Component>
-                            <Component class="javax.swing.JCheckBox" name="clb_Entregar">
-                              <Properties>
-                                <Property name="text" type="java.lang.String" value="Entregar"/>
-                              </Properties>
-                            </Component>
-                          </SubComponents>
-                        </Container>
-                      </SubComponents>
-                    </Container>
                     <Component class="javax.swing.JButton" name="btn_Remover">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Remover"/>
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="283" y="210" width="90" height="-1"/>
+                          <AbsoluteConstraints x="280" y="300" width="90" height="-1"/>
                         </Constraint>
                       </Constraints>
                     </Component>
@@ -294,7 +172,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="10" y="410" width="370" height="250"/>
+                          <AbsoluteConstraints x="10" y="400" width="370" height="260"/>
                         </Constraint>
                       </Constraints>
 
@@ -449,7 +327,7 @@
                       </Properties>
                       <Constraints>
                         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                          <AbsoluteConstraints x="10" y="360" width="370" height="40"/>
+                          <AbsoluteConstraints x="10" y="340" width="370" height="40"/>
                         </Constraint>
                       </Constraints>
 
