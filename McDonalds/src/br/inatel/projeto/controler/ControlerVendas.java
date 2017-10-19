@@ -23,11 +23,11 @@ public class ControlerVendas implements ActionListener{
         
         for(JButton botao:this.vendas.getArrayBotoesBebidas()){
             botao.addActionListener(this);
-            botao.setVisible(false);
+            //botao.setVisible(false);
         }
         for(JButton botao:this.vendas.getArrayBotoesLanches()){
             botao.addActionListener(this);
-            botao.setVisible(false);
+            //botao.setVisible(false);
         }
         this.vendas.getBtn_Calcular().addActionListener(this);
         this.vendas.getBtn_Cancelar().addActionListener(this);
@@ -53,6 +53,17 @@ public class ControlerVendas implements ActionListener{
             System.out.println("Bebidas");
         }else if(this.vendas.getArrayBotoesLanches().contains(obj)){
             System.out.println("Lanches");
+        }
+        
+        for(JButton botao:this.vendas.getArrayBotoesBebidas()){
+            if(obj == botao){
+                System.out.println(botao.getText());
+            }
+        }
+        for(JButton botao:this.vendas.getArrayBotoesLanches()){
+            if(obj == botao){
+                System.out.println(botao.getText());
+            }
         }
     }
     
