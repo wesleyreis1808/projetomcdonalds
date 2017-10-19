@@ -19,7 +19,7 @@ public class Vendas extends javax.swing.JFrame {
 
     ArrayList<JButton> arrayBotoesLanches = new ArrayList();
     ArrayList<JButton> arrayBotoesBebidas = new ArrayList();
-    
+
     /**
      * Creates new form Vendas
      */
@@ -30,7 +30,7 @@ public class Vendas extends javax.swing.JFrame {
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);  // abre a tela maximizada
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
-        
+
     }
 
     @SuppressWarnings("unchecked")
@@ -142,11 +142,13 @@ public class Vendas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbl_Carrinho);
 
         pnl_Venda.add(jScrollPane2);
+
         jScrollPane2.setBounds(10, 10, 370, 310);
 
         btn_Remover.setText("Remover");
         pnl_Venda.add(btn_Remover);
         btn_Remover.setBounds(290, 330, 90, 23);
+
 
         pnl_Pagamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Pagamento"));
 
@@ -232,7 +234,7 @@ public class Vendas extends javax.swing.JFrame {
         );
 
         pnl_Venda.add(pnl_Pagamento);
-        pnl_Pagamento.setBounds(10, 410, 370, 250);
+        pnl_Pagamento.setBounds(10, 400, 370, 260);
 
         pnl_Responsavel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -260,7 +262,7 @@ public class Vendas extends javax.swing.JFrame {
         );
 
         pnl_Venda.add(pnl_Responsavel);
-        pnl_Responsavel.setBounds(10, 360, 370, 40);
+        pnl_Responsavel.setBounds(10, 340, 370, 40);
 
         tbp_Venda.addTab("Venda", pnl_Venda);
 
@@ -581,7 +583,7 @@ public class Vendas extends javax.swing.JFrame {
         arrayBotoesBebidas.add(btn_Bebida18);
         arrayBotoesBebidas.add(btn_Bebida19);
         arrayBotoesBebidas.add(btn_Bebida20);
-        
+
         arrayBotoesLanches.add(btn_Lanche1);
         arrayBotoesLanches.add(btn_Lanche2);
         arrayBotoesLanches.add(btn_Lanche3);
@@ -627,6 +629,6 @@ public class Vendas extends javax.swing.JFrame {
     public JButton getBtn_Remover() {
         return btn_Remover;
     }
-    
-    
+
+
 }
