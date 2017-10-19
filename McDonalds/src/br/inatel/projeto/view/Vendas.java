@@ -6,6 +6,8 @@
 package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.UIManager;
 
@@ -15,15 +17,20 @@ import javax.swing.UIManager;
  */
 public class Vendas extends javax.swing.JFrame {
 
+    ArrayList<JButton> arrayBotoesLanches = new ArrayList();
+    ArrayList<JButton> arrayBotoesBebidas = new ArrayList();
+    
     /**
      * Creates new form Vendas
      */
     public Vendas() {
         initComponents();
 
+        insereBotoes();
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);  // abre a tela maximizada
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -322,7 +329,7 @@ public class Vendas extends javax.swing.JFrame {
 
         btn_Lanche15.setText("jButton1");
         pnl_Lanche.add(btn_Lanche15);
-        btn_Lanche15.setBounds(730, 280, 170, 120);
+        btn_Lanche15.setBounds(730, 270, 170, 120);
 
         btn_Lanche16.setText("jButton1");
         pnl_Lanche.add(btn_Lanche16);
@@ -553,7 +560,73 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Responsavel;
     // End of variables declaration//GEN-END:variables
 
+    private void insereBotoes() {
+        arrayBotoesBebidas.add(btn_Bebida1);
+        arrayBotoesBebidas.add(btn_Bebida2);
+        arrayBotoesBebidas.add(btn_Bebida3);
+        arrayBotoesBebidas.add(btn_Bebida4);
+        arrayBotoesBebidas.add(btn_Bebida5);
+        arrayBotoesBebidas.add(btn_Bebida6);
+        arrayBotoesBebidas.add(btn_Bebida7);
+        arrayBotoesBebidas.add(btn_Bebida8);
+        arrayBotoesBebidas.add(btn_Bebida9);
+        arrayBotoesBebidas.add(btn_Bebida10);
+        arrayBotoesBebidas.add(btn_Bebida11);
+        arrayBotoesBebidas.add(btn_Bebida12);
+        arrayBotoesBebidas.add(btn_Bebida13);
+        arrayBotoesBebidas.add(btn_Bebida14);
+        arrayBotoesBebidas.add(btn_Bebida15);
+        arrayBotoesBebidas.add(btn_Bebida16);
+        arrayBotoesBebidas.add(btn_Bebida17);
+        arrayBotoesBebidas.add(btn_Bebida18);
+        arrayBotoesBebidas.add(btn_Bebida19);
+        arrayBotoesBebidas.add(btn_Bebida20);
+        
+        arrayBotoesLanches.add(btn_Lanche1);
+        arrayBotoesLanches.add(btn_Lanche2);
+        arrayBotoesLanches.add(btn_Lanche3);
+        arrayBotoesLanches.add(btn_Lanche4);
+        arrayBotoesLanches.add(btn_Lanche5);
+        arrayBotoesLanches.add(btn_Lanche6);
+        arrayBotoesLanches.add(btn_Lanche7);
+        arrayBotoesLanches.add(btn_Lanche8);
+        arrayBotoesLanches.add(btn_Lanche9);
+        arrayBotoesLanches.add(btn_Lanche10);
+        arrayBotoesLanches.add(btn_Lanche11);
+        arrayBotoesLanches.add(btn_Lanche12);
+        arrayBotoesLanches.add(btn_Lanche13);
+        arrayBotoesLanches.add(btn_Lanche14);
+        arrayBotoesLanches.add(btn_Lanche15);
+        arrayBotoesLanches.add(btn_Lanche16);
+        arrayBotoesLanches.add(btn_Lanche17);
+        arrayBotoesLanches.add(btn_Lanche18);
+        arrayBotoesLanches.add(btn_Lanche19);
+        arrayBotoesLanches.add(btn_Lanche20);
+    }
 
-    // método para adicionar lanche e bebida aos botoes
-   
+    public ArrayList<JButton> getArrayBotoesLanches() {
+        return arrayBotoesLanches;
+    }
+
+    public ArrayList<JButton> getArrayBotoesBebidas() {
+        return arrayBotoesBebidas;
+    }
+
+    public JButton getBtn_Calcular() {
+        return btn_Calcular;
+    }
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public JButton getBtn_Finalizar() {
+        return btn_Finalizar;
+    }
+
+    public JButton getBtn_Remover() {
+        return btn_Remover;
+    }
+    
+    
 }

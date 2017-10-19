@@ -40,7 +40,7 @@ public class ControlerInicial implements ActionListener {
         if(obj == this.inicial.getMnu_Pedidos()){
             mnu_Pedidos();
         }else if(obj == this.inicial.getMnu_Vendas()){
-            
+            mnu_Vendas();
         }else if(obj == this.inicial.getMnu_alterar_imagem()){
             
         }else if(obj == this.inicial.getMnu_cadastro_bebidas()){
@@ -82,5 +82,9 @@ public class ControlerInicial implements ActionListener {
 
     private void mnu_cadastro_bebidas() {
         new ControlerCadastroBebidas(new CadastroBebida());
+    }
+
+    private void mnu_Vendas() {
+        new ControlerVendas(new Vendas());
     }
 }

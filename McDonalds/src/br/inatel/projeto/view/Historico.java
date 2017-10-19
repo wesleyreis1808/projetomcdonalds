@@ -70,14 +70,14 @@ public class Historico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Data", "Hora", "Comprador", "Valor", "Entrega", "Produtos"
+                "Data", "Hora", "Comprador", "Valor", "Produtos"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
