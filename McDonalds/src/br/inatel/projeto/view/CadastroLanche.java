@@ -7,17 +7,13 @@ package br.inatel.projeto.view;
 
 
 import java.awt.Toolkit;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import javafx.stage.FileChooser;
-import javax.swing.DefaultListModel;
-import javax.swing.Icon;
-import javax.swing.JFileChooser;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  *
@@ -31,7 +27,7 @@ public class CadastroLanche extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationRelativeTo(null);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
     @SuppressWarnings("unchecked")
@@ -75,7 +71,7 @@ public class CadastroLanche extends javax.swing.JFrame {
 
         painel_cadastro.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 210, -1));
 
-        btm_adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/right-arrow.png"))); // NOI18N
+        btm_adicionar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/right-arrow.png"))); // NOI18N
         painel_cadastro.add(btm_adicionar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 230, 110, -1));
 
         txf_preco.setText("0,00 ");
@@ -108,7 +104,7 @@ public class CadastroLanche extends javax.swing.JFrame {
         jLabel1.setText("CADASTRO DE LANCHES");
         painel_cadastro.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        btm_remover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/left-pointing-arrow.png"))); // NOI18N
+        btm_remover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/left-pointing-arrow.png"))); // NOI18N
         painel_cadastro.add(btm_remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -173,6 +169,79 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
+    public JButton getBtm_adicionar() {
+        return btm_adicionar;
+    }
+
+    public JButton getBtm_cancelar() {
+        return btm_cancelar;
+    }
+
+    public JButton getBtm_imagem() {
+        return btm_imagem;
+    }
+
+    public JButton getBtm_remover() {
+        return btm_remover;
+    }
+
+    public JButton getBtm_salvar() {
+        return btm_salvar;
+    }
+
+    public JLabel getjLabel1() {
+        return jLabel1;
+    }
+
+    public JScrollPane getjScrollPane1() {
+        return jScrollPane1;
+    }
+
+    public JScrollPane getjScrollPane2() {
+        return jScrollPane2;
+    }
+
+    public JLabel getLabel_imagem() {
+        return label_imagem;
+    }
+
+    public JLabel getLabel_ingredientes() {
+        return label_ingredientes;
+    }
+
+    public JLabel getLabel_lanche() {
+        return label_lanche;
+    }
+
+    public JLabel getLabel_nome() {
+        return label_nome;
+    }
+
+    public JLabel getLabel_preco() {
+        return label_preco;
+    }
+
+    public JList<String> getLista_ingredientes() {
+        return lista_ingredientes;
+    }
+
+    public JList<String> getLista_lanche() {
+        return lista_lanche;
+    }
+
+    public JPanel getPainel_cadastro() {
+        return painel_cadastro;
+    }
+
+    public JTextField getTxf_nome() {
+        return txf_nome;
+    }
+
+    public JTextField getTxf_preco() {
+        return txf_preco;
+    }
+
+    
   
 
 }
