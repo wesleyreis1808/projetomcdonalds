@@ -29,6 +29,8 @@ public class ControlerInicial implements ActionListener {
         this.inicial.getMnu_historico().addActionListener(this);
         this.inicial.getMnu_remover_cadastros().addActionListener(this);
         this.inicial.getMnu_sobre().addActionListener(this);
+        this.inicial.getMnu_cadastroFuncionario().addActionListener(this);
+       
         
         inicial.setVisible(true);
     }
@@ -56,6 +58,9 @@ public class ControlerInicial implements ActionListener {
         }
         else if(obj == this.inicial.getMnu_sobre()){
             
+        }
+        else if(obj == this.inicial.getMnu_cadastroFuncionario()){
+            mnu_cadastro_funcionarios();
         }
     }
     
@@ -86,5 +91,9 @@ public class ControlerInicial implements ActionListener {
 
     private void mnu_Vendas() {
         new ControlerVendas(new Vendas());
+    }
+
+    private void mnu_cadastro_funcionarios() {
+        new ControlerCadastroFuncionario(new CadastroFuncionario());
     }
 }

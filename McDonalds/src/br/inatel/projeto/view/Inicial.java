@@ -45,6 +45,7 @@ public class Inicial extends javax.swing.JFrame {
         mnu_cadastro_ingredientes = new javax.swing.JMenuItem();
         mnu_cadastro_lanches = new javax.swing.JMenuItem();
         mnu_cadastro_bebidas = new javax.swing.JMenuItem();
+        mnu_cadastroFuncionario = new javax.swing.JMenuItem();
         mnu_remover_cadastros = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mnu_alterar_imagem = new javax.swing.JMenuItem();
@@ -85,6 +86,10 @@ public class Inicial extends javax.swing.JFrame {
         mnu_cadastro_bebidas.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_B, java.awt.event.InputEvent.CTRL_MASK));
         mnu_cadastro_bebidas.setText("Cadastro de Bebidas");
         jMenu3.add(mnu_cadastro_bebidas);
+
+        mnu_cadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        mnu_cadastroFuncionario.setText("Cadastro de Funcionários");
+        jMenu3.add(mnu_cadastroFuncionario);
 
         mnu_remover_cadastros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
         mnu_remover_cadastros.setText("Remover Cadastros");
@@ -172,6 +177,7 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnu_Pedidos;
     private javax.swing.JMenuItem mnu_Vendas;
     private javax.swing.JMenuItem mnu_alterar_imagem;
+    private javax.swing.JMenuItem mnu_cadastroFuncionario;
     private javax.swing.JMenuItem mnu_cadastro_bebidas;
     private javax.swing.JMenuItem mnu_cadastro_ingredientes;
     private javax.swing.JMenuItem mnu_cadastro_lanches;
@@ -192,6 +198,10 @@ public class Inicial extends javax.swing.JFrame {
 
     public JMenuItem getMnu_Pedidos() {
         return mnu_Pedidos;
+    }
+
+    public JMenuItem getMnu_cadastroFuncionario() {
+        return mnu_cadastroFuncionario;
     }
 
     public JMenuItem getMnu_Vendas() {

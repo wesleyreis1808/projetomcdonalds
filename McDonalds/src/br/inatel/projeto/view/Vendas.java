@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
@@ -142,13 +137,11 @@ public class Vendas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbl_Carrinho);
 
         pnl_Venda.add(jScrollPane2);
-
         jScrollPane2.setBounds(10, 10, 370, 310);
 
         btn_Remover.setText("Remover");
         pnl_Venda.add(btn_Remover);
         btn_Remover.setBounds(290, 330, 90, 23);
-
 
         pnl_Pagamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Pagamento"));
 
@@ -234,7 +227,7 @@ public class Vendas extends javax.swing.JFrame {
         );
 
         pnl_Venda.add(pnl_Pagamento);
-        pnl_Pagamento.setBounds(10, 400, 370, 260);
+        pnl_Pagamento.setBounds(10, 410, 370, 250);
 
         pnl_Responsavel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -262,7 +255,7 @@ public class Vendas extends javax.swing.JFrame {
         );
 
         pnl_Venda.add(pnl_Responsavel);
-        pnl_Responsavel.setBounds(10, 340, 370, 40);
+        pnl_Responsavel.setBounds(10, 360, 370, 40);
 
         tbp_Venda.addTab("Venda", pnl_Venda);
 
@@ -446,9 +439,9 @@ public class Vendas extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(tbp_Venda, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(tbp_Guias, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
