@@ -9,6 +9,7 @@ import br.inatel.projeto.model.Funcionarios;
 import br.inatel.projeto.view.CadastroFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,6 +22,7 @@ public class ControlerCadastroFuncionario implements ActionListener {
 
     CadastroFuncionario cadastroFuncionario;
     DefaultTableModel dtm;
+    ArrayList<Funcionarios> funcionarios;
     Object[][] dados;
 
     public ControlerCadastroFuncionario(CadastroFuncionario cadastroFuncionario) {
@@ -28,7 +30,12 @@ public class ControlerCadastroFuncionario implements ActionListener {
 
         this.cadastroFuncionario.getBtn_salvar().addActionListener(this);
         this.cadastroFuncionario.getBtn_delete().addActionListener(this);
-        
+        this.cadastroFuncionario.getjTable1().addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        getDados();
         preencheTabela();
 
         this.cadastroFuncionario.setVisible(true);
@@ -40,7 +47,7 @@ public class ControlerCadastroFuncionario implements ActionListener {
 
         if (obj == this.cadastroFuncionario.getBtn_salvar()) {
             if (verificaCampos()) {
-                // salva banco
+                salvaFuncionario();
             }
         } else if (obj == this.cadastroFuncionario.getBtn_delete()) {
             removerItemSelecionado();
@@ -74,9 +81,7 @@ public class ControlerCadastroFuncionario implements ActionListener {
 
         dtm = (DefaultTableModel) this.cadastroFuncionario.getjTable1().getModel();
 
-        ArrayList<Funcionarios> lista = getDados();
-
-        for (Funcionarios func : lista) {
+        for (Funcionarios func : funcionarios) {
             dtm.insertRow(dtm.getRowCount(), new Object[]{
                 func.getNome(),
                 func.getCpf(),
@@ -88,13 +93,21 @@ public class ControlerCadastroFuncionario implements ActionListener {
     }
 
     private void removerItemSelecionado() {
+        limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
-        dtm.removeRow(this.cadastroFuncionario.getjTable1().getSelectedRow());
-        this.cadastroFuncionario.getjTable1().setModel(dtm);
-        this.cadastroFuncionario.getjTable1().repaint();
+         if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
+            this.funcionarios.remove(this.cadastroFuncionario.getjTable1().getSelectedRow());
+           
+            dtm.removeRow(this.cadastroFuncionario.getjTable1().getSelectedRow());
+            
+            this.cadastroFuncionario.getjTable1().setModel(dtm);
+            this.cadastroFuncionario.getjTable1().repaint();
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
+        }
     }
 
-    private ArrayList getDados() {
+    private void getDados() {
         ArrayList<Funcionarios> funcs = new ArrayList<>();
 
         Funcionarios f1 = new Funcionarios();
@@ -115,7 +128,61 @@ public class ControlerCadastroFuncionario implements ActionListener {
         f2.setId(2);
         funcs.add(f2);
 
-        return funcs;
+        funcionarios = funcs;
+    }
+
+    private void salvaFuncionario() {
+        Funcionarios func = new Funcionarios();
+
+        func.setNome(this.cadastroFuncionario.getTxt_nome().getText());
+        func.setCpf(this.cadastroFuncionario.getTxt_cpf().getText());
+        func.setTelefone(this.cadastroFuncionario.getTxt_telefone().getText());
+        func.setSenha(this.cadastroFuncionario.getTxt_senha().getText());
+        func.setNivel_acesso((this.cadastroFuncionario.getRd_vendedor().isSelected()) ? 1 : 2);
+
+        funcionarios.add(func);
+        
+        dtm.insertRow(dtm.getRowCount(), new Object[]{
+            func.getNome(),
+            func.getCpf(),
+            func.getTelefone(),
+            (func.getNivel_acesso() == 1) ? "Vendedor" : "Gerente"
+        });
+
+        // salva banco;
+        limpaCampos();
+    }
+
+    private void limpaCampos() {
+
+        this.cadastroFuncionario.getTxt_nome().setText("");
+        this.cadastroFuncionario.getTxt_cpf().setText("");
+        this.cadastroFuncionario.getTxt_telefone().setText("");
+        this.cadastroFuncionario.getTxt_senha().setText("");
+        this.cadastroFuncionario.getButtonGroup2().clearSelection();
+    }
+
+    private void jTable1MouseClicked(MouseEvent evt) {
+        
+        limpaCampos();
+        
+        if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
+            System.out.println(this.cadastroFuncionario.getjTable1().getSelectedRow());
+            Funcionarios func = this.funcionarios.get(this.cadastroFuncionario.getjTable1().getSelectedRow());
+           
+            this.cadastroFuncionario.getTxt_nome().setText(func.getNome());
+            this.cadastroFuncionario.getTxt_cpf().setText(func.getCpf());
+            this.cadastroFuncionario.getTxt_telefone().setText(func.getTelefone());
+            this.cadastroFuncionario.getTxt_senha().setText(func.getSenha());
+            if(func.getNivel_acesso() == 1)
+                this.cadastroFuncionario.getRd_vendedor().setSelected(true);
+            else
+                this.cadastroFuncionario.getRd_gerente().setSelected(true);
+
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
+        }
     }
 
 }
