@@ -257,5 +257,7 @@ public class Inicial extends javax.swing.JFrame {
     public JMenuItem getMnu_sobre() {
         return mnu_sobre;
     }
+    
+    
 
 }

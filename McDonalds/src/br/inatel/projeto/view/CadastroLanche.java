@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -102,10 +103,7 @@ public class CadastroLanche extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Nome", "Preço"
@@ -239,6 +237,14 @@ public class CadastroLanche extends javax.swing.JFrame {
 
     public JLabel getLabel_ingredientes() {
         return label_ingredientes;
+    }
+
+    public JButton getBtn_deletar() {
+        return btn_deletar;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
     }
 
     public JLabel getLabel_lanche() {

@@ -13,7 +13,7 @@ public class Produtos {
     
     private int id;
     private String nome;
-    private float preço;
+    private float preco;
 
     public int getId() {
         return id;
@@ -31,12 +31,12 @@ public class Produtos {
         this.nome = nome;
     }
 
-    public float getPreço() {
-        return preço;
+    public float getPreco() {
+        return preco;
     }
 
-    public void setPreço(float preço) {
-        this.preço = preço;
+    public void setPreco(float preco) {
+        this.preco = preco;
     }
     
 }

@@ -57,7 +57,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         btn_delete = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         label_titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         label_titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

@@ -6,6 +6,7 @@
 package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Funcionarios;
+import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.view.CadastroFuncionario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author aluno
  */
-public class ControlerCadastroFuncionario implements ActionListener {
+public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     CadastroFuncionario cadastroFuncionario;
     DefaultTableModel dtm;
@@ -47,37 +48,39 @@ public class ControlerCadastroFuncionario implements ActionListener {
 
         if (obj == this.cadastroFuncionario.getBtn_salvar()) {
             if (verificaCampos()) {
-                salvaFuncionario();
+                salvaCadastro();
             }
         } else if (obj == this.cadastroFuncionario.getBtn_delete()) {
             removerItemSelecionado();
         }
     }
 
-    private boolean verificaCampos() {
+    @Override
+    public boolean verificaCampos() {
         boolean teste = true;
 
         if (this.cadastroFuncionario.getTxt_nome().equals("")) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.cadastroFuncionario, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } else if (this.cadastroFuncionario.getTxt_senha().equals("")) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.cadastroFuncionario, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } else if (this.cadastroFuncionario.getTxt_cpf().equals("")) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.cadastroFuncionario, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } else if (this.cadastroFuncionario.getTxt_telefone().equals("")) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.cadastroFuncionario, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         } else if (!this.cadastroFuncionario.getRd_gerente().isSelected() && !this.cadastroFuncionario.getRd_vendedor().isSelected()) {
-            JOptionPane.showMessageDialog(null, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this.cadastroFuncionario, "Preencha todos os campos", "Erro", JOptionPane.ERROR_MESSAGE);
             return false;
         }
 
         return teste;
     }
 
-    private void preencheTabela() {
+    @Override
+    public void preencheTabela() {
 
         dtm = (DefaultTableModel) this.cadastroFuncionario.getjTable1().getModel();
 
@@ -92,7 +95,8 @@ public class ControlerCadastroFuncionario implements ActionListener {
 
     }
 
-    private void removerItemSelecionado() {
+    @Override
+    public void removerItemSelecionado() {
         limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
          if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
@@ -107,7 +111,8 @@ public class ControlerCadastroFuncionario implements ActionListener {
         }
     }
 
-    private void getDados() {
+    @Override
+    public void getDados() {
         ArrayList<Funcionarios> funcs = new ArrayList<>();
 
         Funcionarios f1 = new Funcionarios();
@@ -131,7 +136,8 @@ public class ControlerCadastroFuncionario implements ActionListener {
         funcionarios = funcs;
     }
 
-    private void salvaFuncionario() {
+    @Override
+    public void salvaCadastro() {
         Funcionarios func = new Funcionarios();
 
         func.setNome(this.cadastroFuncionario.getTxt_nome().getText());
@@ -153,7 +159,8 @@ public class ControlerCadastroFuncionario implements ActionListener {
         limpaCampos();
     }
 
-    private void limpaCampos() {
+    @Override
+    public void limpaCampos() {
 
         this.cadastroFuncionario.getTxt_nome().setText("");
         this.cadastroFuncionario.getTxt_cpf().setText("");
@@ -185,4 +192,8 @@ public class ControlerCadastroFuncionario implements ActionListener {
         }
     }
 
+    @Override
+    public void atualizarCadastro() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
