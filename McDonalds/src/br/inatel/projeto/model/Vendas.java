@@ -15,10 +15,28 @@ public class Vendas {
 
     private int id;
     private String vendedor;
-    private String datahora;
+    private String data;
+    private String hora;
     private String modificacao;
     private float valortotal;
     private ArrayList produtos;
+    private String comprador;
+    private boolean entregue;
+
+    public Vendas() {
+        this.entregue = false;
+    
+    }
+
+    
+    
+    public boolean isEntregue() {
+        return entregue;
+    }
+
+    public void setEntregue(boolean entregue) {
+        this.entregue = entregue;
+    }
 
     public int getId() {
         return id;
@@ -26,6 +44,7 @@ public class Vendas {
 
     public void setId(int id) {
         this.id = id;
+        
     }
 
     public String getVendedor() {
@@ -36,12 +55,28 @@ public class Vendas {
         this.vendedor = vendedor;
     }
 
-    public String getDatahora() {
-        return datahora;
+    public String getData() {
+        return data;
     }
 
-    public void setDatahora(String datahora) {
-        this.datahora = datahora;
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
+    public String getComprador() {
+        return comprador;
+    }
+
+    public void setComprador(String comprador) {
+        this.comprador = comprador;
     }
 
     public String getModificacao() {
@@ -60,7 +95,7 @@ public class Vendas {
         this.valortotal = valortotal;
     }
 
-    public ArrayList getProdutos() {
+    public ArrayList<Produtos> getProdutos() {
         return produtos;
     }
 
@@ -68,5 +103,4 @@ public class Vendas {
         this.produtos = produtos;
     }
 
-    
 }

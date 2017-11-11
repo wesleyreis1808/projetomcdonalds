@@ -32,6 +32,16 @@ public class Lanche extends Produtos {
     public void addIngrediente(Ingredientes i){
         ingredientes.add(i);
     }
+
+    public ArrayList<Ingredientes> getIngredientes() {
+        return ingredientes;
+    }
+
+    public void setIngredientes(ArrayList<Ingredientes> ingredientes) {
+        this.ingredientes = ingredientes;
+    }
+    
+    
            
     
 }

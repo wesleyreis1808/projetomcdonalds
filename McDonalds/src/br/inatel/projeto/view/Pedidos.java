@@ -31,7 +31,7 @@ public class Pedidos extends javax.swing.JFrame {
         
         tbl_Pedidos.getColumnModel().getColumn(0).setPreferredWidth(130);
         tbl_Pedidos.getColumnModel().getColumn(1).setPreferredWidth(110);
-        tbl_Pedidos.getColumnModel().getColumn(2).setPreferredWidth(585);
+
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
@@ -127,14 +127,14 @@ public class Pedidos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto", "Repartir", "Modificações"
+                "Produto", "Modificações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -378,9 +378,5 @@ public class Pedidos extends javax.swing.JFrame {
         return tbl_Pedidos;
     }
 
-   
-
-    
-    
     
 }
