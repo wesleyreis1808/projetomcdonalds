@@ -11,5 +11,13 @@ package br.inatel.projeto.model;
  */
 public class Ingredientes extends Produtos{
     
-    
+    private float preco;
+
+    public float getPreco() {
+        return preco;
+    }
+
+    public void setPreco(float preco) {
+        this.preco = preco;
+    }
 }
