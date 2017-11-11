@@ -25,11 +25,10 @@ public class Vendas {
 
     public Vendas() {
         this.entregue = false;
-    
+        data = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
+        hora = new java.text.SimpleDateFormat("HH:mm:ss").format(java.util.Calendar.getInstance().getTime());
     }
 
-    
-    
     public boolean isEntregue() {
         return entregue;
     }
@@ -44,7 +43,7 @@ public class Vendas {
 
     public void setId(int id) {
         this.id = id;
-        
+
     }
 
     public String getVendedor() {
@@ -102,5 +101,6 @@ public class Vendas {
     public void setProdutos(ArrayList produtos) {
         this.produtos = produtos;
     }
+
 
 }

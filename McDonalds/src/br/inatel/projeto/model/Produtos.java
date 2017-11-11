@@ -10,11 +10,11 @@ package br.inatel.projeto.model;
  * @author WesleyReis
  */
 public class Produtos {
-    
+
     private int id;
     private String nome;
     private float preco;
-        private String modificacao;
+    private String modificacao;
 
     public String getModificacao() {
         return modificacao;
@@ -47,5 +47,5 @@ public class Produtos {
     public void setPreco(float preco) {
         this.preco = preco;
     }
-    
+
 }
