@@ -5,6 +5,7 @@
  */
 package br.inatel.projeto.controler;
 
+import br.inatel.projeto.model.FuncionarioDAO;
 import br.inatel.projeto.model.Funcionarios;
 import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.view.CadastroFuncionario;
@@ -22,6 +23,7 @@ import javax.swing.table.DefaultTableModel;
 public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     CadastroFuncionario cadastroFuncionario;
+    FuncionarioDAO funcBD = new FuncionarioDAO();
     DefaultTableModel dtm;
     ArrayList<Funcionarios> funcionarios;
     Object[][] dados;
@@ -147,6 +149,9 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
         func.setNivel_acesso((this.cadastroFuncionario.getRd_vendedor().isSelected()) ? 1 : 2);
 
         funcionarios.add(func);
+        
+        //Grava no Banco de Dados
+        funcBD.cadastrar(func);
         
         dtm.insertRow(dtm.getRowCount(), new Object[]{
             func.getNome(),
