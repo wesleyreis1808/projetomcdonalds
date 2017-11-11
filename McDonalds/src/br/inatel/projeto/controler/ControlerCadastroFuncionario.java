@@ -115,27 +115,7 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     @Override
     public void getDados() {
-        ArrayList<Funcionarios> funcs = new ArrayList<>();
-
-        Funcionarios f1 = new Funcionarios();
-        f1.setNome("Wesley Silva");
-        f1.setNivel_acesso(2);
-        f1.setCpf("1234567890");
-        f1.setSenha("1234");
-        f1.setTelefone("9901-2726");
-        f1.setId(1);
-        funcs.add(f1);
-
-        Funcionarios f2 = new Funcionarios();
-        f2.setNome("Gefão do Code");
-        f2.setNivel_acesso(1);
-        f2.setCpf("1234567890");
-        f2.setSenha("1234");
-        f2.setTelefone("9901-2726");
-        f2.setId(2);
-        funcs.add(f2);
-
-        funcionarios = funcs;
+        funcionarios = funcBD.listar();
     }
 
     @Override

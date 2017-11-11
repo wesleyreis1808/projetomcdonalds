@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
  *
@@ -64,8 +65,46 @@ public class FuncionarioDAO {
 
     }
 
-    public void listar() {
+    public ArrayList<Funcionarios> listar() {
+        ArrayList<Funcionarios> func = new ArrayList<>();
 
+        try {
+            // Conecto com o Banco
+            abrirConexao();
+            // O metodo createStatement() cria um objeto Statement que permite enviar comandosSQL para o banco
+            _st = _con.createStatement();
+            // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
+            _rs = _st.executeQuery("SELECT * FROM Funcionarios");
+            // O metodo next() caminha entre as linhas da tabela de resultados retornada.
+            while (_rs.next()) {
+                Funcionarios f = new Funcionarios();
+                f.setId(_rs.getInt(1));
+                f.setCpf(_rs.getString(2));
+                f.setNome(_rs.getString(3));
+                f.setSenha(_rs.getString(4));
+                f.setTelefone(_rs.getString(5));
+                f.setNivel_acesso(_rs.getInt(6));
+                func.add(f);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro seleciona todos: Conexão Banco! :(");
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            try {
+                if (_rs != null) {
+                    _rs.close();
+                }
+                if (_st != null) {
+                    _st.close();
+                }
+                if (_con != null) {
+                    _con.close();
+                }
+            } catch (SQLException ex) {
+                System.out.println("Erro seleciona todos: Conexão não pode ser fechada! :(");
+            }
+        }
+        return func;
     }
 
     public boolean abrirConexao() {
