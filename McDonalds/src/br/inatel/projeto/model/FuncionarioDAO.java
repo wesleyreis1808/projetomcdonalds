@@ -1,13 +1,11 @@
 package br.inatel.projeto.model;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 
 /**
@@ -58,11 +56,24 @@ public class FuncionarioDAO {
     }
 
     public void editar() {
-
+        
     }
 
-    public void remover() {
-
+    public void remover(Funcionarios func) {
+        abrirConexao();
+        try {
+            // Preparo a exclusao
+            _pst = _con.prepareStatement("DELETE FROM Funcionarios WHERE idFuncionarios = ?");
+            // Indico que a ? significa o Codigo do Autor
+            _pst.setInt(1, func.getId());
+            // Executo a exclusao
+            _pst.executeUpdate();
+            //System.out.println("Sucesso! ;)");
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+        } finally {
+            fecharConexao();
+        }
     }
 
     public ArrayList<Funcionarios> listar() {
@@ -90,19 +101,7 @@ public class FuncionarioDAO {
             System.out.println("Erro seleciona todos: Conexão Banco! :(");
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
-            try {
-                if (_rs != null) {
-                    _rs.close();
-                }
-                if (_st != null) {
-                    _st.close();
-                }
-                if (_con != null) {
-                    _con.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println("Erro seleciona todos: Conexão não pode ser fechada! :(");
-            }
+            fecharConexao();
         }
         return func;
     }

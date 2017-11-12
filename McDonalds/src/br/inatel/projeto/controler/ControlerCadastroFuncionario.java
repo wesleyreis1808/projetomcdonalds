@@ -27,6 +27,7 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
     DefaultTableModel dtm;
     ArrayList<Funcionarios> funcionarios;
     Object[][] dados;
+    private int posiSelect;
 
     public ControlerCadastroFuncionario(CadastroFuncionario cadastroFuncionario) {
         this.cadastroFuncionario = cadastroFuncionario;
@@ -83,9 +84,8 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     @Override
     public void preencheTabela() {
-
+        
         dtm = (DefaultTableModel) this.cadastroFuncionario.getjTable1().getModel();
-
         for (Funcionarios func : funcionarios) {
             dtm.insertRow(dtm.getRowCount(), new Object[]{
                 func.getNome(),
@@ -102,10 +102,10 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
         limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
          if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
+            //Passa o funcionario que sera removido
+            funcBD.remover(funcionarios.get(posiSelect));
             this.funcionarios.remove(this.cadastroFuncionario.getjTable1().getSelectedRow());
-           
             dtm.removeRow(this.cadastroFuncionario.getjTable1().getSelectedRow());
-            
             this.cadastroFuncionario.getjTable1().setModel(dtm);
             this.cadastroFuncionario.getjTable1().repaint();
         } else {
@@ -157,9 +157,10 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
     private void jTable1MouseClicked(MouseEvent evt) {
         
         limpaCampos();
-        
-        if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
-            System.out.println(this.cadastroFuncionario.getjTable1().getSelectedRow());
+        posiSelect = this.cadastroFuncionario.getjTable1().getSelectedRow();
+        System.out.println(posiSelect);
+        if (posiSelect >= 0) {
+            
             Funcionarios func = this.funcionarios.get(this.cadastroFuncionario.getjTable1().getSelectedRow());
            
             this.cadastroFuncionario.getTxt_nome().setText(func.getNome());
