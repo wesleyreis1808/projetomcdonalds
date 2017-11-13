@@ -5,7 +5,7 @@
  */
 package br.inatel.projeto.view;
 
-
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JButton;
@@ -21,10 +21,17 @@ import javax.swing.UIManager;
  */
 public class AlteracaoLanche extends javax.swing.JFrame {
 
- // array contendo os ingredientes selecionados dos lanches   
+    // array contendo os ingredientes selecionados dos lanches   
     private ArrayList<JCheckBox> botoes = new ArrayList<>();
-    
- @SuppressWarnings("unchecked")
+
+    public AlteracaoLanche(){
+        initComponents();
+        
+        insereBotoes();
+
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -54,7 +61,6 @@ public class AlteracaoLanche extends javax.swing.JFrame {
         ckb_Ingrediente11 = new javax.swing.JCheckBox();
         ckb_Ingrediente12 = new javax.swing.JCheckBox();
         pnl_Opcoes = new javax.swing.JPanel();
-        ckb_Repartir = new javax.swing.JCheckBox();
         btn_Finalizar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
 
@@ -143,12 +149,8 @@ public class AlteracaoLanche extends javax.swing.JFrame {
 
         getContentPane().add(pnl_Ingredientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, -1, 170));
 
-        pnl_Opcoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções"));
+        pnl_Opcoes.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_Opcoes.setLayout(null);
-
-        ckb_Repartir.setText("Repartir");
-        pnl_Opcoes.add(ckb_Repartir);
-        ckb_Repartir.setBounds(10, 30, 90, 23);
 
         btn_Finalizar.setText("Finalizar");
         pnl_Opcoes.add(btn_Finalizar);
@@ -159,39 +161,10 @@ public class AlteracaoLanche extends javax.swing.JFrame {
         btn_Cancelar.setBounds(400, 20, 84, 34);
 
         getContentPane().add(pnl_Opcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 507, 70));
+        pnl_Opcoes.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AlteracaoLanche().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Cancelar;
@@ -220,130 +193,59 @@ public class AlteracaoLanche extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckb_Ingrediente7;
     private javax.swing.JCheckBox ckb_Ingrediente8;
     private javax.swing.JCheckBox ckb_Ingrediente9;
-    private javax.swing.JCheckBox ckb_Repartir;
     private javax.swing.JPanel pnl_Ingredientes;
     private javax.swing.JPanel pnl_Opcoes;
     // End of variables declaration//GEN-END:variables
 
+    private void insereBotoes() {
+        botoes.add(this.ckb_Ingrediente1);
+        botoes.add(this.ckb_Ingrediente2);
+        botoes.add(this.ckb_Ingrediente3);
+        botoes.add(this.ckb_Ingrediente4);
+        botoes.add(this.ckb_Ingrediente5);
+        botoes.add(this.ckb_Ingrediente6);
+        botoes.add(this.ckb_Ingrediente7);
+        botoes.add(this.ckb_Ingrediente8);
+        botoes.add(this.ckb_Ingrediente9);
+        botoes.add(this.ckb_Ingrediente10);
+        botoes.add(this.ckb_Ingrediente11);
+        botoes.add(this.ckb_Ingrediente12);
+        botoes.add(this.ckb_Ingrediente13);
+        botoes.add(this.ckb_Ingrediente14);
+        botoes.add(this.ckb_Ingrediente15);
+        botoes.add(this.ckb_Ingrediente16);
+        botoes.add(this.ckb_Ingrediente17);
+        botoes.add(this.ckb_Ingrediente18);
+        botoes.add(this.ckb_Ingrediente19);
+        botoes.add(this.ckb_Ingrediente20);
+        botoes.add(this.ckb_Ingrediente21);
+        botoes.add(this.ckb_Ingrediente22);
+        botoes.add(this.ckb_Ingrediente23);
+        botoes.add(this.ckb_Ingrediente24);
+    }
+
     public ArrayList<JCheckBox> getBotoes() {
         return botoes;
+    }
+
+    public void setBotoes(ArrayList<JCheckBox> botoes) {
+        this.botoes = botoes;
     }
 
     public JButton getBtn_Cancelar() {
         return btn_Cancelar;
     }
 
+    public void setBtn_Cancelar(JButton btn_Cancelar) {
+        this.btn_Cancelar = btn_Cancelar;
+    }
+
     public JButton getBtn_Finalizar() {
         return btn_Finalizar;
     }
 
-    public JCheckBox getCkb_Ingrediente1() {
-        return ckb_Ingrediente1;
+    public void setBtn_Finalizar(JButton btn_Finalizar) {
+        this.btn_Finalizar = btn_Finalizar;
     }
 
-    public JCheckBox getCkb_Ingrediente10() {
-        return ckb_Ingrediente10;
-    }
-
-    public JCheckBox getCkb_Ingrediente11() {
-        return ckb_Ingrediente11;
-    }
-
-    public JCheckBox getCkb_Ingrediente12() {
-        return ckb_Ingrediente12;
-    }
-
-    public JCheckBox getCkb_Ingrediente13() {
-        return ckb_Ingrediente13;
-    }
-
-    public JCheckBox getCkb_Ingrediente14() {
-        return ckb_Ingrediente14;
-    }
-
-    public JCheckBox getCkb_Ingrediente15() {
-        return ckb_Ingrediente15;
-    }
-
-    public JCheckBox getCkb_Ingrediente16() {
-        return ckb_Ingrediente16;
-    }
-
-    public JCheckBox getCkb_Ingrediente17() {
-        return ckb_Ingrediente17;
-    }
-
-    public JCheckBox getCkb_Ingrediente18() {
-        return ckb_Ingrediente18;
-    }
-
-    public JCheckBox getCkb_Ingrediente19() {
-        return ckb_Ingrediente19;
-    }
-
-    public JCheckBox getCkb_Ingrediente2() {
-        return ckb_Ingrediente2;
-    }
-
-    public JCheckBox getCkb_Ingrediente20() {
-        return ckb_Ingrediente20;
-    }
-
-    public JCheckBox getCkb_Ingrediente21() {
-        return ckb_Ingrediente21;
-    }
-
-    public JCheckBox getCkb_Ingrediente22() {
-        return ckb_Ingrediente22;
-    }
-
-    public JCheckBox getCkb_Ingrediente23() {
-        return ckb_Ingrediente23;
-    }
-
-    public JCheckBox getCkb_Ingrediente24() {
-        return ckb_Ingrediente24;
-    }
-
-    public JCheckBox getCkb_Ingrediente3() {
-        return ckb_Ingrediente3;
-    }
-
-    public JCheckBox getCkb_Ingrediente4() {
-        return ckb_Ingrediente4;
-    }
-
-    public JCheckBox getCkb_Ingrediente5() {
-        return ckb_Ingrediente5;
-    }
-
-    public JCheckBox getCkb_Ingrediente6() {
-        return ckb_Ingrediente6;
-    }
-
-    public JCheckBox getCkb_Ingrediente7() {
-        return ckb_Ingrediente7;
-    }
-
-    public JCheckBox getCkb_Ingrediente8() {
-        return ckb_Ingrediente8;
-    }
-
-    public JCheckBox getCkb_Ingrediente9() {
-        return ckb_Ingrediente9;
-    }
-
-    public JCheckBox getCkb_Repartir() {
-        return ckb_Repartir;
-    }
-
-    public JPanel getPnl_Ingredientes() {
-        return pnl_Ingredientes;
-    }
-
-    public JPanel getPnl_Opcoes() {
-        return pnl_Opcoes;
-    }
-
-    
 }
