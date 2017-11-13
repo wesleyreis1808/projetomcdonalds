@@ -6,6 +6,7 @@
 package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Bebidas;
+import br.inatel.projeto.model.BebidasDAO;
 import br.inatel.projeto.model.Funcionarios;
 import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.view.CadastroBebida;
@@ -25,7 +26,9 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
     CadastroBebida cadastroBebida;
     DefaultTableModel dtm;
     ArrayList<Bebidas> bebidas;
+    BebidasDAO bebidasBD = new BebidasDAO();
     Object[][] dados;
+    private int posiSelect;
 
     public ControlerCadastroBebidas(CadastroBebida cadastroBebida) {
         this.cadastroBebida = cadastroBebida;
@@ -66,26 +69,25 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
     }
 
     private void jTable1MouseClicked(MouseEvent evt) {
-         limpaCampos();
-        
+        limpaCampos();
+        posiSelect = this.cadastroBebida.getjTable1().getSelectedRow();
         if (this.cadastroBebida.getjTable1().getSelectedRow() >= 0) {
-            
+
             Bebidas bebi = this.bebidas.get(this.cadastroBebida.getjTable1().getSelectedRow());
-           
-            this.cadastroBebida.getTxf_preco().setText(""+bebi.getPreco());
-            if(bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho1().getText())){
+
+            this.cadastroBebida.getTxf_preco().setText("" + bebi.getPreco());
+            if (bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho1().getText())) {
                 this.cadastroBebida.getRbtn_tamanho1().setSelected(true);
-            }else if(bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho2().getText())){
+            } else if (bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho2().getText())) {
                 this.cadastroBebida.getRbtn_tamanho2().setSelected(true);
-            }else if(bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho3().getText())){
+            } else if (bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho3().getText())) {
                 this.cadastroBebida.getRbtn_tamanho3().setSelected(true);
-            }else if(bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho4().getText())){
+            } else if (bebi.getTamanho().equals(this.cadastroBebida.getRbtn_tamanho4().getText())) {
                 this.cadastroBebida.getRbtn_tamanho4().setSelected(true);
             }
-            
+
             this.cadastroBebida.getComBox_Refri().setSelectedItem(bebi.getNome());
 
-            
         } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
         }
@@ -133,11 +135,12 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
     public void removerItemSelecionado() {
         limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
-         if (this.cadastroBebida.getjTable1().getSelectedRow() >= 0) {
+        if (this.cadastroBebida.getjTable1().getSelectedRow() >= 0) {
+
+            bebidasBD.remover(bebidas.get(posiSelect));
             this.bebidas.remove(this.cadastroBebida.getjTable1().getSelectedRow());
-           
             dtm.removeRow(this.cadastroBebida.getjTable1().getSelectedRow());
-            
+
             this.cadastroBebida.getjTable1().setModel(dtm);
             this.cadastroBebida.getjTable1().repaint();
         } else {
@@ -147,30 +150,14 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
 
     @Override
     public void getDados() {
-        ArrayList<Bebidas> bebida = new ArrayList<>();
-
-        Bebidas b1 = new Bebidas();
-        b1.setId(0);
-        b1.setNome("Coca-Cola");
-        b1.setPreco((float) 3.5);
-        b1.setTamanho("350 ml");
-        bebida.add(b1);
-
-        Bebidas b2 = new Bebidas();
-
-        b2.setId(1);
-        b2.setNome("Suco");
-        b2.setPreco((float) 8.0);
-        b2.setTamanho("2 L");
-        bebida.add(b2);
-
-        this.bebidas = bebida;
+        this.bebidas = bebidasBD.listar();
     }
 
     @Override
     public void salvaCadastro() {
         Bebidas bebida = new Bebidas();
 
+        bebida.setImage_path("VAZIO");
         bebida.setNome(this.cadastroBebida.getComBox_Refri().getSelectedItem().toString());
         bebida.setPreco(Float.parseFloat(this.cadastroBebida.getTxf_preco().getText()));
         if (this.cadastroBebida.getRbtn_tamanho1().isSelected()) {
@@ -184,6 +171,9 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
         }
 
         this.bebidas.add(bebida);
+
+        //Grava no Banco de Dados
+        bebidasBD.cadastrar(bebida);
 
         dtm.insertRow(dtm.getRowCount(), new Object[]{
             bebida.getNome(),
@@ -206,6 +196,23 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
 
     @Override
     public void atualizarCadastro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        if (posiSelect >= 0) {
+//            Bebidas b = new Bebidas();
+//            b.setNome(this.cadastroBebida.getComBox_Refri().getSelectedItem().toString());
+//            b.setImage_path("VAZIO");
+//            b.setTamanho(this.cadastroBebida.getR);
+//            b.setSenha(this.cadastroBebida.getTxt_senha().getText());
+//            b.setId(this.bebidas.get(posiSelect).getId());
+//            if (this.cadastroBebida.getRd_vendedor().isSelected()) {
+//                b.setNivel_acesso(1);
+//            } else {
+//                b.setNivel_acesso(2);
+//            }
+//            
+//            funcBD.editar(f);
+//            
+//        } else {
+//            JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
+//        }
     }
 }
