@@ -6,6 +6,7 @@
 package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Ingredientes;
+import br.inatel.projeto.model.IngredientesDAO;
 import br.inatel.projeto.view.Remove;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,7 @@ public class ControlerRemove implements ActionListener {
 
     Remove remove;
     ArrayList<Ingredientes> ing = new ArrayList<>();
+    IngredientesDAO ingBD = new IngredientesDAO();
     DefaultListModel dlm = new DefaultListModel();
 
     public ControlerRemove(Remove remove) {
@@ -53,26 +55,17 @@ public class ControlerRemove implements ActionListener {
     }
 
     private void getDados() {
-        //this.ing;
-        ArrayList<Ingredientes> ingredientes = this.ing;
+        this.ing = ingBD.listar();
         
-        Ingredientes i1 = new Ingredientes();
-        i1.setNome("Presunto");
-        i1.setPreco((float) 0.50);
-        ingredientes.add(i1);
-
-        Ingredientes i2 = new Ingredientes();
-        i2.setNome("Hamburger");
-        i2.setPreco((float) 1.50);
-        ingredientes.add(i2);
     }
 
     private void removeIng() {
         if (this.remove.getLista_ingrediente().getSelectedIndex() != -1) {
 
             int indice = this.remove.getLista_ingrediente().getSelectedIndex();
+            ingBD.remover(ing.get(indice));
             this.ing.remove(indice);
-
+            System.out.println("ID: "+ indice);
             for (Ingredientes inge : this.ing) {
                 System.out.println(inge.getNome());
             }

@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /**
  *
@@ -57,7 +58,49 @@ public class IngredientesDAO {
         return gravou;
     }
     
+    public ArrayList<Ingredientes> listar() {
+        ArrayList<Ingredientes> ingBD = new ArrayList<>();
+
+        try {
+            // Conecto com o Banco
+            abrirConexao();
+            // O metodo createStatement() cria um objeto Statement que permite enviar comandosSQL para o banco
+            _st = _con.createStatement();
+            // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
+            _rs = _st.executeQuery("SELECT * FROM Ingredientes");
+            // O metodo next() caminha entre as linhas da tabela de resultados retornada.
+            while (_rs.next()) {
+                Ingredientes ing = new Ingredientes();
+                ing.setId(_rs.getInt(1));
+                ing.setNome(_rs.getString(2));
+                ing.setPreco(_rs.getFloat(3));
+                ingBD.add(ing);
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro seleciona todos: Conexão Banco! :(");
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            fecharConexao();
+        }
+        return ingBD;
+    }
     
+    public void remover(Ingredientes ing) {
+        abrirConexao();
+        try {
+            // Preparo a exclusao
+            _pst = _con.prepareStatement("DELETE FROM Ingredientes WHERE idIngredientes = ?");
+            // Indico que a ? significa o Codigo do Autor
+            _pst.setInt(1, ing.getId());
+            // Executo a exclusao
+            _pst.executeUpdate();
+            //System.out.println("Sucesso! ;)");
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+        } finally {
+            fecharConexao();
+        }
+    }
 
     public boolean abrirConexao() {
         try {
