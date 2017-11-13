@@ -6,6 +6,7 @@
 package br.inatel.projeto.view;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,6 +26,16 @@ public class Login extends javax.swing.JFrame {
     public JButton getbtn_entrar() {
         return btn_entrar;
     }
+
+    public JTextField getTxt_email() {
+        return txt_email;
+    }
+
+    public JTextField getTxt_senha() {
+        return txt_senha;
+    }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -25,6 +25,38 @@ public class FuncionarioDAO {
     private Statement _st = null;
     private PreparedStatement _pst = null;
 
+    public Funcionarios login(String usr, String pwd) {
+        System.out.println("User: " + usr);
+        System.out.println("senha: " + pwd);
+        Funcionarios f = new Funcionarios();
+        //se não encontrar o id fica com -1
+        f.setId(-1);
+        try {
+            // Conecto com o Banco
+            abrirConexao();
+            // O metodo createStatement() cria um objeto Statement que permite enviar comandosSQL para o banco
+            _st = _con.createStatement();
+            // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
+            _rs = _st.executeQuery("SELECT * FROM Funcionarios where nomeFuncionario='"+usr+"' AND senha='"+pwd+"'");
+            // O metodo next() caminha entre as linhas da tabela de resultados retornada.
+            
+            while (_rs.next()) {
+                f.setId(_rs.getInt(1));
+                f.setCpf(_rs.getString(2));
+                f.setNome(_rs.getString(3));
+                f.setSenha(_rs.getString(4));
+                f.setTelefone(_rs.getString(5));
+                f.setNivel_acesso(_rs.getInt(6));
+            }
+        } catch (SQLException ex) {
+            System.out.println("Erro seleciona todos: Conexão Banco! :(");
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            fecharConexao();
+        }
+        return f;
+    }
+
     public boolean cadastrar(Funcionarios f) {
         boolean gravou = false;
         // Conecto com o Banco
@@ -34,7 +66,6 @@ public class FuncionarioDAO {
 
             // Preparo a insercao
             _pst = _con.prepareStatement("INSERT INTO Funcionarios(cpfFuncionario, nomeFuncionario, senha, telefone, nivelAcesso) VALUES( ?,  ?,  ?, ?, ?)");
-
             // Cada numero indica a posicao que o valor sera inserido nas ? acima
             _pst.setString(1, f.getCpf());
             _pst.setString(2, f.getNome());
@@ -56,7 +87,7 @@ public class FuncionarioDAO {
     }
 
     public void editar(Funcionarios func) {
-       abrirConexao();
+        abrirConexao();
         try {
             // Preparo a atualizacao
             _pst = _con.prepareStatement("UPDATE Funcionarios SET cpfFuncionario = ?,nomeFuncionario = ?,senha = ?,telefone = ?, nivelAcesso = ? where idFuncionarios = ?");
@@ -68,13 +99,13 @@ public class FuncionarioDAO {
             _pst.setInt(6, func.getId());
             // Executo a atualizacao
             _pst.executeUpdate();
-            //System.out.println("Sucesso! ;)");
+            
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
             fecharConexao();
-        } 
+        }
     }
 
     public void remover(Funcionarios func) {
