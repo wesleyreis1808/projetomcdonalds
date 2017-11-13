@@ -48,7 +48,11 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="btn_salvar" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="btn_salvarEdicao" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="btn_salvar" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
@@ -137,6 +141,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_salvar" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_delete" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="btn_salvarEdicao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
               </Group>
@@ -226,6 +231,11 @@
         <Component class="javax.swing.JButton" name="btn_delete">
           <Properties>
             <Property name="text" type="java.lang.String" value="Deletar"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JToggleButton" name="btn_salvarEdicao">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Salvar Edi&#xe7;&#xe3;o"/>
           </Properties>
         </Component>
       </SubComponents>

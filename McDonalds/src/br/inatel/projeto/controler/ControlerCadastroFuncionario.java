@@ -34,6 +34,7 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
         this.cadastroFuncionario.getBtn_salvar().addActionListener(this);
         this.cadastroFuncionario.getBtn_delete().addActionListener(this);
+        this.cadastroFuncionario.getBtn_salvarEdicao().addActionListener(this);
         this.cadastroFuncionario.getjTable1().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -55,6 +56,8 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
             }
         } else if (obj == this.cadastroFuncionario.getBtn_delete()) {
             removerItemSelecionado();
+        }else if(obj == this.cadastroFuncionario.getBtn_salvarEdicao()){
+            atualizarCadastro();
         }
     }
 
@@ -84,7 +87,7 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     @Override
     public void preencheTabela() {
-        
+
         dtm = (DefaultTableModel) this.cadastroFuncionario.getjTable1().getModel();
         for (Funcionarios func : funcionarios) {
             dtm.insertRow(dtm.getRowCount(), new Object[]{
@@ -101,11 +104,11 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
     public void removerItemSelecionado() {
         limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
-         if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
+        if (this.cadastroFuncionario.getjTable1().getSelectedRow() >= 0) {
             //Passa o funcionario que sera removido
             funcBD.remover(funcionarios.get(posiSelect));
-            this.funcionarios.remove(this.cadastroFuncionario.getjTable1().getSelectedRow());
-            dtm.removeRow(this.cadastroFuncionario.getjTable1().getSelectedRow());
+            this.funcionarios.remove(posiSelect);
+            dtm.removeRow(posiSelect);
             this.cadastroFuncionario.getjTable1().setModel(dtm);
             this.cadastroFuncionario.getjTable1().repaint();
         } else {
@@ -129,10 +132,10 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
         func.setNivel_acesso((this.cadastroFuncionario.getRd_vendedor().isSelected()) ? 1 : 2);
 
         funcionarios.add(func);
-        
+
         //Grava no Banco de Dados
         funcBD.cadastrar(func);
-        
+
         dtm.insertRow(dtm.getRowCount(), new Object[]{
             func.getNome(),
             func.getCpf(),
@@ -155,24 +158,24 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
     }
 
     private void jTable1MouseClicked(MouseEvent evt) {
-        
+
         limpaCampos();
         posiSelect = this.cadastroFuncionario.getjTable1().getSelectedRow();
         System.out.println(posiSelect);
         if (posiSelect >= 0) {
-            
+
             Funcionarios func = this.funcionarios.get(this.cadastroFuncionario.getjTable1().getSelectedRow());
-           
+
             this.cadastroFuncionario.getTxt_nome().setText(func.getNome());
             this.cadastroFuncionario.getTxt_cpf().setText(func.getCpf());
             this.cadastroFuncionario.getTxt_telefone().setText(func.getTelefone());
             this.cadastroFuncionario.getTxt_senha().setText(func.getSenha());
-            if(func.getNivel_acesso() == 1)
+            if (func.getNivel_acesso() == 1) {
                 this.cadastroFuncionario.getRd_vendedor().setSelected(true);
-            else
+            } else {
                 this.cadastroFuncionario.getRd_gerente().setSelected(true);
+            }
 
-            
         } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
         }
@@ -180,6 +183,37 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     @Override
     public void atualizarCadastro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        if (posiSelect >= 0) {
+            Funcionarios f = new Funcionarios();
+            f.setNome(this.cadastroFuncionario.getTxt_nome().getText());
+            f.setCpf(this.cadastroFuncionario.getTxt_cpf().getText());
+            f.setTelefone(this.cadastroFuncionario.getTxt_telefone().getText());
+            f.setSenha(this.cadastroFuncionario.getTxt_senha().getText());
+            f.setId(this.funcionarios.get(posiSelect).getId());
+            if (this.cadastroFuncionario.getRd_vendedor().isSelected()) {
+                f.setNivel_acesso(1);
+            } else {
+                f.setNivel_acesso(2);
+            }
+            
+            funcBD.editar(f);
+            
+            //limpa tabela e insere a atualização
+//            this.funcionarios.remove(posiSelect);
+//            dtm.removeRow(posiSelect);
+//            this.cadastroFuncionario.getjTable1().setModel(dtm);
+//            this.cadastroFuncionario.getjTable1().repaint();
+//            
+//            dtm.insertRow(dtm.getRowCount(), new Object[]{
+//            f.getNome(),
+//            f.getCpf(),
+//            f.getTelefone(),
+//            (f.getNivel_acesso() == 1) ? "Vendedor" : "Gerente"
+//        });
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
+        }
     }
 }

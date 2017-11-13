@@ -55,8 +55,26 @@ public class FuncionarioDAO {
         return gravou;
     }
 
-    public void editar() {
-        
+    public void editar(Funcionarios func) {
+       abrirConexao();
+        try {
+            // Preparo a atualizacao
+            _pst = _con.prepareStatement("UPDATE Funcionarios SET cpfFuncionario = ?,nomeFuncionario = ?,senha = ?,telefone = ?, nivelAcesso = ? where idFuncionarios = ?");
+            _pst.setString(1, func.getCpf());
+            _pst.setString(2, func.getNome());
+            _pst.setString(3, func.getSenha());
+            _pst.setString(4, func.getTelefone());
+            _pst.setInt(5, func.getNivel_acesso());
+            _pst.setInt(6, func.getId());
+            // Executo a atualizacao
+            _pst.executeUpdate();
+            //System.out.println("Sucesso! ;)");
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            fecharConexao();
+        } 
     }
 
     public void remover(Funcionarios func) {

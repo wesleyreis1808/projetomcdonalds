@@ -30,6 +30,12 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         return btn_salvar;
     }
 
+    public JToggleButton getBtn_salvarEdicao() {
+        return btn_salvarEdicao;
+    }
+    
+    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +62,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_delete = new javax.swing.JButton();
+        btn_salvarEdicao = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -99,6 +106,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
 
         btn_delete.setText("Deletar");
 
+        btn_salvarEdicao.setText("Salvar Edição");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -106,7 +115,10 @@ public class CadastroFuncionario extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(btn_salvar)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_salvarEdicao)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_salvar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,7 +184,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_salvar)
-                    .addComponent(btn_delete))
+                    .addComponent(btn_delete)
+                    .addComponent(btn_salvarEdicao))
                 .addGap(25, 25, 25))
         );
 
@@ -230,6 +243,7 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_delete;
     private javax.swing.JToggleButton btn_salvar;
+    private javax.swing.JToggleButton btn_salvarEdicao;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
