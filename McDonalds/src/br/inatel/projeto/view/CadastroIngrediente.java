@@ -29,6 +29,8 @@ public class CadastroIngrediente extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
