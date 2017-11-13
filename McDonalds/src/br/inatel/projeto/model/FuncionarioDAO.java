@@ -26,8 +26,6 @@ public class FuncionarioDAO {
     private PreparedStatement _pst = null;
 
     public Funcionarios login(String usr, String pwd) {
-        System.out.println("User: " + usr);
-        System.out.println("senha: " + pwd);
         Funcionarios f = new Funcionarios();
         //se não encontrar o id fica com -1
         f.setId(-1);
