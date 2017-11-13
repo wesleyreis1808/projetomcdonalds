@@ -45,7 +45,6 @@ public class Inicial extends javax.swing.JFrame {
         mnu_cadastro_ingredientes = new javax.swing.JMenuItem();
         mnu_cadastro_lanches = new javax.swing.JMenuItem();
         mnu_cadastro_bebidas = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
         jMenu6 = new javax.swing.JMenu();
         mnu_remover_cadastros = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
@@ -93,13 +92,10 @@ public class Inicial extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        jMenu5.setText("Editar");
-        jMenuBar1.add(jMenu5);
-
         jMenu6.setText("Remover");
 
         mnu_remover_cadastros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        mnu_remover_cadastros.setText("Remover Cadastros");
+        mnu_remover_cadastros.setText("Remover Ingredientes");
         jMenu6.add(mnu_remover_cadastros);
 
         jMenuBar1.add(jMenu6);
@@ -190,7 +186,6 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;

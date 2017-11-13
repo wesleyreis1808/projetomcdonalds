@@ -4,6 +4,9 @@ import java.awt.Toolkit;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 /**
@@ -115,14 +118,14 @@ public class Vendas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto", "Preço", "Adicional", "Repartir", "Modificações"
+                "Produto", "Preço", "Adicional", "Modificações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -241,8 +244,8 @@ public class Vendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_Responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txt_Responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         pnl_ResponsavelLayout.setVerticalGroup(
             pnl_ResponsavelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -597,6 +600,13 @@ public class Vendas extends javax.swing.JFrame {
         arrayBotoesLanches.add(btn_Lanche18);
         arrayBotoesLanches.add(btn_Lanche19);
         arrayBotoesLanches.add(btn_Lanche20);
+        
+        for (JButton lanche : arrayBotoesLanches) {
+            lanche.setVisible(false);
+        }
+        for (JButton bebidas : arrayBotoesBebidas) {
+            bebidas.setVisible(false);
+        }
     }
 
     public ArrayList<JButton> getArrayBotoesLanches() {
@@ -621,6 +631,46 @@ public class Vendas extends javax.swing.JFrame {
 
     public JButton getBtn_Remover() {
         return btn_Remover;
+    }
+
+    public JLabel getLbl_Troco() {
+        return lbl_Troco;
+    }
+
+    public void setLbl_Troco(JLabel lbl_Troco) {
+        this.lbl_Troco = lbl_Troco;
+    }
+
+    public JLabel getLbl_ValorCompra() {
+        return lbl_ValorCompra;
+    }
+
+    public void setLbl_ValorCompra(JLabel lbl_ValorCompra) {
+        this.lbl_ValorCompra = lbl_ValorCompra;
+    }
+
+    public JTable getTbl_Carrinho() {
+        return tbl_Carrinho;
+    }
+
+    public void setTbl_Carrinho(JTable tbl_Carrinho) {
+        this.tbl_Carrinho = tbl_Carrinho;
+    }
+
+    public JTextField getTxt_Dinheiro() {
+        return txt_Dinheiro;
+    }
+
+    public void setTxt_Dinheiro(JTextField txt_Dinheiro) {
+        this.txt_Dinheiro = txt_Dinheiro;
+    }
+
+    public JTextField getTxt_Responsavel() {
+        return txt_Responsavel;
+    }
+
+    public void setTxt_Responsavel(JTextField txt_Responsavel) {
+        this.txt_Responsavel = txt_Responsavel;
     }
 
 
