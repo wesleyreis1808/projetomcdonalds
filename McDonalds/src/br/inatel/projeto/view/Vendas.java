@@ -1,6 +1,11 @@
 package br.inatel.projeto.view;
 
+import br.inatel.projeto.controler.ControlerVendas;
+import br.inatel.projeto.model.Bebidas;
+import br.inatel.projeto.model.Lanche;
+import br.inatel.projeto.model.Produtos;
 import java.awt.Toolkit;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -23,7 +29,6 @@ public class Vendas extends javax.swing.JFrame {
      */
     public Vendas() {
         initComponents();
-
         insereBotoes();
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);  // abre a tela maximizada
@@ -484,12 +489,7 @@ public class Vendas extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vendas().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -672,6 +672,7 @@ public class Vendas extends javax.swing.JFrame {
     public void setTxt_Responsavel(JTextField txt_Responsavel) {
         this.txt_Responsavel = txt_Responsavel;
     }
+    
 
 
 }

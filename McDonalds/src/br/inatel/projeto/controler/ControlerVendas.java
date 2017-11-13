@@ -14,6 +14,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,17 +24,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ControlerVendas implements ActionListener {
 
-    Vendas vendas;
+    private Vendas vendas;
     private ControlerAlteracaoLanche alteracao;
     private ArrayList<Lanche> lanches = new ArrayList<>();  //Array que contem todos lanche cadastraddos
     private ArrayList<Bebidas> bebidas = new ArrayList<>();
-    private DefaultTableModel dtm = new DefaultTableModel();
-    private ArrayList<Produtos> produtos = new ArrayList<>();
+    private static DefaultTableModel dtm = new DefaultTableModel();
+    private static ArrayList<Produtos> produtos;
     private ArrayList<JButton> botoesLanche = new ArrayList<>();
     private ArrayList<JButton> botoesBebidas = new ArrayList<>();
 
     public ControlerVendas(Vendas vendas) {
         this.vendas = vendas;
+        ControlerVendas.produtos = new ArrayList<>();
         botoesBebidas = this.vendas.getArrayBotoesBebidas();
         botoesLanche = this.vendas.getArrayBotoesLanches();
 
@@ -48,6 +51,7 @@ public class ControlerVendas implements ActionListener {
         this.vendas.getBtn_Cancelar().addActionListener(this);
         this.vendas.getBtn_Finalizar().addActionListener(this);
         this.vendas.getBtn_Remover().addActionListener(this);
+        
 
         dtm = (DefaultTableModel) this.vendas.getTbl_Carrinho().getModel();
 
@@ -295,7 +299,6 @@ public class ControlerVendas implements ActionListener {
         ven.setValortotal(calculaTotal());
         ven.setProdutos(produtos);
 
- 
         limpar();
 
         JOptionPane.showMessageDialog(this.vendas, "Venda Concluída!", "Venda", JOptionPane.INFORMATION_MESSAGE);
@@ -313,6 +316,10 @@ public class ControlerVendas implements ActionListener {
         dtm.getDataVector().removeAllElements();
 
         this.vendas.repaint();
+    }
+
+    public static ArrayList<Produtos> getProdutos() {
+        return produtos;
     }
 
 }

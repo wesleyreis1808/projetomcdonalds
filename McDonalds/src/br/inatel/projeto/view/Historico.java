@@ -89,10 +89,9 @@ public class Historico extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbl_Historico);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btn_Limpar.setText("Limpar Histótico");
-        jPanel2.add(btn_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 130, 50));
+        jPanel2.add(btn_Limpar);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
 
@@ -135,10 +134,10 @@ public class Historico extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 60));
+        jPanel2.add(jPanel3);
 
         btn_Cancelar.setText("Cancelar");
-        jPanel2.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 107, 50));
+        jPanel2.add(btn_Cancelar);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Total"));
 
@@ -159,7 +158,7 @@ public class Historico extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 280, 60));
+        jPanel2.add(jPanel4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
