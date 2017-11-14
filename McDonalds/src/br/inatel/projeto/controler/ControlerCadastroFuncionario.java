@@ -176,6 +176,9 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
                 this.cadastroFuncionario.getRd_gerente().setSelected(true);
             }
 
+            this.cadastroFuncionario.getBtn_salvar().setEnabled(false);
+            this.cadastroFuncionario.getBtn_delete().setEnabled(false);
+            
         } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
         }
@@ -198,6 +201,10 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
             }
             
             funcBD.editar(f);
+            
+            this.cadastroFuncionario.getBtn_salvar().setEnabled(true);
+            this.cadastroFuncionario.getBtn_delete().setEnabled(true);
+            limpaCampos();
             
             //limpa tabela e insere a atualização
 //            this.funcionarios.remove(posiSelect);

@@ -11,6 +11,7 @@ import br.inatel.projeto.view.Inicial;
 import br.inatel.projeto.view.Login;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +27,18 @@ public class ControlerLogin implements ActionListener {
         this.login = login;
 
         this.login.getbtn_entrar().addActionListener(this);
+        this.login.getTxt_senha().addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txt_senhaKeyPressed(evt);
+            }
+
+            private void txt_senhaKeyPressed(KeyEvent evt) {
+                if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+                    verificaLogin();
+                }
+            }
+        });
+        
 
         this.login.setVisible(true);
 

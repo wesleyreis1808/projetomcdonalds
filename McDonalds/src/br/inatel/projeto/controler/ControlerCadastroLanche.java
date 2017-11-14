@@ -6,6 +6,7 @@
 package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Ingredientes;
+import br.inatel.projeto.model.IngredientesDAO;
 import br.inatel.projeto.model.Lanche;
 import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.view.CadastroLanche;
@@ -102,13 +103,14 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
     public void preencheTabela() {
         dtm = (DefaultTableModel) this.cadastroLanche.getjTable1().getModel();
 
-        for (Lanche lan : lanches) {
-            dtm.insertRow(dtm.getRowCount(), new Object[]{
-                lan.getNome(),
-                lan.getPreco()
-            });
+        if (this.lanches != null) {
+            for (Lanche lan : lanches) {
+                dtm.insertRow(dtm.getRowCount(), new Object[]{
+                    lan.getNome(),
+                    lan.getPreco()
+                });
+            }
         }
-
         this.cadastroLanche.getLista_ingredientes().setModel(dlmIng);
         this.cadastroLanche.getLista_lanche().setModel(dlmLan);
 
@@ -126,8 +128,10 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
             this.lanches.remove(this.cadastroLanche.getjTable1().getSelectedRow());
 
             dtm.removeRow(this.cadastroLanche.getjTable1().getSelectedRow());
-            
-            if(this.ingredientesLanche != null) this.ingredientesLanche.clear();
+
+            if (this.ingredientesLanche != null) {
+                this.ingredientesLanche.clear();
+            }
 
             // remover banco
             this.cadastroLanche.getjTable1().setModel(dtm);
@@ -144,6 +148,10 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         ArrayList<Lanche> lanche = new ArrayList<>();
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
 
+        IngredientesDAO bd = new IngredientesDAO();
+        ingredientes = bd.listar();
+
+        /*
         Ingredientes i1 = new Ingredientes();
         i1.setNome("Presunto");
         i1.setPreco((float) 0.50);
@@ -166,9 +174,9 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         l2.setPreco((float) 5.50);
         l2.addIngrediente(i2);
         lanche.add(l2);
-
+         */
         this.ingredientes = ingredientes;
-        this.lanches = lanche;
+        //this.lanches = lanche;
     }
 
     @Override
@@ -206,7 +214,9 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
     }
 
     private void adicionarIngrediente() {
-        if(this.ingredientesLanche == null) this.ingredientesLanche = new ArrayList();
+        if (this.ingredientesLanche == null) {
+            this.ingredientesLanche = new ArrayList();
+        }
         if (this.cadastroLanche.getLista_ingredientes().getSelectedIndex() != -1) {
             int indice = this.cadastroLanche.getLista_ingredientes().getSelectedIndex();
             Ingredientes ing = ingredientes.get(indice);
