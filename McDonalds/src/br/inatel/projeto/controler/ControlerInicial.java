@@ -120,10 +120,10 @@ public class ControlerInicial implements ActionListener {
             }
 
             File origem = new File(local);
-            File destino = new File("C:\\Users\\Administrator\\Pictures\\telaFundo.png");
+            File destino = new File("C:\\Users\\Public\\Pictures\\telaFundo.png");
             copiarArquivo(origem, destino);
 
-            ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Administrator\\Pictures\\telaFundo.png");
+            ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\telaFundo.png");
             img.setImage(img.getImage().getScaledInstance(617, 447, 100));
 
             this.inicial.getLbl_imagem().setIcon(img);
