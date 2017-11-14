@@ -5,7 +5,6 @@
  */
 package br.inatel.projeto.controler;
 
-import br.inatel.projeto.model.Funcionarios;
 import br.inatel.projeto.model.Ingredientes;
 import br.inatel.projeto.model.Lanche;
 import br.inatel.projeto.model.Tabela;
