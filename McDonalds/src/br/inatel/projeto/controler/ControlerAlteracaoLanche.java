@@ -108,6 +108,11 @@ public class ControlerAlteracaoLanche implements ActionListener {
         i4.setNome("Tomate");
         i4.setPreco((float) 0.25);
         ingredientes.add(i4);
+        
+        Ingredientes i5 = new Ingredientes();
+        i5.setNome("Tomate cereja");
+        i5.setPreco((float) 0.50);
+        ingredientes.add(i5);
 
         this.ingredientes = ingredientes;
     }
