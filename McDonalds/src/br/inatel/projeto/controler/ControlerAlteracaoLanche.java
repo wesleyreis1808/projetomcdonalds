@@ -90,12 +90,12 @@ public class ControlerAlteracaoLanche implements ActionListener {
         ArrayList<Ingredientes> ingredientes = new ArrayList<>();
 
         Ingredientes i1 = new Ingredientes();
-        i1.setNome("Presunto");
+        i1.setNome("Presuntu");
         i1.setPreco((float) 0.50);
         ingredientes.add(i1);
 
         Ingredientes i2 = new Ingredientes();
-        i2.setNome("Hamburger");
+        i2.setNome("Hamburgeeeer");
         i2.setPreco((float) 1.50);
         ingredientes.add(i2);
         
