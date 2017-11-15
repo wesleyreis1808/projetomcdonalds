@@ -93,7 +93,20 @@ public class VendasDAO {
             _pst.setInt(6, v.getVendedor());
             // Executo a pesquisa
             _pst.executeUpdate();
+            
+            
+            //========================== pegar ultimo id
+             _st = _con.createStatement();
+            // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
+            _rs = _st.executeQuery("SELECT idVendas FROM Vendas ORDER BY idVendas DESC LIMIT 1;");
 
+
+            while (_rs.next()) {
+                v.setId(_rs.getInt(1));
+                //System.out.println(v.getId());
+            }
+            
+            //========================== 
             _pst = _con.prepareStatement("INSERT INTO Vendas_has_Bebidas(Vendas_idVendas, Bebidas_idBebidas) VALUES(?, ?)");
 
             for (Produtos p : v.getProdutos()) {
@@ -108,6 +121,7 @@ public class VendasDAO {
 
             for (Produtos p : v.getProdutos()) {
                 if (p instanceof Lanche) {
+                    //System.out.printf("Lache %d venda %d",p.getId(),v.getId());
                     _pst.setInt(1, v.getId());
                     _pst.setInt(2, p.getId());
                     _pst.executeUpdate();
@@ -121,7 +135,7 @@ public class VendasDAO {
             _rs = _st.executeQuery("SELECT idLanche FROM Lanche ORDER BY idLanche DESC LIMIT 1;");
 
         } catch (SQLException ex) {
-            System.out.println("Falha: Conexão Banco! :(" + ex);
+            System.out.println("Falha: Conexão Banco! :'(" + ex);
             gravou = false;
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
@@ -154,6 +168,24 @@ public class VendasDAO {
             }
         } catch (SQLException ex) {
             System.out.println("Erro seleciona todos: Conexão não pode ser fechada! :(");
+        }
+    }
+    
+    public void updatePedido(Vendas v){
+        abrirConexao();
+        try {
+            // Preparo a atualizacao
+            _pst = _con.prepareStatement("UPDATE Vendas SET vendaConcluida = ? where idVendas = ?");
+            _pst.setInt(1, 1);
+            _pst.setInt(2, v.getId());;
+            // Executo a atualizacao
+            _pst.executeUpdate();
+            
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            fecharConexao();
         }
     }
 }

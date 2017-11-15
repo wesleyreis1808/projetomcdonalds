@@ -34,9 +34,13 @@ public class ControlerVendas implements ActionListener {
     private LancheDAO lancBD = new LancheDAO();
     private BebidasDAO bebiBD = new BebidasDAO();
     private VendasDAO vendBD = new VendasDAO();
+    
+    Funcionarios funcionario;
 
-    public ControlerVendas(Vendas vendas) {
+    public ControlerVendas(Vendas vendas,Funcionarios funcionario) {
         this.vendas = vendas;
+        this.funcionario = funcionario;
+        
         ControlerVendas.produtos = new ArrayList<>();
         botoesBebidas = this.vendas.getArrayBotoesBebidas();
         botoesLanche = this.vendas.getArrayBotoesLanches();
@@ -83,8 +87,8 @@ public class ControlerVendas implements ActionListener {
         for (JButton botao : this.vendas.getArrayBotoesBebidas()) {
             if (obj == botao) {
                 System.out.println(botao.getText());
-                this.produtos.add(bebidaEcolhida(botao.getText()));
-                adicionaTabela(bebidaEcolhida(botao.getText()));
+                this.produtos.add(bebidaEscolhida(botao.getText()));
+                adicionaTabela(bebidaEscolhida(botao.getText()));
             }
         }
         for (JButton botao : this.vendas.getArrayBotoesLanches()) {
@@ -223,6 +227,7 @@ public class ControlerVendas implements ActionListener {
 
         for (Lanche lan : this.lanches) {
             if (lan.getNome().equalsIgnoreCase(nome)) {
+                lanche.setId(lan.getId());
                 lanche.setNome(lan.getNome());
                 lanche.setPreco(lan.getPreco());
                 lanche.setIngredientes(lan.getIngredientes());
@@ -233,11 +238,12 @@ public class ControlerVendas implements ActionListener {
         return lanche;
     }
 
-    private Produtos bebidaEcolhida(String nome) {
+    private Produtos bebidaEscolhida(String nome) {
         Bebidas bebida = new Bebidas();
 
         for (Bebidas beb : bebidas) {
             if (nome.contains(beb.getNome())) {
+                bebida.setId(beb.getId());
                 bebida.setNome(beb.getNome());
                 bebida.setPreco((float) beb.getPreco());
                 bebida.setTamanho(beb.getTamanho());
@@ -303,6 +309,7 @@ public class ControlerVendas implements ActionListener {
         ven.setComprador(this.vendas.getTxt_Responsavel().getText());
         ven.setValortotal(calculaTotal());
         ven.setProdutos(produtos);
+        ven.setVendedor(funcionario.getId());
         vendBD.cadastrar(ven);
         limpar();
 

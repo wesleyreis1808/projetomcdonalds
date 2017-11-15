@@ -52,13 +52,13 @@ public class ControlerInicial implements ActionListener {
         Object obj = e.getSource();
 
         if (obj == this.inicial.getMnu_Pedidos()) {
-            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+            if (this.funcionario.getNivel_acesso() == 1 || this.funcionario.getNome().equals("Admin")) { // vendedor
                 mnu_Pedidos();
             } else {                                        // gerente
                 JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para vendedores!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
             }
         } else if (obj == this.inicial.getMnu_Vendas()) {
-            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+            if (this.funcionario.getNivel_acesso() == 1 || this.funcionario.getNome().equals("Admin")) { // vendedor
                 mnu_Vendas();
             } else {                                        // gerente
                 JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para vendedores!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
@@ -137,7 +137,7 @@ public class ControlerInicial implements ActionListener {
     }
 
     private void mnu_Vendas() {
-        new ControlerVendas(new Vendas());
+        new ControlerVendas(new Vendas(),this.funcionario);
     }
 
     private void mnu_cadastro_funcionarios() {

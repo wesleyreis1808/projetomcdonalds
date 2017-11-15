@@ -7,6 +7,7 @@ package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Bebidas;
 import br.inatel.projeto.model.Ingredientes;
+import br.inatel.projeto.model.IngredientesDAO;
 import br.inatel.projeto.model.Lanche;
 import br.inatel.projeto.model.Produtos;
 import br.inatel.projeto.view.AlteracaoLanche;
@@ -87,9 +88,10 @@ public class ControlerAlteracaoLanche implements ActionListener {
 
     private void getDados() {
         // pegar todos ingredientes banco
-        ArrayList<Ingredientes> ingredientes = new ArrayList<>();
+        IngredientesDAO ingBD = new IngredientesDAO();
+        ArrayList<Ingredientes> ingredientes = ingBD.listar();
 
-        Ingredientes i1 = new Ingredientes();
+        /*Ingredientes i1 = new Ingredientes();
         i1.setNome("Presuntu");
         i1.setPreco((float) 0.50);
         ingredientes.add(i1);
@@ -112,7 +114,7 @@ public class ControlerAlteracaoLanche implements ActionListener {
         Ingredientes i5 = new Ingredientes();
         i5.setNome("Tomate cereja");
         i5.setPreco((float) 0.50);
-        ingredientes.add(i5);
+        ingredientes.add(i5);*/
 
         this.ingredientes = ingredientes;
     }

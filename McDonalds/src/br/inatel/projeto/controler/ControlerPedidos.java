@@ -65,7 +65,7 @@ public class ControlerPedidos implements ActionListener {
         } else if (obj == this.pedidos.getBtn_Ultimo()) {
             botaoUltimo();
         } else if (obj == this.pedidos.getMnu_atualizar_pedidos()) {
-
+            refresh();
         }
 
     }
@@ -97,6 +97,7 @@ public class ControlerPedidos implements ActionListener {
 
     // pegar apenas as vendas ainda não entregues
     public void getDados() {
+        vendas.clear();
         ArrayList<Vendas> v = new ArrayList<>();
         v = vendBD.listar();
         
@@ -110,6 +111,11 @@ public class ControlerPedidos implements ActionListener {
 
     public void atualizaBanco() {
         // salva banco
+        
+        Vendas v = this.vendas.get(this.indice);
+        
+        vendBD.updatePedido(v);
+        
         this.vendas.remove(this.indice);
         if (this.vendas.size() <= 0) {
             this.indice = -1;
@@ -198,5 +204,11 @@ public class ControlerPedidos implements ActionListener {
     private void entregue() {
         this.vendas.get(this.indice).setEntregue(0);
         atualizaBanco();
+    }
+    
+    private void refresh(){
+        getDados();
+        this.dtm = (DefaultTableModel) this.pedidos.getTbl_Pedidos().getModel();
+        preencheTabela();
     }
 }
