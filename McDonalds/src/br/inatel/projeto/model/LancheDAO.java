@@ -5,6 +5,7 @@
  */
 package br.inatel.projeto.model;
 
+import br.inatel.projeto.view.CadastroLanche;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -92,7 +94,7 @@ public class LancheDAO {
             // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
             _rs = _st.executeQuery("SELECT * FROM Lanche");
             // O metodo next() caminha entre as linhas da tabela de resultados retornada.
-            
+
             while (_rs.next()) {
                 Lanche l = new Lanche();
                 l.setId(_rs.getInt(1));
@@ -101,9 +103,9 @@ public class LancheDAO {
                 l.setImage_path(_rs.getString(4));
                 lanc.add(l);
             }
-            
+
             for (int i = 0; i < lanc.size(); i++) {
-               _rsIng = _st.executeQuery("SELECT *FROM Lanche_has_Ingredientes AS l INNER JOIN Ingredientes AS i ON l.Ingredientes_idIngredientes = i.idIngredientes where l.Lanche_idLanche ="+lanc.get(i).getId()+"");
+                _rsIng = _st.executeQuery("SELECT *FROM Lanche_has_Ingredientes AS l INNER JOIN Ingredientes AS i ON l.Ingredientes_idIngredientes = i.idIngredientes where l.Lanche_idLanche =" + lanc.get(i).getId() + "");
                 ArrayList<Ingredientes> ingArray = new ArrayList<>();
                 lanc.get(i).setIngredientes(ingArray);
                 // O metodo next() caminha entre as linhas da tabela de resultados retornada.
@@ -113,8 +115,8 @@ public class LancheDAO {
                     ing.setNome(_rsIng.getString(4));
                     ing.setPreco(_rsIng.getFloat(5));
                     ingArray.add(ing);
-                } 
-            }   
+                }
+            }
         } catch (SQLException ex) {
             System.out.println("Erro seleciona todos: Conexão Banco! :(");
         } finally {
@@ -123,8 +125,8 @@ public class LancheDAO {
         }
         return lanc;
     }
-    
-    public void remover(Lanche l) {
+
+    public boolean remover(Lanche l, CadastroLanche lanche) {
         abrirConexao();
         try {
             // Preparo a exclusao
@@ -142,13 +144,18 @@ public class LancheDAO {
             //System.out.println("Sucesso! ;)");
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
+            fecharConexao();
+            JOptionPane.showMessageDialog(lanche, "Lanche encontra-se cadastrado em vendas! Exclua as vendas que contenha esse lanche e tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+
+            return false;
         } finally {
             fecharConexao();
         }
+        return true;
     }
-    
+
     public void editar(Lanche l) {
-        remover(l);
+        remover(l,null);
         cadastrar(l);
     }
 

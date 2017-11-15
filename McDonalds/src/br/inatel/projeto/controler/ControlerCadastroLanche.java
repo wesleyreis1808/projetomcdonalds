@@ -73,7 +73,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         } else if (obj == this.cadastroLanche.getBtn_deletar()) {
             removerItemSelecionado();
             limpaCampos();
-        }else if(obj == this.cadastroLanche.getBtn_update()){
+        } else if (obj == this.cadastroLanche.getBtn_update()) {
             atualizarCadastro();
         }
 
@@ -130,15 +130,17 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         if (this.cadastroLanche.getjTable1().getSelectedRow() >= 0) {
             dtm.removeRow(posiSelect);
             //BD remove
-            lancheBD.remover(lanches.get(posiSelect));
-            this.lanches.remove(posiSelect);
-            if (this.ingredientesLanche != null) {
-                this.ingredientesLanche.clear();
-            }
+            if (lancheBD.remover(lanches.get(posiSelect), this.cadastroLanche)) {
 
-            // remover banco
-            this.cadastroLanche.getjTable1().setModel(dtm);
-            this.cadastroLanche.getjTable1().repaint();
+                this.lanches.remove(posiSelect);
+                if (this.ingredientesLanche != null) {
+                    this.ingredientesLanche.clear();
+                }
+
+                // remover banco
+                this.cadastroLanche.getjTable1().setModel(dtm);
+                this.cadastroLanche.getjTable1().repaint();
+            }
         } else {
             JOptionPane.showMessageDialog(this.cadastroLanche, "Nenhuma linha não selecionada!");
         }
@@ -153,7 +155,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
 
         IngredientesDAO bd = new IngredientesDAO();
         ingredientes = bd.listar();
-        
+
         LancheDAO lanc = new LancheDAO();
         lanche = lanc.listar();
 
@@ -199,7 +201,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         lanche.setIngredientes(ingrediente);
 
         this.lanches.add(lanche);
-        
+
         lancheBD.cadastrar(lanche);
 
         dtm.insertRow(dtm.getRowCount(), new Object[]{
@@ -284,7 +286,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
 
     @Override
     public void atualizarCadastro() {
-        
+
         Lanche lanche = lanches.get(posiSelect);
         lanche.setNome(this.cadastroLanche.getTxf_nome().getText());
         lanche.setPreco(Float.parseFloat(this.cadastroLanche.getTxf_preco().getText()));

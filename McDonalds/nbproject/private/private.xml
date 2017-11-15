@@ -3,18 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Jefferson/Documents/NetBeansProjects/projetomcdonalds/McDonalds/src/br/inatel/projeto/model/Vendas.java</file>
-=======
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/view/Inicial.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/model/Vendas.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/controler/ControlerPedidos.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/controler/ControlerVendas.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/model/IngredientesDAO.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/view/Login.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/controler/Main.java</file>
-            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/controler/ControlerInicial.java</file>
->>>>>>> c710d84a8ca4ee8160628fe9842e23bbb1f5af84
+            <file>file:/C:/Users/WesleyReis/Desktop/GIT/ProjetoEng/McDonalds/src/br/inatel/projeto/controler/ControlerCadastroLanche.java</file>
         </group>
     </open-files>
 </project-private>
