@@ -25,7 +25,7 @@ public class Inicial extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         setIcon();
-        
+
         ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\telaFundo.png");
         img.setImage(img.getImage().getScaledInstance(617, 447, 100));
 
@@ -53,7 +53,7 @@ public class Inicial extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         mnu_alterar_imagem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        MnuSair = new javax.swing.JMenuItem();
         mnu_sobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,8 +118,8 @@ public class Inicial extends javax.swing.JFrame {
 
         jMenu2.setText("Ajuda");
 
-        jMenuItem1.setText("Sair");
-        jMenu2.add(jMenuItem1);
+        MnuSair.setText("Sair");
+        jMenu2.add(MnuSair);
 
         mnu_sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
         mnu_sobre.setText("Sobre");
@@ -183,6 +183,7 @@ public class Inicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MnuSair;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -190,7 +191,6 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lbl_imagem;
     private javax.swing.JMenuItem mnu_Pedidos;
     private javax.swing.JMenuItem mnu_Vendas;
@@ -228,6 +228,14 @@ public class Inicial extends javax.swing.JFrame {
 
     public JMenuItem getMnu_alterar_imagem() {
         return mnu_alterar_imagem;
+    }
+
+    public JMenuItem getMnuSair() {
+        return MnuSair;
+    }
+
+    public void setMnuSair(JMenuItem MnuSair) {
+        this.MnuSair = MnuSair;
     }
 
     public JMenuItem getMnu_cadastro_bebidas() {

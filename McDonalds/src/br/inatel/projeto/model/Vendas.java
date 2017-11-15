@@ -27,10 +27,11 @@ public class Vendas {
         this.entregue = 0;
         data = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
         hora = new java.text.SimpleDateFormat("HH:mm:ss").format(java.util.Calendar.getInstance().getTime());
+        
     }
-
+    
     public String getDate(){
-        return data+" "+hora;
+        return this.data + " " + this.hora;
     }
     
     public void setDate(String date){

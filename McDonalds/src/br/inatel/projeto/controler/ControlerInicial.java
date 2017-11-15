@@ -5,6 +5,7 @@
  */
 package br.inatel.projeto.controler;
 
+import br.inatel.projeto.model.Funcionarios;
 import br.inatel.projeto.view.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,6 +17,7 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -25,9 +27,11 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class ControlerInicial implements ActionListener {
 
     Inicial inicial;
+    Funcionarios funcionario;
 
-    public ControlerInicial(Inicial inicial) {
+    public ControlerInicial(Inicial inicial, Funcionarios funcionario) {
         this.inicial = inicial;
+        this.funcionario = funcionario;
 
         this.inicial.getMnu_Pedidos().addActionListener(this);
         this.inicial.getMnu_Vendas().addActionListener(this);
@@ -39,7 +43,7 @@ public class ControlerInicial implements ActionListener {
         this.inicial.getMnu_remover_cadastros().addActionListener(this);
         this.inicial.getMnu_sobre().addActionListener(this);
         this.inicial.getMnu_cadastroFuncionario().addActionListener(this);
-
+        this.inicial.getMnuSair().addActionListener(this);
         inicial.setVisible(true);
     }
 
@@ -48,25 +52,63 @@ public class ControlerInicial implements ActionListener {
         Object obj = e.getSource();
 
         if (obj == this.inicial.getMnu_Pedidos()) {
-            mnu_Pedidos();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                mnu_Pedidos();
+            } else {                                        // gerente
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para vendedores!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            }
         } else if (obj == this.inicial.getMnu_Vendas()) {
-            mnu_Vendas();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                mnu_Vendas();
+            } else {                                        // gerente
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para vendedores!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            }
         } else if (obj == this.inicial.getMnu_alterar_imagem()) {
             alterarImagem();
         } else if (obj == this.inicial.getMnu_cadastro_bebidas()) {
-            mnu_cadastro_bebidas();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            } else {                                        // gerente
+                mnu_cadastro_bebidas();
+            }
+
         } else if (obj == this.inicial.getMnu_cadastro_ingredientes()) {
-            mnu_cadastro_ingredientes();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            } else {                                        // gerente
+                mnu_cadastro_ingredientes();
+            }
         } else if (obj == this.inicial.getMnu_cadastro_lanches()) {
-            mnu_cadastro_lanche();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            } else {                                        // gerente
+                mnu_cadastro_lanche();
+            }
         } else if (obj == this.inicial.getMnu_historico()) {
-            mnu_historico();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            } else {                                        // gerente
+                mnu_historico();
+            }
         } else if (obj == this.inicial.getMnu_remover_cadastros()) {
-            mnu_remover_cadastros();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            } else {                                        // gerente
+                mnu_remover_cadastros();
+            }
         } else if (obj == this.inicial.getMnu_sobre()) {
 
         } else if (obj == this.inicial.getMnu_cadastroFuncionario()) {
-            mnu_cadastro_funcionarios();
+            if (this.funcionario.getNivel_acesso() == 1) { // vendedor
+                JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);
+            } else {                                        // gerente
+               mnu_cadastro_funcionarios();
+            }
+        }else if (obj == this.inicial.getMnuSair()) {
+            Login login = new Login();
+            new ControlerLogin(login);
+            
+            this.inicial.dispose();
         }
     }
 
