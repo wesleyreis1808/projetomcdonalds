@@ -25,6 +25,7 @@ public class Inicial extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         setIcon();
+
         ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\telaFundo.png");
         img.setImage(img.getImage().getScaledInstance(617, 447, 100));
 

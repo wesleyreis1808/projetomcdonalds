@@ -14,17 +14,17 @@ import java.util.ArrayList;
 public class Vendas {
 
     private int id;
-    private String vendedor;
+    private int vendedor;
     private String data;
     private String hora;
     private String modificacao;
     private float valortotal;
     private ArrayList produtos;
     private String comprador;
-    private boolean entregue;
+    private int entregue;
 
     public Vendas() {
-        this.entregue = false;
+        this.entregue = 0;
         data = new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date());
         hora = new java.text.SimpleDateFormat("HH:mm:ss").format(java.util.Calendar.getInstance().getTime());
         
@@ -33,14 +33,22 @@ public class Vendas {
     public String getDate(){
         return this.data + " " + this.hora;
     }
-
-    public boolean isEntregue() {
+    
+    public void setDate(String date){
+        String[] array = date.split(" ");
+        data = array[0];
+        hora = array[1];
+    }
+    
+    public int getEntregue() {
         return entregue;
     }
 
-    public void setEntregue(boolean entregue) {
+    public void setEntregue(int entregue) {
         this.entregue = entregue;
     }
+
+    
 
     public int getId() {
         return id;
@@ -51,11 +59,11 @@ public class Vendas {
 
     }
 
-    public String getVendedor() {
+    public int getVendedor() {
         return vendedor;
     }
 
-    public void setVendedor(String vendedor) {
+    public void setVendedor(int vendedor) {
         this.vendedor = vendedor;
     }
 

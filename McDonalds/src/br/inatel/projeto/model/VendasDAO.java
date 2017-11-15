@@ -1,4 +1,3 @@
-
 package br.inatel.projeto.model;
 
 import java.sql.Connection;
@@ -14,8 +13,7 @@ import java.util.ArrayList;
  * @author Jefferson
  */
 public class VendasDAO {
-    
-    
+
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String _url = "jdbc:mysql://sql122.main-hosting.eu:3306/u295754093_smart";
 
@@ -24,53 +22,114 @@ public class VendasDAO {
 
     private Connection _con = null;
     private ResultSet _rs = null;
+
     private Statement _st = null;
     private PreparedStatement _pst = null;
-    
-    
-    public ArrayList<Lanche> listar() {
-        ArrayList<Lanche> lanc = new ArrayList<>();
+
+    public ArrayList<Vendas> listar() {
+        ArrayList<Vendas> vend = new ArrayList<>();
         try {
             // Conecto com o Banco
             abrirConexao();
             // O metodo createStatement() cria um objeto Statement que permite enviar comandosSQL para o banco
             _st = _con.createStatement();
             // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
-            _rs = _st.executeQuery("SELECT * FROM Vendas");
+            _rs = _st.executeQuery("SELECT Vendas.idVendas, Vendas.vendaResponsavel,Vendas.vendaData, Vendas.vendaPreco,Vendas.vendaConcluida FROM Vendas");
             // O metodo next() caminha entre as linhas da tabela de resultados retornada.
-            
             while (_rs.next()) {
-                Lanche l = new Lanche();
-                l.setId(_rs.getInt(1));
-                l.setNome(_rs.getString(2));
-                l.setPreco(_rs.getFloat(3));
-                l.setImage_path(_rs.getString(4));
-                lanc.add(l);
+                Vendas v = new Vendas();
+                v.setId(_rs.getInt(1));
+                v.setComprador(_rs.getString(2));
+                v.setDate(_rs.getString(3));
+                v.setValortotal(_rs.getFloat(4));
+                v.setEntregue(_rs.getInt(5));
+                v.setProdutos(new ArrayList<>());
+                vend.add(v);
             }
-            
-            for (int i = 0; i < lanc.size(); i++) {
-//               _rsIng = _st.executeQuery("SELECT *FROM Lanche_has_Ingredientes AS l INNER JOIN Ingredientes AS i ON l.Ingredientes_idIngredientes = i.idIngredientes where l.Lanche_idLanche ="+lanc.get(i).getId()+"");
-//                ArrayList<Ingredientes> ingArray = new ArrayList<>();
-//                lanc.get(i).setIngredientes(ingArray);
-//                // O metodo next() caminha entre as linhas da tabela de resultados retornada.
-//                while (_rsIng.next()) {
-//                    Ingredientes ing = new Ingredientes();
-//                    ing.setId(_rsIng.getInt(3));
-//                    ing.setNome(_rsIng.getString(4));
-//                    ing.setPreco(_rsIng.getFloat(5));
-//                    ingArray.add(ing);
-//                } 
-            }   
+
+            for (Vendas vendas : vend) {
+                _rs = _st.executeQuery("SELECT Lanche.nomeLanches,Lanche.modificacaoLanche from Vendas INNER JOIN Vendas_has_Lanche ON Vendas.idVendas = Vendas_has_Lanche.Vendas_idVendas INNER JOIN Lanche ON Vendas_has_Lanche.Lanche_idLanche= Lanche.idLanche WHERE Vendas.idVendas = " + vendas.getId());
+                while (_rs.next()) {
+                    Lanche l = new Lanche();
+                    l.setNome(_rs.getString(1));
+                    l.setModificacao(_rs.getString(2));
+                    vendas.getProdutos().add(l);
+                }
+            }
+            for (Vendas vendas : vend) {
+                _rs = _st.executeQuery("SELECT Bebidas.nomeBebida, Bebidas.tamanhoBebidas from Vendas INNER JOIN Vendas_has_Lanche ON Vendas.idVendas = Vendas_has_Lanche.Vendas_idVendas INNER JOIN Vendas_has_Bebidas ON Vendas.idVendas = Vendas_has_Bebidas.Vendas_idVendas INNER JOIN Bebidas ON Vendas_has_Bebidas.Bebidas_idBebidas=Bebidas.idBebidas WHERE Vendas.idVendas = " + vendas.getId());
+                while (_rs.next()) {
+                    Bebidas b = new Bebidas();
+                    b.setNome(_rs.getString(1));
+                    b.setTamanho(_rs.getString(2));
+                    vendas.getProdutos().add(b);
+                }
+            }
         } catch (SQLException ex) {
             System.out.println("Erro seleciona todos: Conexão Banco! :(");
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
             fecharConexao();
         }
-        return lanc;
+        return vend;
     }
-    
-    
+
+    public boolean cadastrar(Vendas v) {
+
+        boolean gravou = false;
+        // Conecto com o Banco
+        gravou = abrirConexao();
+
+        try {
+
+            // Preparo a insercao
+            _pst = _con.prepareStatement("INSERT INTO Vendas(vendaPreco, vendaModificar, vendaConcluida, vendaData, vendaResponsavel, Funcionarios_idFuncionarios) VALUES( ?,  ?,  ?, ?, ?, ?)");
+            // Cada numero indica a posicao que o valor sera inserido nas ? acima
+            _pst.setFloat(1, v.getValortotal());
+            _pst.setString(2, v.getModificacao());
+            _pst.setInt(3, v.getEntregue());
+            _pst.setString(4, v.getDate());
+            _pst.setString(5, v.getComprador());
+            _pst.setInt(6, v.getVendedor());
+            // Executo a pesquisa
+            _pst.executeUpdate();
+
+            _pst = _con.prepareStatement("INSERT INTO Vendas_has_Bebidas(Vendas_idVendas, Bebidas_idBebidas) VALUES(?, ?)");
+
+            for (Produtos p : v.getProdutos()) {
+                if (p instanceof Bebidas) {
+                    _pst.setInt(1, v.getId());
+                    _pst.setInt(2, p.getId());
+                    _pst.executeUpdate();
+                }
+            }
+
+            _pst = _con.prepareStatement("INSERT INTO Vendas_has_Lanche(Vendas_idVendas, Lanche_idLanche) VALUES(?, ?)");
+
+            for (Produtos p : v.getProdutos()) {
+                if (p instanceof Lanche) {
+                    _pst.setInt(1, v.getId());
+                    _pst.setInt(2, p.getId());
+                    _pst.executeUpdate();
+                }
+            }
+
+            //System.out.println("Sucesso! ;)");
+            // O metodo createStatement() cria um objeto Statement que permite enviar comandosSQL para o banco
+            _st = _con.createStatement();
+            // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
+            _rs = _st.executeQuery("SELECT idLanche FROM Lanche ORDER BY idLanche DESC LIMIT 1;");
+
+        } catch (SQLException ex) {
+            System.out.println("Falha: Conexão Banco! :(" + ex);
+            gravou = false;
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            fecharConexao();
+        }
+        return gravou;
+    }
+
     public boolean abrirConexao() {
         try {
             _con = DriverManager.getConnection(_url, _user, _password);
