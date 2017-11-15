@@ -36,6 +36,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btn_update" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Component id="btn_deletar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
@@ -52,7 +54,10 @@
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane3" min="-2" pref="326" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_deletar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_deletar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_update" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -280,6 +285,11 @@
     <Component class="javax.swing.JButton" name="btn_deletar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Deletar"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_update">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Salvar edi&#xe7;&#xe3;o"/>
       </Properties>
     </Component>
   </SubComponents>

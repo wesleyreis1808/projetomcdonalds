@@ -46,6 +46,7 @@ public class CadastroLanche extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_deletar = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -121,6 +122,8 @@ public class CadastroLanche extends javax.swing.JFrame {
 
         btn_deletar.setText("Deletar");
 
+        btn_update.setText("Salvar edição");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -135,6 +138,8 @@ public class CadastroLanche extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_update)
+                        .addGap(26, 26, 26)
                         .addComponent(btn_deletar)
                         .addGap(25, 25, 25))))
         );
@@ -147,7 +152,9 @@ public class CadastroLanche extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_deletar)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_deletar)
+                            .addComponent(btn_update))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -182,6 +189,7 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JButton btm_remover;
     private javax.swing.JButton btm_salvar;
     private javax.swing.JButton btn_deletar;
+    private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -201,6 +209,10 @@ public class CadastroLanche extends javax.swing.JFrame {
 
     public JButton getBtm_imagem() {
         return btm_imagem;
+    }
+
+    public JButton getBtn_update() {
+        return btn_update;
     }
 
     public JButton getBtm_adicionar() {

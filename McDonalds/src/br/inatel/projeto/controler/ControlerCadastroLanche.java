@@ -45,6 +45,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         this.cadastroLanche.getBtm_remover().addActionListener(this);
         this.cadastroLanche.getBtm_salvar().addActionListener(this);
         this.cadastroLanche.getBtn_deletar().addActionListener(this);
+        this.cadastroLanche.getBtn_update().addActionListener(this);
         this.cadastroLanche.getjTable1().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -75,6 +76,8 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         } else if (obj == this.cadastroLanche.getBtn_deletar()) {
             removerItemSelecionado();
             limpaCampos();
+        }else if(obj == this.cadastroLanche.getBtn_update()){
+            atualizarCadastro();
         }
 
     }
@@ -284,6 +287,12 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
 
     @Override
     public void atualizarCadastro() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        Lanche lanche = lanches.get(posiSelect);
+        lanche.setNome(this.cadastroLanche.getTxf_nome().getText());
+        lanche.setPreco(Float.parseFloat(this.cadastroLanche.getTxf_preco().getText()));
+        lanche.setImage_path("VAZIO");
+
+        lancheBD.editar(lanches.get(posiSelect));
     }
 }

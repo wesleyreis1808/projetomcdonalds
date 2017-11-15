@@ -146,6 +146,11 @@ public class LancheDAO {
             fecharConexao();
         }
     }
+    
+    public void editar(Lanche l) {
+        remover(l);
+        cadastrar(l);
+    }
 
     public boolean abrirConexao() {
         try {
