@@ -154,14 +154,13 @@ public class AlteracaoLanche extends javax.swing.JFrame {
 
         btn_Finalizar.setText("Finalizar");
         pnl_Opcoes.add(btn_Finalizar);
-        btn_Finalizar.setBounds(290, 20, 84, 34);
+        btn_Finalizar.setBounds(250, 20, 100, 34);
 
         btn_Cancelar.setText("Cancelar");
         pnl_Opcoes.add(btn_Cancelar);
-        btn_Cancelar.setBounds(400, 20, 84, 34);
+        btn_Cancelar.setBounds(380, 20, 110, 34);
 
         getContentPane().add(pnl_Opcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 507, 70));
-        pnl_Opcoes.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

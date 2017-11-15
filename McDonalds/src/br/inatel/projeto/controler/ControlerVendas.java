@@ -105,52 +105,6 @@ public class ControlerVendas implements ActionListener {
         
         this.bebidas = bebiBD.listar();
         this.lanches = lancBD.listar();
-//        ArrayList<Lanche> lanche = new ArrayList<>();
-//        ArrayList<Ingredientes> ingredientes = new ArrayList<>();
-//
-//        Ingredientes i1 = new Ingredientes();
-//        i1.setNome("Presunto");
-//        i1.setPreco((float) 0.50);
-//        ingredientes.add(i1);
-//
-//        Ingredientes i2 = new Ingredientes();
-//        i2.setNome("Hamburger");
-//        i2.setPreco((float) 1.50);
-//        ingredientes.add(i2);
-//
-//        Lanche l1 = new Lanche();
-//        l1.setNome("X-Tudo");
-//        l1.setPreco((float) 10.50);
-//        l1.addIngrediente(i1);
-//        l1.addIngrediente(i2);
-//        lanche.add(l1);
-//
-//        Lanche l2 = new Lanche();
-//        l2.setNome("X-Nada");
-//        l2.setPreco((float) 5.50);
-//        l2.addIngrediente(i2);
-//        lanche.add(l2);
-//
-//        this.lanches = lanche;
-//
-//        ArrayList<Bebidas> bebida = new ArrayList<>();
-//
-//        Bebidas b1 = new Bebidas();
-//        b1.setId(0);
-//        b1.setNome("Coca-Cola");
-//        b1.setPreco((float) 3.5);
-//        b1.setTamanho("350 ml");
-//        bebida.add(b1);
-//
-//        Bebidas b2 = new Bebidas();
-//
-//        b2.setId(1);
-//        b2.setNome("Suco");
-//        b2.setPreco((float) 8.0);
-//        b2.setTamanho("2 L");
-//        bebida.add(b2);
-//
-//        this.bebidas = bebida;
     }
 
     //=============================================================================
@@ -176,20 +130,7 @@ public class ControlerVendas implements ActionListener {
     public void adicionaTabela(Produtos produ) {
         DecimalFormat df = new DecimalFormat("0.00");
 
-        if (produ instanceof Lanche) {
-            String op2 = "teste";
-//            String op2 = (((AlteracaoLanche) alteracao).isModificacao()) ? "Não" : "Sim";
-            //           ((Lanche) produ).setModificacao(op2);
-
-            dtm.insertRow(dtm.getRowCount(), new Object[]{
-                produ.getNome(),
-                ((float) produ.getPreco()),
-                ((float) ((Lanche) produ).getAdicional()),
-                op2
-            });
-            this.vendas.getLbl_ValorCompra().setText(df.format(calculaTotal()));
-
-        } else if (produ instanceof Bebidas) {
+        if (produ instanceof Bebidas) {
             dtm.insertRow(dtm.getRowCount(), new Object[]{
                 produ.getNome(),
                 produ.getPreco(),

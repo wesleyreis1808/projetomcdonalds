@@ -54,7 +54,6 @@ public class Inicial extends javax.swing.JFrame {
         mnu_alterar_imagem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         MnuSair = new javax.swing.JMenuItem();
-        mnu_sobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -118,12 +117,9 @@ public class Inicial extends javax.swing.JFrame {
 
         jMenu2.setText("Ajuda");
 
+        MnuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         MnuSair.setText("Sair");
         jMenu2.add(MnuSair);
-
-        mnu_sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-        mnu_sobre.setText("Sobre");
-        jMenu2.add(mnu_sobre);
 
         jMenuBar1.add(jMenu2);
 
@@ -201,7 +197,6 @@ public class Inicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnu_cadastro_lanches;
     private javax.swing.JMenuItem mnu_historico;
     private javax.swing.JMenuItem mnu_remover_cadastros;
-    private javax.swing.JMenuItem mnu_sobre;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
@@ -258,10 +253,5 @@ public class Inicial extends javax.swing.JFrame {
         return mnu_remover_cadastros;
     }
 
-    public JMenuItem getMnu_sobre() {
-        return mnu_sobre;
-    }
-    
-    
 
 }

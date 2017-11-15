@@ -48,7 +48,7 @@ public class VendasDAO {
             }
 
             for (Vendas vendas : vend) {
-                _rs = _st.executeQuery("SELECT Lanche.nomeLanches,Lanche.modificacaoLanche from Vendas INNER JOIN Vendas_has_Lanche ON Vendas.idVendas = Vendas_has_Lanche.Vendas_idVendas INNER JOIN Lanche ON Vendas_has_Lanche.Lanche_idLanche= Lanche.idLanche WHERE Vendas.idVendas = " + vendas.getId());
+                _rs = _st.executeQuery("SELECT Lanche.nomeLanches, Vendas_has_Lanche.modificacao  from Vendas INNER JOIN Vendas_has_Lanche ON Vendas.idVendas = Vendas_has_Lanche.Vendas_idVendas INNER JOIN Lanche ON Vendas_has_Lanche.Lanche_idLanche= Lanche.idLanche WHERE Vendas.idVendas = " + vendas.getId());
                 while (_rs.next()) {
                     Lanche l = new Lanche();
                     l.setNome(_rs.getString(1));
@@ -117,13 +117,14 @@ public class VendasDAO {
                 }
             }
 
-            _pst = _con.prepareStatement("INSERT INTO Vendas_has_Lanche(Vendas_idVendas, Lanche_idLanche) VALUES(?, ?)");
+            _pst = _con.prepareStatement("INSERT INTO Vendas_has_Lanche(Vendas_idVendas, Lanche_idLanche,modificacao) VALUES(?, ?,?)");
 
             for (Produtos p : v.getProdutos()) {
                 if (p instanceof Lanche) {
-                    //System.out.printf("Lache %d venda %d",p.getId(),v.getId());
+                    System.out.printf("Lache %d midificacao %s",p.getId(), p.getModificacao());
                     _pst.setInt(1, v.getId());
                     _pst.setInt(2, p.getId());
+                    _pst.setString(3, p.getModificacao());
                     _pst.executeUpdate();
                 }
             }

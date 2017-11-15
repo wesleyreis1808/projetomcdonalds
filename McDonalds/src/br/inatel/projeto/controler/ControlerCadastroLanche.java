@@ -41,7 +41,6 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
 
         this.cadastroLanche.getBtm_adicionar().addActionListener(this);
         this.cadastroLanche.getBtm_cancelar().addActionListener(this);
-        this.cadastroLanche.getBtm_imagem().addActionListener(this);
         this.cadastroLanche.getBtm_remover().addActionListener(this);
         this.cadastroLanche.getBtm_salvar().addActionListener(this);
         this.cadastroLanche.getBtn_deletar().addActionListener(this);
@@ -65,8 +64,6 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
             adicionarIngrediente();
         } else if (obj == this.cadastroLanche.getBtm_cancelar()) {
             this.cadastroLanche.dispose();
-        } else if (obj == this.cadastroLanche.getBtm_imagem()) {
-
         } else if (obj == this.cadastroLanche.getBtm_remover()) {
             removerIngrediente();
         } else if (obj == this.cadastroLanche.getBtm_salvar()) {

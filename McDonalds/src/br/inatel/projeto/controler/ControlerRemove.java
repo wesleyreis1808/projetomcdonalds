@@ -56,24 +56,25 @@ public class ControlerRemove implements ActionListener {
 
     private void getDados() {
         this.ing = ingBD.listar();
-        
+
     }
 
     private void removeIng() {
         if (this.remove.getLista_ingrediente().getSelectedIndex() != -1) {
 
             int indice = this.remove.getLista_ingrediente().getSelectedIndex();
-            ingBD.remover(ing.get(indice));
-            this.ing.remove(indice);
-            System.out.println("ID: "+ indice);
-            for (Ingredientes inge : this.ing) {
-                System.out.println(inge.getNome());
-            }
-            System.out.println("==============================");
+            if (ingBD.remover(ing.get(indice),this.remove)) {
+                this.ing.remove(indice);
+                System.out.println("ID: " + indice);
+                for (Ingredientes inge : this.ing) {
+                    System.out.println(inge.getNome());
+                }
+                System.out.println("==============================");
 
-            dlm.clear();
-            for (int i = 0; i < this.ing.size(); i++) {
-                dlm.add(i, this.ing.get(i).getNome());
+                dlm.clear();
+                for (int i = 0; i < this.ing.size(); i++) {
+                    dlm.add(i, this.ing.get(i).getNome());
+                }
             }
         }
     }

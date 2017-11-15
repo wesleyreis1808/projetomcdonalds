@@ -5,6 +5,7 @@
  */
 package br.inatel.projeto.view;
 
+import java.awt.Toolkit;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -23,6 +24,8 @@ public class Historico extends javax.swing.JFrame {
 
     public Historico() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
+
         this.setLocationRelativeTo(null);
     }
 

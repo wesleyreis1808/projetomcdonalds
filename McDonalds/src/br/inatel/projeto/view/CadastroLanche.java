@@ -42,7 +42,6 @@ public class CadastroLanche extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btm_remover = new javax.swing.JButton();
         _lblLancheImagem = new javax.swing.JLabel();
-        btm_imagem = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         btn_deletar = new javax.swing.JButton();
@@ -98,9 +97,6 @@ public class CadastroLanche extends javax.swing.JFrame {
         btm_remover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/left-pointing-arrow.png"))); // NOI18N
         painel_cadastro.add(btm_remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, -1));
         painel_cadastro.add(_lblLancheImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 130, 90));
-
-        btm_imagem.setText("Imagem");
-        painel_cadastro.add(btm_imagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 130, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -185,7 +181,6 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JLabel _lblLancheImagem;
     private javax.swing.JButton btm_adicionar;
     private javax.swing.JButton btm_cancelar;
-    private javax.swing.JButton btm_imagem;
     private javax.swing.JButton btm_remover;
     private javax.swing.JButton btm_salvar;
     private javax.swing.JButton btn_deletar;
@@ -207,9 +202,7 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBtm_imagem() {
-        return btm_imagem;
-    }
+
 
     public JButton getBtn_update() {
         return btn_update;

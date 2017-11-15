@@ -41,7 +41,6 @@ public class ControlerInicial implements ActionListener {
         this.inicial.getMnu_cadastro_lanches().addActionListener(this);
         this.inicial.getMnu_historico().addActionListener(this);
         this.inicial.getMnu_remover_cadastros().addActionListener(this);
-        this.inicial.getMnu_sobre().addActionListener(this);
         this.inicial.getMnu_cadastroFuncionario().addActionListener(this);
         this.inicial.getMnuSair().addActionListener(this);
         inicial.setVisible(true);
@@ -96,8 +95,6 @@ public class ControlerInicial implements ActionListener {
             } else {                                        // gerente
                 mnu_remover_cadastros();
             }
-        } else if (obj == this.inicial.getMnu_sobre()) {
-
         } else if (obj == this.inicial.getMnu_cadastroFuncionario()) {
             if (this.funcionario.getNivel_acesso() == 1) { // vendedor
                 JOptionPane.showMessageDialog(this.inicial, "Acesso permitido apenas para gerentes!", "Acesso Inválido", JOptionPane.WARNING_MESSAGE);

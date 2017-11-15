@@ -5,6 +5,7 @@
  */
 package br.inatel.projeto.view;
 
+import java.awt.Toolkit;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JRadioButton;
@@ -23,6 +24,8 @@ public class CadastroFuncionario extends javax.swing.JFrame {
      */
     public CadastroFuncionario() {
         initComponents();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
+
         this.setLocationRelativeTo(null);
     }
 
@@ -33,8 +36,6 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public JToggleButton getBtn_salvarEdicao() {
         return btn_salvarEdicao;
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -328,7 +329,5 @@ public class CadastroFuncionario extends javax.swing.JFrame {
     public void setTxt_telefone(JTextField txt_telefone) {
         this.txt_telefone = txt_telefone;
     }
-
-    
 
 }

@@ -1,4 +1,3 @@
-
 package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Bebidas;
@@ -8,6 +7,7 @@ import br.inatel.projeto.view.CadastroBebida;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.beans.PropertyChangeEvent;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -30,6 +30,11 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
         this.cadastroBebida.getjTable1().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
+            }
+        });
+        this.cadastroBebida.getComBox_Refri().addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mudaImagem(cadastroBebida.getComBox_Refri().getSelectedItem().toString());
             }
         });
 
@@ -183,6 +188,18 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
         this.cadastroBebida.getComBox_Refri().setSelectedIndex(0);
         this.cadastroBebida.getGrupoDeBotão_Tamanho().clearSelection();
 
+    }
+
+    public void mudaImagem(String nome) {
+        System.out.println(nome);
+
+        try {
+            this.cadastroBebida.getLabel_Refri().setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/" + nome + ".png")));
+            this.cadastroBebida.getLabel_Refri().repaint();
+        } catch (Exception ex) {
+            this.cadastroBebida.getLabel_Refri().setIcon(null);
+            this.cadastroBebida.getLabel_Refri().repaint();
+        }
     }
 
     @Override

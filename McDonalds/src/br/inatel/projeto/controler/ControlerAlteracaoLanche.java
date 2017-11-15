@@ -89,30 +89,6 @@ public class ControlerAlteracaoLanche implements ActionListener {
         IngredientesDAO ingBD = new IngredientesDAO();
         ArrayList<Ingredientes> ingredientes = ingBD.listar();
 
-        /*Ingredientes i1 = new Ingredientes();
-        i1.setNome("Presuntu");
-        i1.setPreco((float) 0.50);
-        ingredientes.add(i1);
-
-        Ingredientes i2 = new Ingredientes();
-        i2.setNome("Hamburgeeeer");
-        i2.setPreco((float) 1.50);
-        ingredientes.add(i2);
-        
-        Ingredientes i3 = new Ingredientes();
-        i3.setNome("Ovo");
-        i3.setPreco((float) 1.00);
-        ingredientes.add(i3);
-        
-        Ingredientes i4 = new Ingredientes();
-        i4.setNome("Tomate");
-        i4.setPreco((float) 0.25);
-        ingredientes.add(i4);
-        
-        Ingredientes i5 = new Ingredientes();
-        i5.setNome("Tomate cereja");
-        i5.setPreco((float) 0.50);
-        ingredientes.add(i5);*/
 
         this.ingredientes = ingredientes;
     }

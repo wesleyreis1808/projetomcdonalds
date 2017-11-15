@@ -5,6 +5,7 @@
  */
 package br.inatel.projeto.model;
 
+import br.inatel.projeto.view.Remove;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +13,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -85,7 +87,7 @@ public class IngredientesDAO {
         return ingBD;
     }
     
-    public void remover(Ingredientes ing) {
+    public boolean remover(Ingredientes ing,Remove remove) {
         abrirConexao();
         try {
             // Preparo a exclusao
@@ -97,9 +99,13 @@ public class IngredientesDAO {
             //System.out.println("Sucesso! ;)");
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
+            JOptionPane.showMessageDialog(remove, "Ingrediente encontra-se cadastrado em lanches! Exclua os lanche que contenha esse ingrediente e tente novamente.","Erro",JOptionPane.ERROR_MESSAGE);
+            fecharConexao();
+            return false;
         } finally {
             fecharConexao();
         }
+        return true;
     }
 
     public boolean abrirConexao() {
