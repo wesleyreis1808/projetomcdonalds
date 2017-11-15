@@ -5,16 +5,12 @@
  */
 package br.inatel.projeto.controler;
 
-import br.inatel.projeto.model.Funcionarios;
-import br.inatel.projeto.model.Ingredientes;
-import br.inatel.projeto.model.Lanche;
 import br.inatel.projeto.model.Produtos;
-import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.model.Vendas;
+import br.inatel.projeto.model.VendasDAO;
 import br.inatel.projeto.view.Pedidos;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +24,7 @@ public class ControlerPedidos implements ActionListener {
     Pedidos pedidos;
     DefaultTableModel dtm;
     ArrayList<Vendas> vendas = new ArrayList();
+    VendasDAO vendBD = new VendasDAO();
 
     public ControlerPedidos(Pedidos pedidos) {
         this.pedidos = pedidos;
@@ -100,84 +97,15 @@ public class ControlerPedidos implements ActionListener {
 
     // pegar apenas as vendas ainda não entregues
     public void getDados() {
-
-        ArrayList<Produtos> prod = new ArrayList<>();
-        ArrayList<Ingredientes> ingredientes = new ArrayList<>();
-        Vendas venda = new Vendas();
-
-        Ingredientes i1 = new Ingredientes();
-        i1.setNome("Presunto");
-        i1.setPreco((float) 0.50);
-        ingredientes.add(i1);
-
-        Ingredientes i2 = new Ingredientes();
-        i2.setNome("Hamburger");
-        i2.setPreco((float) 1.50);
-        ingredientes.add(i2);
-
-        Lanche l1 = new Lanche();
-        l1.setNome("X-Tudo");
-        l1.setPreco((float) 10.50);
-        l1.addIngrediente(i1);
-        l1.addIngrediente(i2);
-        l1.setModificacao("Com Mofificação");
-        prod.add(l1);
-
-        Lanche l2 = new Lanche();
-        l2.setNome("X-Nada");
-        l2.setPreco((float) 5.50);
-        l2.addIngrediente(i2);
-        l2.setModificacao("Sem Mofificação");
-        prod.add(l2);
-
-        venda.setProdutos(prod);
-        venda.setData("10/11/2017");
-        venda.setHora("08:33");
-        venda.setComprador("Jefão");
-        venda.setValortotal((float) 35.70);
-        venda.setVendedor("Atendente 1");
-        venda.setId(0);
-        this.vendas.add(venda);
-
-        ArrayList<Produtos> prod2 = new ArrayList<>();
-        ArrayList<Ingredientes> ingredientes2 = new ArrayList<>();
-        Vendas venda2 = new Vendas();
-
-        Ingredientes i3 = new Ingredientes();
-        i3.setNome("Ovo");
-        i3.setPreco((float) 0.50);
-        ingredientes2.add(i3);
-
-        Ingredientes i4 = new Ingredientes();
-        i4.setNome("Queijo");
-        i4.setPreco((float) 1.50);
-        ingredientes2.add(i4);
-
-        Lanche l3 = new Lanche();
-        l3.setNome("Bauru");
-        l3.setPreco((float) 10.50);
-        l3.addIngrediente(i1);
-        l3.addIngrediente(i2);
-        l3.setModificacao("Sem Mofificação");
-        prod2.add(l3);
-
-        Lanche l4 = new Lanche();
-        l4.setNome("X-Nada2");
-        l4.setPreco((float) 5.50);
-        l4.addIngrediente(i2);
-        l4.setModificacao("Com Mofificação");
-        prod2.add(l4);
-
-        venda2.setProdutos(prod2);
-        venda2.setData("20/01/2017");
-        venda2.setHora("18:33");
-        venda2.setComprador("Emerson");
-        venda2.setValortotal((float) 45.70);
-        venda2.setVendedor("Atendente 2");
-        venda2.setId(1);
-
-        this.vendas.add(venda2);
-
+        ArrayList<Vendas> v = new ArrayList<>();
+        v = vendBD.listar();
+        
+        for (int i = 0; i < v.size(); i++) {
+            if(v.get(i).getEntregue() == 0){
+                vendas.add(v.get(i));
+                System.out.println("Add");
+            }
+        }
     }
 
     public void atualizaBanco() {
@@ -268,7 +196,7 @@ public class ControlerPedidos implements ActionListener {
     }
 
     private void entregue() {
-        this.vendas.get(this.indice).setEntregue(true);
+        this.vendas.get(this.indice).setEntregue(0);
         atualizaBanco();
     }
 }

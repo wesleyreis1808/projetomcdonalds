@@ -14,7 +14,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -41,7 +40,6 @@ public class Historico extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Historico = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        btn_Limpar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         rbt_Todas = new javax.swing.JRadioButton();
         rbt_Data = new javax.swing.JRadioButton();
@@ -89,9 +87,6 @@ public class Historico extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbl_Historico);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-
-        btn_Limpar.setText("Limpar Histótico");
-        jPanel2.add(btn_Limpar);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
 
@@ -233,7 +228,6 @@ public class Historico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Cancelar;
-    private javax.swing.JButton btn_Limpar;
     private javax.swing.JButton btn_Ok;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
@@ -250,10 +244,6 @@ public class Historico extends javax.swing.JFrame {
 
     public JButton getBtn_Cancelar() {
         return btn_Cancelar;
-    }
-
-    public JButton getBtn_Limpar() {
-        return btn_Limpar;
     }
 
     public JButton getBtn_Ok() {
