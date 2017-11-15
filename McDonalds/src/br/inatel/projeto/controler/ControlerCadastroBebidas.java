@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.inatel.projeto.controler;
 
 import br.inatel.projeto.model.Bebidas;
 import br.inatel.projeto.model.BebidasDAO;
-import br.inatel.projeto.model.Funcionarios;
 import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.view.CadastroBebida;
 import java.awt.event.ActionEvent;
@@ -17,10 +12,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author WesleyReis
- */
 public class ControlerCadastroBebidas implements ActionListener, Tabela {
 
     CadastroBebida cadastroBebida;
