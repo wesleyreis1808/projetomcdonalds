@@ -8,6 +8,7 @@ package br.inatel.projeto.controler;
 import br.inatel.projeto.model.Ingredientes;
 import br.inatel.projeto.model.IngredientesDAO;
 import br.inatel.projeto.model.Lanche;
+import br.inatel.projeto.model.LancheDAO;
 import br.inatel.projeto.model.Tabela;
 import br.inatel.projeto.view.CadastroLanche;
 import java.awt.event.ActionEvent;
@@ -29,9 +30,11 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
     DefaultListModel dlmIng = new DefaultListModel();
     DefaultListModel dlmLan = new DefaultListModel();
     Object[][] dados;
-    ArrayList<Lanche> lanches;
+    ArrayList<Lanche> lanches = new ArrayList<>();
     ArrayList<Ingredientes> ingredientes = new ArrayList(); // todos Ingredientes
     ArrayList<Ingredientes> ingredientesLanche = new ArrayList();
+    LancheDAO lancheBD = new LancheDAO();
+    private int posiSelect;
 
     public ControlerCadastroLanche(CadastroLanche cadastroLanche) {
         this.cadastroLanche = cadastroLanche;
@@ -125,10 +128,10 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
         if (this.cadastroLanche.getjTable1().getSelectedRow() >= 0) {
-            this.lanches.remove(this.cadastroLanche.getjTable1().getSelectedRow());
-
-            dtm.removeRow(this.cadastroLanche.getjTable1().getSelectedRow());
-
+            dtm.removeRow(posiSelect);
+            //BD remove
+            lancheBD.remover(lanches.get(posiSelect));
+            this.lanches.remove(posiSelect);
             if (this.ingredientesLanche != null) {
                 this.ingredientesLanche.clear();
             }
@@ -150,6 +153,9 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
 
         IngredientesDAO bd = new IngredientesDAO();
         ingredientes = bd.listar();
+        
+        LancheDAO lanc = new LancheDAO();
+        lanche = lanc.listar();
 
         /*
         Ingredientes i1 = new Ingredientes();
@@ -176,7 +182,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         lanche.add(l2);
          */
         this.ingredientes = ingredientes;
-        //this.lanches = lanche;
+        this.lanches = lanche;
     }
 
     @Override
@@ -189,9 +195,12 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
 
         lanche.setNome(this.cadastroLanche.getTxf_nome().getText());
         lanche.setPreco(Float.parseFloat(this.cadastroLanche.getTxf_preco().getText()));
+        lanche.setImage_path("VAZIO");
         lanche.setIngredientes(ingrediente);
 
         this.lanches.add(lanche);
+        
+        lancheBD.cadastrar(lanche);
 
         dtm.insertRow(dtm.getRowCount(), new Object[]{
             lanche.getNome(),
@@ -259,7 +268,7 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         if (this.cadastroLanche.getjTable1().getSelectedRow() >= 0) {
             System.out.println(this.cadastroLanche.getjTable1().getSelectedRow());
             Lanche lanche = this.lanches.get(this.cadastroLanche.getjTable1().getSelectedRow());
-
+            posiSelect = this.cadastroLanche.getjTable1().getSelectedRow();
             this.cadastroLanche.getTxf_nome().setText(lanche.getNome());
             this.cadastroLanche.getTxf_preco().setText("" + lanche.getPreco());
 
