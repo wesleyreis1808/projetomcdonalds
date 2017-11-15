@@ -59,9 +59,11 @@ public class ControlerLogin implements ActionListener {
         //ID -1 quer dizer que não existe funcionario com usuario/login no banco de dados
         if (f.getId() != -1) {
             if (f.getNome().equals(this.login.getTxt_email().getText()) && f.getSenha().equals(this.login.getTxt_senha().getText())) {
+                
                 Inicial inicial = new Inicial();
-                new ControlerInicial(inicial);
-                this.login.setVisible(false);
+                new ControlerInicial(inicial,f);
+                this.login.dispose();
+                
             } else {
                 JOptionPane.showMessageDialog(this.login, "Usuário/Senha inválidos", "Erro", JOptionPane.ERROR_MESSAGE);
             }
