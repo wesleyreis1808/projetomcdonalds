@@ -176,8 +176,6 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
                 this.cadastroFuncionario.getRd_gerente().setSelected(true);
             }
 
-            this.cadastroFuncionario.getBtn_salvar().setEnabled(false);
-            this.cadastroFuncionario.getBtn_delete().setEnabled(false);
             
         } else {
             JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
