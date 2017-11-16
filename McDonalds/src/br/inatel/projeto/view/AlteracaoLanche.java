@@ -5,12 +5,14 @@
  */
 package br.inatel.projeto.view;
 
-
+import java.awt.HeadlessException;
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.UIManager;
 
 /**
@@ -19,10 +21,17 @@ import javax.swing.UIManager;
  */
 public class AlteracaoLanche extends javax.swing.JFrame {
 
- // array contendo os ingredientes selecionados dos lanches   
+    // array contendo os ingredientes selecionados dos lanches   
     private ArrayList<JCheckBox> botoes = new ArrayList<>();
-    
- @SuppressWarnings("unchecked")
+
+    public AlteracaoLanche(){
+        initComponents();
+        
+        insereBotoes();
+
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -52,7 +61,6 @@ public class AlteracaoLanche extends javax.swing.JFrame {
         ckb_Ingrediente11 = new javax.swing.JCheckBox();
         ckb_Ingrediente12 = new javax.swing.JCheckBox();
         pnl_Opcoes = new javax.swing.JPanel();
-        ckb_Repartir = new javax.swing.JCheckBox();
         btn_Finalizar = new javax.swing.JButton();
         btn_Cancelar = new javax.swing.JButton();
 
@@ -141,55 +149,21 @@ public class AlteracaoLanche extends javax.swing.JFrame {
 
         getContentPane().add(pnl_Ingredientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(1, 0, -1, 170));
 
-        pnl_Opcoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Opções"));
+        pnl_Opcoes.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         pnl_Opcoes.setLayout(null);
-
-        ckb_Repartir.setText("Repartir");
-        pnl_Opcoes.add(ckb_Repartir);
-        ckb_Repartir.setBounds(10, 30, 90, 23);
 
         btn_Finalizar.setText("Finalizar");
         pnl_Opcoes.add(btn_Finalizar);
-        btn_Finalizar.setBounds(290, 20, 84, 34);
+        btn_Finalizar.setBounds(250, 20, 100, 34);
 
         btn_Cancelar.setText("Cancelar");
         pnl_Opcoes.add(btn_Cancelar);
-        btn_Cancelar.setBounds(400, 20, 84, 34);
+        btn_Cancelar.setBounds(380, 20, 110, 34);
 
         getContentPane().add(pnl_Opcoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 507, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            UIManager.setLookAndFeel("com.birosoft.liquid.LiquidLookAndFeel");
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AlteracaoLanche.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AlteracaoLanche().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Cancelar;
@@ -218,9 +192,59 @@ public class AlteracaoLanche extends javax.swing.JFrame {
     private javax.swing.JCheckBox ckb_Ingrediente7;
     private javax.swing.JCheckBox ckb_Ingrediente8;
     private javax.swing.JCheckBox ckb_Ingrediente9;
-    private javax.swing.JCheckBox ckb_Repartir;
     private javax.swing.JPanel pnl_Ingredientes;
     private javax.swing.JPanel pnl_Opcoes;
     // End of variables declaration//GEN-END:variables
+
+    private void insereBotoes() {
+        botoes.add(this.ckb_Ingrediente1);
+        botoes.add(this.ckb_Ingrediente2);
+        botoes.add(this.ckb_Ingrediente3);
+        botoes.add(this.ckb_Ingrediente4);
+        botoes.add(this.ckb_Ingrediente5);
+        botoes.add(this.ckb_Ingrediente6);
+        botoes.add(this.ckb_Ingrediente7);
+        botoes.add(this.ckb_Ingrediente8);
+        botoes.add(this.ckb_Ingrediente9);
+        botoes.add(this.ckb_Ingrediente10);
+        botoes.add(this.ckb_Ingrediente11);
+        botoes.add(this.ckb_Ingrediente12);
+        botoes.add(this.ckb_Ingrediente13);
+        botoes.add(this.ckb_Ingrediente14);
+        botoes.add(this.ckb_Ingrediente15);
+        botoes.add(this.ckb_Ingrediente16);
+        botoes.add(this.ckb_Ingrediente17);
+        botoes.add(this.ckb_Ingrediente18);
+        botoes.add(this.ckb_Ingrediente19);
+        botoes.add(this.ckb_Ingrediente20);
+        botoes.add(this.ckb_Ingrediente21);
+        botoes.add(this.ckb_Ingrediente22);
+        botoes.add(this.ckb_Ingrediente23);
+        botoes.add(this.ckb_Ingrediente24);
+    }
+
+    public ArrayList<JCheckBox> getBotoes() {
+        return botoes;
+    }
+
+    public void setBotoes(ArrayList<JCheckBox> botoes) {
+        this.botoes = botoes;
+    }
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public void setBtn_Cancelar(JButton btn_Cancelar) {
+        this.btn_Cancelar = btn_Cancelar;
+    }
+
+    public JButton getBtn_Finalizar() {
+        return btn_Finalizar;
+    }
+
+    public void setBtn_Finalizar(JButton btn_Finalizar) {
+        this.btn_Finalizar = btn_Finalizar;
+    }
 
 }

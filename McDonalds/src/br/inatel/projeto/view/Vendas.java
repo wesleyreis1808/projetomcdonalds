@@ -1,13 +1,19 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.inatel.projeto.view;
 
+import br.inatel.projeto.controler.ControlerVendas;
+import br.inatel.projeto.model.Bebidas;
+import br.inatel.projeto.model.Lanche;
+import br.inatel.projeto.model.Produtos;
 import java.awt.Toolkit;
+import java.text.DecimalFormat;
+import java.util.ArrayList;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,15 +21,19 @@ import javax.swing.UIManager;
  */
 public class Vendas extends javax.swing.JFrame {
 
+    ArrayList<JButton> arrayBotoesLanches = new ArrayList();
+    ArrayList<JButton> arrayBotoesBebidas = new ArrayList();
+
     /**
      * Creates new form Vendas
      */
     public Vendas() {
         initComponents();
-
+        insereBotoes();
 
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);  // abre a tela maximizada
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
+
     }
 
     @SuppressWarnings("unchecked")
@@ -113,14 +123,14 @@ public class Vendas extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto", "Preço", "Adicional", "Repartir", "Modificações"
+                "Produto", "Preço", "Adicional", "Modificações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.Float.class, java.lang.Float.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -135,11 +145,11 @@ public class Vendas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tbl_Carrinho);
 
         pnl_Venda.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 10, 370, 280);
+        jScrollPane2.setBounds(10, 10, 370, 310);
 
         btn_Remover.setText("Remover");
         pnl_Venda.add(btn_Remover);
-        btn_Remover.setBounds(280, 300, 90, 23);
+        btn_Remover.setBounds(290, 330, 90, 23);
 
         pnl_Pagamento.setBorder(javax.swing.BorderFactory.createTitledBorder("Pagamento"));
 
@@ -225,7 +235,7 @@ public class Vendas extends javax.swing.JFrame {
         );
 
         pnl_Venda.add(pnl_Pagamento);
-        pnl_Pagamento.setBounds(10, 400, 370, 260);
+        pnl_Pagamento.setBounds(10, 410, 370, 250);
 
         pnl_Responsavel.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -239,8 +249,8 @@ public class Vendas extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txt_Responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(txt_Responsavel, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         pnl_ResponsavelLayout.setVerticalGroup(
             pnl_ResponsavelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -253,7 +263,7 @@ public class Vendas extends javax.swing.JFrame {
         );
 
         pnl_Venda.add(pnl_Responsavel);
-        pnl_Responsavel.setBounds(10, 340, 370, 40);
+        pnl_Responsavel.setBounds(10, 360, 370, 40);
 
         tbp_Venda.addTab("Venda", pnl_Venda);
 
@@ -322,7 +332,7 @@ public class Vendas extends javax.swing.JFrame {
 
         btn_Lanche15.setText("jButton1");
         pnl_Lanche.add(btn_Lanche15);
-        btn_Lanche15.setBounds(730, 280, 170, 120);
+        btn_Lanche15.setBounds(730, 270, 170, 120);
 
         btn_Lanche16.setText("jButton1");
         pnl_Lanche.add(btn_Lanche16);
@@ -437,9 +447,9 @@ public class Vendas extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(tbp_Venda, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(tbp_Guias, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGap(21, 21, 21))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -479,12 +489,7 @@ public class Vendas extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Vendas.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Vendas().setVisible(true);
-            }
-        });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -553,7 +558,121 @@ public class Vendas extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Responsavel;
     // End of variables declaration//GEN-END:variables
 
+    private void insereBotoes() {
+        arrayBotoesBebidas.add(btn_Bebida1);
+        arrayBotoesBebidas.add(btn_Bebida2);
+        arrayBotoesBebidas.add(btn_Bebida3);
+        arrayBotoesBebidas.add(btn_Bebida4);
+        arrayBotoesBebidas.add(btn_Bebida5);
+        arrayBotoesBebidas.add(btn_Bebida6);
+        arrayBotoesBebidas.add(btn_Bebida7);
+        arrayBotoesBebidas.add(btn_Bebida8);
+        arrayBotoesBebidas.add(btn_Bebida9);
+        arrayBotoesBebidas.add(btn_Bebida10);
+        arrayBotoesBebidas.add(btn_Bebida11);
+        arrayBotoesBebidas.add(btn_Bebida12);
+        arrayBotoesBebidas.add(btn_Bebida13);
+        arrayBotoesBebidas.add(btn_Bebida14);
+        arrayBotoesBebidas.add(btn_Bebida15);
+        arrayBotoesBebidas.add(btn_Bebida16);
+        arrayBotoesBebidas.add(btn_Bebida17);
+        arrayBotoesBebidas.add(btn_Bebida18);
+        arrayBotoesBebidas.add(btn_Bebida19);
+        arrayBotoesBebidas.add(btn_Bebida20);
 
-    // método para adicionar lanche e bebida aos botoes
-   
+        arrayBotoesLanches.add(btn_Lanche1);
+        arrayBotoesLanches.add(btn_Lanche2);
+        arrayBotoesLanches.add(btn_Lanche3);
+        arrayBotoesLanches.add(btn_Lanche4);
+        arrayBotoesLanches.add(btn_Lanche5);
+        arrayBotoesLanches.add(btn_Lanche6);
+        arrayBotoesLanches.add(btn_Lanche7);
+        arrayBotoesLanches.add(btn_Lanche8);
+        arrayBotoesLanches.add(btn_Lanche9);
+        arrayBotoesLanches.add(btn_Lanche10);
+        arrayBotoesLanches.add(btn_Lanche11);
+        arrayBotoesLanches.add(btn_Lanche12);
+        arrayBotoesLanches.add(btn_Lanche13);
+        arrayBotoesLanches.add(btn_Lanche14);
+        arrayBotoesLanches.add(btn_Lanche15);
+        arrayBotoesLanches.add(btn_Lanche16);
+        arrayBotoesLanches.add(btn_Lanche17);
+        arrayBotoesLanches.add(btn_Lanche18);
+        arrayBotoesLanches.add(btn_Lanche19);
+        arrayBotoesLanches.add(btn_Lanche20);
+        
+        for (JButton lanche : arrayBotoesLanches) {
+            lanche.setVisible(false);
+        }
+        for (JButton bebidas : arrayBotoesBebidas) {
+            bebidas.setVisible(false);
+        }
+    }
+
+    public ArrayList<JButton> getArrayBotoesLanches() {
+        return arrayBotoesLanches;
+    }
+
+    public ArrayList<JButton> getArrayBotoesBebidas() {
+        return arrayBotoesBebidas;
+    }
+
+    public JButton getBtn_Calcular() {
+        return btn_Calcular;
+    }
+
+    public JButton getBtn_Cancelar() {
+        return btn_Cancelar;
+    }
+
+    public JButton getBtn_Finalizar() {
+        return btn_Finalizar;
+    }
+
+    public JButton getBtn_Remover() {
+        return btn_Remover;
+    }
+
+    public JLabel getLbl_Troco() {
+        return lbl_Troco;
+    }
+
+    public void setLbl_Troco(JLabel lbl_Troco) {
+        this.lbl_Troco = lbl_Troco;
+    }
+
+    public JLabel getLbl_ValorCompra() {
+        return lbl_ValorCompra;
+    }
+
+    public void setLbl_ValorCompra(JLabel lbl_ValorCompra) {
+        this.lbl_ValorCompra = lbl_ValorCompra;
+    }
+
+    public JTable getTbl_Carrinho() {
+        return tbl_Carrinho;
+    }
+
+    public void setTbl_Carrinho(JTable tbl_Carrinho) {
+        this.tbl_Carrinho = tbl_Carrinho;
+    }
+
+    public JTextField getTxt_Dinheiro() {
+        return txt_Dinheiro;
+    }
+
+    public void setTxt_Dinheiro(JTextField txt_Dinheiro) {
+        this.txt_Dinheiro = txt_Dinheiro;
+    }
+
+    public JTextField getTxt_Responsavel() {
+        return txt_Responsavel;
+    }
+
+    public void setTxt_Responsavel(JTextField txt_Responsavel) {
+        this.txt_Responsavel = txt_Responsavel;
+    }
+    
+
+
 }

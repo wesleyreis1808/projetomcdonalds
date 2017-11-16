@@ -15,7 +15,7 @@ public class BancoDeDadosDAO {
     private Statement _st = null;
     private PreparedStatement _pst = null;
     
-    private boolean abrirConexao(){
+    public boolean abrirConexao(){
         try {
             _con = DriverManager.getConnection(_url, _user, _password);
             System.out.println("Conexão Banco! :)");
@@ -26,7 +26,7 @@ public class BancoDeDadosDAO {
         }
     }
     
-    void fecharConexao(){
+    public void fecharConexao(){
         try {
                 if (_rs != null) {
                     _rs.close();
@@ -42,7 +42,7 @@ public class BancoDeDadosDAO {
             }
     }
     
-    void buscarDados(){
+    public void buscarDados(){
         try {
             // Conecto com o Banco
             abrirConexao();
@@ -52,7 +52,9 @@ public class BancoDeDadosDAO {
             _rs = _st.executeQuery("SELECT * FROM estudantes");
             // O metodo next() caminha entre as linhas da tabela de resultados retornada.
             while (_rs.next()) {
-             
+                System.out.println("Nome: " + _rs.getString(1));
+                System.out.println("Tradução: " + _rs.getString(2)); 
+                System.out.println("Dificuldade: " + _rs.getInt(3));
             }
         } catch (SQLException ex) {
             System.out.println("Erro seleciona todos: Conexão Banco! :(");

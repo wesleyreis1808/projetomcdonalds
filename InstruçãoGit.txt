@@ -1,0 +1,15 @@
+//Necessario fazer pela 1º vez
+1 - git init nomeDaPasta
+2 - git remote add origin linkDeClonarDoGit
+
+//Demais vezes que for fazer alteração no codigo
+3 - git pull origin desenvolvendo
+4 - git branch
+5 - git checkout jefferson
+	//Necessario fazer pela 1º vez
+	//Se não existir o brach local
+        5.1 - git checkout -b jefferson
+6 - git status
+7 - git add --all
+8 - git commit -m "Comentario"
+9 - git push origin BranchDestino

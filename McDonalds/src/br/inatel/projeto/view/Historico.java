@@ -5,7 +5,7 @@
  */
 package br.inatel.projeto.view;
 
-
+import java.awt.Toolkit;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -15,7 +15,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,7 +24,9 @@ public class Historico extends javax.swing.JFrame {
 
     public Historico() {
         initComponents();
-        
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
+
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -42,7 +43,6 @@ public class Historico extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_Historico = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        btn_Limpar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         rbt_Todas = new javax.swing.JRadioButton();
         rbt_Data = new javax.swing.JRadioButton();
@@ -57,8 +57,6 @@ public class Historico extends javax.swing.JFrame {
         btn_Cancelar = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         lbl_Total = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        lbl_Entega = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Histórico");
@@ -70,14 +68,14 @@ public class Historico extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Data", "Hora", "Comprador", "Valor", "Entrega", "Produtos"
+                "Data", "Hora", "Comprador", "Valor", "Produtos"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -92,10 +90,6 @@ public class Historico extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tbl_Historico);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btn_Limpar.setText("Limpar Histótico");
-        jPanel2.add(btn_Limpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 20, 130, 50));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Mostrar"));
 
@@ -138,10 +132,10 @@ public class Historico extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel2.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, -1, 60));
+        jPanel2.add(jPanel3);
 
         btn_Cancelar.setText("Cancelar");
-        jPanel2.add(btn_Cancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 20, 107, 50));
+        jPanel2.add(btn_Cancelar);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Total"));
 
@@ -151,8 +145,8 @@ public class Historico extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lbl_Total, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(lbl_Total, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,28 +156,7 @@ public class Historico extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel2.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 150, 60));
-
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Entregas"));
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_Entega, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lbl_Entega, javax.swing.GroupLayout.DEFAULT_SIZE, 15, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel2.add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 120, 60));
+        jPanel2.add(jPanel4);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -258,16 +231,13 @@ public class Historico extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Cancelar;
-    private javax.swing.JButton btn_Limpar;
     private javax.swing.JButton btn_Ok;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lbl_Entega;
     private javax.swing.JLabel lbl_Total;
     private javax.swing.JRadioButton rbt_Data;
     private javax.swing.JRadioButton rbt_Todas;
@@ -277,10 +247,6 @@ public class Historico extends javax.swing.JFrame {
 
     public JButton getBtn_Cancelar() {
         return btn_Cancelar;
-    }
-
-    public JButton getBtn_Limpar() {
-        return btn_Limpar;
     }
 
     public JButton getBtn_Ok() {
@@ -307,16 +273,8 @@ public class Historico extends javax.swing.JFrame {
         return jPanel4;
     }
 
-    public JPanel getjPanel5() {
-        return jPanel5;
-    }
-
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
-    }
-
-    public JLabel getLbl_Entega() {
-        return lbl_Entega;
     }
 
     public JLabel getLbl_Total() {
@@ -338,7 +296,5 @@ public class Historico extends javax.swing.JFrame {
     public JTextField getTxt_Data() {
         return txt_Data;
     }
-
-   
 
 }

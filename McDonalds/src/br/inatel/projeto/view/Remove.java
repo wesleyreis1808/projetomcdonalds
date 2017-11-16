@@ -39,21 +39,6 @@ public class Remove extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        painel_Lanche = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        lista_lanche = new javax.swing.JList();
-        jLabel2 = new javax.swing.JLabel();
-        btm_removerLanche = new javax.swing.JButton();
-        painel_bebida = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        lista_bebida = new javax.swing.JList();
-        jLabel1 = new javax.swing.JLabel();
-        btm_removeBebida = new javax.swing.JButton();
-        painel_tamanho = new javax.swing.JPanel();
-        Rbtn_tamanho4 = new javax.swing.JRadioButton();
-        Rbtn_tamanho3 = new javax.swing.JRadioButton();
-        Rbtn_tamanho2 = new javax.swing.JRadioButton();
-        Rbtn_tamanho1 = new javax.swing.JRadioButton();
         painel_ingrediente = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lista_ingrediente = new javax.swing.JList();
@@ -64,88 +49,6 @@ public class Remove extends javax.swing.JFrame {
         setAlwaysOnTop(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        painel_Lanche.setLayout(null);
-
-        lista_lanche.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jScrollPane3.setViewportView(lista_lanche);
-
-        painel_Lanche.add(jScrollPane3);
-        jScrollPane3.setBounds(10, 51, 258, 161);
-
-        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel2.setText("Remover Lanche");
-        painel_Lanche.add(jLabel2);
-        jLabel2.setBounds(10, 11, 152, 22);
-
-        btm_removerLanche.setText("REMOVER");
-        painel_Lanche.add(btm_removerLanche);
-        btm_removerLanche.setBounds(10, 230, 130, 23);
-
-        jTabbedPane1.addTab("Lanche", painel_Lanche);
-
-        painel_bebida.setLayout(null);
-
-        jScrollPane2.setViewportView(lista_bebida);
-
-        painel_bebida.add(jScrollPane2);
-        jScrollPane2.setBounds(10, 51, 258, 161);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("Remover Bebida");
-        painel_bebida.add(jLabel1);
-        jLabel1.setBounds(10, 11, 147, 22);
-
-        btm_removeBebida.setText("REMOVER");
-        painel_bebida.add(btm_removeBebida);
-        btm_removeBebida.setBounds(10, 230, 130, 23);
-
-        painel_tamanho.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "TAMANHO", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
-
-        buttonGroup1.add(Rbtn_tamanho4);
-        Rbtn_tamanho4.setText("2 L");
-
-        buttonGroup1.add(Rbtn_tamanho3);
-        Rbtn_tamanho3.setText("1 L");
-
-        buttonGroup1.add(Rbtn_tamanho2);
-        Rbtn_tamanho2.setText("600 ml");
-
-        buttonGroup1.add(Rbtn_tamanho1);
-        Rbtn_tamanho1.setText("Lata");
-
-        javax.swing.GroupLayout painel_tamanhoLayout = new javax.swing.GroupLayout(painel_tamanho);
-        painel_tamanho.setLayout(painel_tamanhoLayout);
-        painel_tamanhoLayout.setHorizontalGroup(
-            painel_tamanhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel_tamanhoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painel_tamanhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Rbtn_tamanho2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Rbtn_tamanho3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(Rbtn_tamanho4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(painel_tamanhoLayout.createSequentialGroup()
-                        .addComponent(Rbtn_tamanho1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        painel_tamanhoLayout.setVerticalGroup(
-            painel_tamanhoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painel_tamanhoLayout.createSequentialGroup()
-                .addComponent(Rbtn_tamanho1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Rbtn_tamanho2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Rbtn_tamanho3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(Rbtn_tamanho4)
-                .addGap(0, 36, Short.MAX_VALUE))
-        );
-
-        painel_bebida.add(painel_tamanho);
-        painel_tamanho.setBounds(274, 51, 110, 160);
-
-        jTabbedPane1.addTab("Bebidas", painel_bebida);
 
         painel_ingrediente.setLayout(null);
 
@@ -161,7 +64,7 @@ public class Remove extends javax.swing.JFrame {
 
         btm_removeIngredientes.setText("REMOVER");
         painel_ingrediente.add(btm_removeIngredientes);
-        btm_removeIngredientes.setBounds(10, 229, 120, 23);
+        btm_removeIngredientes.setBounds(10, 230, 130, 23);
 
         jTabbedPane1.addTab("Ingredientes", painel_ingrediente);
 
@@ -202,81 +105,32 @@ public class Remove extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton Rbtn_tamanho1;
-    private javax.swing.JRadioButton Rbtn_tamanho2;
-    private javax.swing.JRadioButton Rbtn_tamanho3;
-    private javax.swing.JRadioButton Rbtn_tamanho4;
-    private javax.swing.JButton btm_removeBebida;
     private javax.swing.JButton btm_removeIngredientes;
-    private javax.swing.JButton btm_removerLanche;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lebel_titulo;
-    private javax.swing.JList lista_bebida;
     private javax.swing.JList lista_ingrediente;
-    private javax.swing.JList lista_lanche;
-    private javax.swing.JPanel painel_Lanche;
-    private javax.swing.JPanel painel_bebida;
     private javax.swing.JPanel painel_ingrediente;
-    private javax.swing.JPanel painel_tamanho;
     // End of variables declaration//GEN-END:variables
 
-    public JRadioButton getRbtn_tamanho1() {
-        return Rbtn_tamanho1;
-    }
 
-    public JRadioButton getRbtn_tamanho2() {
-        return Rbtn_tamanho2;
-    }
-
-    public JRadioButton getRbtn_tamanho3() {
-        return Rbtn_tamanho3;
-    }
-
-    public JRadioButton getRbtn_tamanho4() {
-        return Rbtn_tamanho4;
-    }
-
-    public JButton getBtm_removeBebida() {
-        return btm_removeBebida;
-    }
 
     public JButton getBtm_removeIngredientes() {
         return btm_removeIngredientes;
-    }
-
-    public JButton getBtm_removerLanche() {
-        return btm_removerLanche;
     }
 
     public ButtonGroup getButtonGroup1() {
         return buttonGroup1;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
+  
 
     public JScrollPane getjScrollPane1() {
         return jScrollPane1;
     }
 
-    public JScrollPane getjScrollPane2() {
-        return jScrollPane2;
-    }
-
-    public JScrollPane getjScrollPane3() {
-        return jScrollPane3;
-    }
+   
 
     public JTabbedPane getjTabbedPane1() {
         return jTabbedPane1;
@@ -286,34 +140,17 @@ public class Remove extends javax.swing.JFrame {
         return lebel_titulo;
     }
 
-    public JList getLista_bebida() {
-        return lista_bebida;
-    }
+   
 
     public JList getLista_ingrediente() {
         return lista_ingrediente;
     }
 
-    public JList getLista_lanche() {
-        return lista_lanche;
-    }
 
-    public JPanel getPainel_Lanche() {
-        return painel_Lanche;
-    }
-
-    public JPanel getPainel_bebida() {
-        return painel_bebida;
-    }
 
     public JPanel getPainel_ingrediente() {
         return painel_ingrediente;
     }
-
-    public JPanel getPainel_tamanho() {
-        return painel_tamanho;
-    }
-
 
     
 

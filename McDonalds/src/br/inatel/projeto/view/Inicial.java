@@ -25,7 +25,8 @@ public class Inicial extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         setIcon();
-        ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Administrator\\Pictures\\telaFundo.png");
+
+        ImageIcon img = new javax.swing.ImageIcon("C:\\Users\\Public\\Pictures\\telaFundo.png");
         img.setImage(img.getImage().getScaledInstance(617, 447, 100));
 
         lbl_imagem.setIcon(img);
@@ -45,11 +46,14 @@ public class Inicial extends javax.swing.JFrame {
         mnu_cadastro_ingredientes = new javax.swing.JMenuItem();
         mnu_cadastro_lanches = new javax.swing.JMenuItem();
         mnu_cadastro_bebidas = new javax.swing.JMenuItem();
+        jMenu6 = new javax.swing.JMenu();
         mnu_remover_cadastros = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        mnu_cadastroFuncionario = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
         mnu_alterar_imagem = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
-        mnu_sobre = new javax.swing.JMenuItem();
+        MnuSair = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -86,11 +90,23 @@ public class Inicial extends javax.swing.JFrame {
         mnu_cadastro_bebidas.setText("Cadastro de Bebidas");
         jMenu3.add(mnu_cadastro_bebidas);
 
-        mnu_remover_cadastros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
-        mnu_remover_cadastros.setText("Remover Cadastros");
-        jMenu3.add(mnu_remover_cadastros);
-
         jMenuBar1.add(jMenu3);
+
+        jMenu6.setText("Remover");
+
+        mnu_remover_cadastros.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        mnu_remover_cadastros.setText("Remover Ingredientes");
+        jMenu6.add(mnu_remover_cadastros);
+
+        jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Funcionários");
+
+        mnu_cadastroFuncionario.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        mnu_cadastroFuncionario.setText("Cadastro de Funcionários");
+        jMenu7.add(mnu_cadastroFuncionario);
+
+        jMenuBar1.add(jMenu7);
 
         jMenu4.setText("Ferramentas");
 
@@ -101,9 +117,9 @@ public class Inicial extends javax.swing.JFrame {
 
         jMenu2.setText("Ajuda");
 
-        mnu_sobre.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Z, java.awt.event.InputEvent.CTRL_MASK));
-        mnu_sobre.setText("Sobre");
-        jMenu2.add(mnu_sobre);
+        MnuSair.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        MnuSair.setText("Sair");
+        jMenu2.add(MnuSair);
 
         jMenuBar1.add(jMenu2);
 
@@ -117,7 +133,7 @@ public class Inicial extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(lbl_imagem, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+            .addComponent(lbl_imagem, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
         );
 
         pack();
@@ -163,21 +179,24 @@ public class Inicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem MnuSair;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JLabel lbl_imagem;
     private javax.swing.JMenuItem mnu_Pedidos;
     private javax.swing.JMenuItem mnu_Vendas;
     private javax.swing.JMenuItem mnu_alterar_imagem;
+    private javax.swing.JMenuItem mnu_cadastroFuncionario;
     private javax.swing.JMenuItem mnu_cadastro_bebidas;
     private javax.swing.JMenuItem mnu_cadastro_ingredientes;
     private javax.swing.JMenuItem mnu_cadastro_lanches;
     private javax.swing.JMenuItem mnu_historico;
     private javax.swing.JMenuItem mnu_remover_cadastros;
-    private javax.swing.JMenuItem mnu_sobre;
     // End of variables declaration//GEN-END:variables
 
     private void setIcon() {
@@ -194,12 +213,24 @@ public class Inicial extends javax.swing.JFrame {
         return mnu_Pedidos;
     }
 
+    public JMenuItem getMnu_cadastroFuncionario() {
+        return mnu_cadastroFuncionario;
+    }
+
     public JMenuItem getMnu_Vendas() {
         return mnu_Vendas;
     }
 
     public JMenuItem getMnu_alterar_imagem() {
         return mnu_alterar_imagem;
+    }
+
+    public JMenuItem getMnuSair() {
+        return MnuSair;
+    }
+
+    public void setMnuSair(JMenuItem MnuSair) {
+        this.MnuSair = MnuSair;
     }
 
     public JMenuItem getMnu_cadastro_bebidas() {
@@ -222,8 +253,5 @@ public class Inicial extends javax.swing.JFrame {
         return mnu_remover_cadastros;
     }
 
-    public JMenuItem getMnu_sobre() {
-        return mnu_sobre;
-    }
 
 }

@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
 
@@ -41,7 +42,10 @@ public class CadastroLanche extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btm_remover = new javax.swing.JButton();
         _lblLancheImagem = new javax.swing.JLabel();
-        btm_imagem = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btn_deletar = new javax.swing.JButton();
+        btn_update = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -94,8 +98,27 @@ public class CadastroLanche extends javax.swing.JFrame {
         painel_cadastro.add(btm_remover, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 270, 110, -1));
         painel_cadastro.add(_lblLancheImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 20, 130, 90));
 
-        btm_imagem.setText("Imagem");
-        painel_cadastro.add(btm_imagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 120, 130, -1));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Preço"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(jTable1);
+
+        btn_deletar.setText("Deletar");
+
+        btn_update.setText("Salvar edição");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -104,13 +127,30 @@ public class CadastroLanche extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(painel_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 574, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_update)
+                        .addGap(26, 26, 26)
+                        .addComponent(btn_deletar)
+                        .addGap(25, 25, 25))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(painel_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(painel_cadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btn_deletar)
+                            .addComponent(btn_update))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -141,12 +181,15 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JLabel _lblLancheImagem;
     private javax.swing.JButton btm_adicionar;
     private javax.swing.JButton btm_cancelar;
-    private javax.swing.JButton btm_imagem;
     private javax.swing.JButton btm_remover;
     private javax.swing.JButton btm_salvar;
+    private javax.swing.JButton btn_deletar;
+    private javax.swing.JButton btn_update;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_imagem;
     private javax.swing.JLabel label_ingredientes;
     private javax.swing.JLabel label_lanche;
@@ -159,8 +202,10 @@ public class CadastroLanche extends javax.swing.JFrame {
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
-    public JButton getBtm_imagem() {
-        return btm_imagem;
+
+
+    public JButton getBtn_update() {
+        return btn_update;
     }
 
     public JButton getBtm_adicionar() {
@@ -197,6 +242,14 @@ public class CadastroLanche extends javax.swing.JFrame {
 
     public JLabel getLabel_ingredientes() {
         return label_ingredientes;
+    }
+
+    public JButton getBtn_deletar() {
+        return btn_deletar;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
     }
 
     public JLabel getLabel_lanche() {

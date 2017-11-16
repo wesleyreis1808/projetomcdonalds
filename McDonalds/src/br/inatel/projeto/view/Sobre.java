@@ -52,7 +52,7 @@ public class Sobre extends javax.swing.JFrame {
 
         titulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("JAVAiLanches");
+        titulo.setText("McDonalds");
 
         imagem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/icon_final.png"))); // NOI18N
         imagem.setPreferredSize(new java.awt.Dimension(250, 250));

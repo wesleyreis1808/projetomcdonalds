@@ -7,7 +7,15 @@ package br.inatel.projeto.view;
 
 import java.awt.Toolkit;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.UIManager;
 
 /**
@@ -22,7 +30,7 @@ public class CadastroBebida extends javax.swing.JFrame {
     public CadastroBebida() {
         initComponents();
         this.setLocationRelativeTo(null);
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projetoec/imagens/images.png")));
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
     /**
@@ -48,6 +56,9 @@ public class CadastroBebida extends javax.swing.JFrame {
         Rbtn_tamanho2 = new javax.swing.JRadioButton();
         Rbtn_tamanho3 = new javax.swing.JRadioButton();
         Rbtn_tamanho4 = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        btn_deletar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -55,9 +66,9 @@ public class CadastroBebida extends javax.swing.JFrame {
 
         Painel_Bebidas.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
-        label_Refri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projetoec/imagens/Coca-Cola.png"))); // NOI18N
+        label_Refri.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/inatel/projeto/imagens/Coca-Cola.png"))); // NOI18N
 
-        ComBox_Refri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Coca-Cola", "7Up", "Coca-Cola_Light", "Coca-Cola_Zero", "Fanta_Laranja", "Pepsi", "Sprite", "Suco", "Vita-Cola" }));
+        ComBox_Refri.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "               ", "Coca-Cola", "7Up", "Coca-Cola_Light", "Coca-Cola_Zero", "Fanta_Laranja", "Pepsi", "Sprite", "Suco", "Vita-Cola" }));
 
         label_Titulo.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         label_Titulo.setText("CADASTRAR BEBIDA");
@@ -73,7 +84,7 @@ public class CadastroBebida extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         GrupoDeBotão_Tamanho.add(Rbtn_tamanho1);
-        Rbtn_tamanho1.setText("Lata");
+        Rbtn_tamanho1.setText("350 ml");
 
         GrupoDeBotão_Tamanho.add(Rbtn_tamanho2);
         Rbtn_tamanho2.setText("600 ml");
@@ -91,16 +102,15 @@ public class CadastroBebida extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(Rbtn_tamanho4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(Rbtn_tamanho1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(112, 112, 112))
+                        .addGap(118, 118, 118))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Rbtn_tamanho3, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Rbtn_tamanho2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(Rbtn_tamanho2, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Rbtn_tamanho4, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,7 +122,7 @@ public class CadastroBebida extends javax.swing.JFrame {
                 .addComponent(Rbtn_tamanho3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Rbtn_tamanho4)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout Painel_BebidasLayout = new javax.swing.GroupLayout(Painel_Bebidas);
@@ -148,15 +158,15 @@ public class CadastroBebida extends javax.swing.JFrame {
                 .addComponent(label_Titulo)
                 .addGroup(Painel_BebidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(Painel_BebidasLayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(Painel_BebidasLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(ComBox_Refri, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(Painel_BebidasLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(label_Refri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(label_Refri, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, Painel_BebidasLayout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
                 .addGroup(Painel_BebidasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txf_preco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(label_Preco))
@@ -167,6 +177,26 @@ public class CadastroBebida extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nome", "Preço", "Tamanho"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        btn_deletar.setText("Deletar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,13 +204,26 @@ public class CadastroBebida extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(Painel_Bebidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 401, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_deletar)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(Painel_Bebidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_deletar))
+                    .addComponent(Painel_Bebidas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -234,12 +277,90 @@ public class CadastroBebida extends javax.swing.JFrame {
     private javax.swing.JRadioButton Rbtn_tamanho4;
     private javax.swing.JButton btm_cancelar;
     private javax.swing.JButton btm_salvar;
+    private javax.swing.JButton btn_deletar;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel label_Preco;
     private javax.swing.JLabel label_Refri;
     private javax.swing.JLabel label_Titulo;
     private javax.swing.JTextField txf_preco;
     // End of variables declaration//GEN-END:variables
 
+    public JComboBox<String> getComBox_Refri() {
+        return ComBox_Refri;
+    }
 
+    public ButtonGroup getGrupoDeBotão_Tamanho() {
+        return GrupoDeBotão_Tamanho;
+    }
+
+    public JPanel getPainel_Bebidas() {
+        return Painel_Bebidas;
+    }
+
+    public JRadioButton getRbtn_tamanho1() {
+        return Rbtn_tamanho1;
+    }
+
+    public JRadioButton getRbtn_tamanho2() {
+        return Rbtn_tamanho2;
+    }
+
+    public JRadioButton getRbtn_tamanho3() {
+        return Rbtn_tamanho3;
+    }
+
+    public JRadioButton getRbtn_tamanho4() {
+        return Rbtn_tamanho4;
+    }
+
+    public JButton getBtm_cancelar() {
+        return btm_cancelar;
+    }
+
+    public JButton getBtm_salvar() {
+        return btm_salvar;
+    }
+
+    public JPanel getjPanel1() {
+        return jPanel1;
+    }
+
+    public JLabel getLabel_Preco() {
+        return label_Preco;
+    }
+
+    public JLabel getLabel_Refri() {
+        return label_Refri;
+    }
+
+    public JLabel getLabel_Titulo() {
+        return label_Titulo;
+    }
+
+    public JTextField getTxf_preco() {
+        return txf_preco;
+    }
+
+    public JButton getBtn_deletar() {
+        return btn_deletar;
+    }
+
+    public void setBtn_deletar(JButton btn_deletar) {
+        this.btn_deletar = btn_deletar;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public void setjTable1(JTable jTable1) {
+        this.jTable1 = jTable1;
+    }
+
+    
+
+    
+    
 }

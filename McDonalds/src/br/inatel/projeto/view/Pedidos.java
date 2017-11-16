@@ -31,7 +31,7 @@ public class Pedidos extends javax.swing.JFrame {
         
         tbl_Pedidos.getColumnModel().getColumn(0).setPreferredWidth(130);
         tbl_Pedidos.getColumnModel().getColumn(1).setPreferredWidth(110);
-        tbl_Pedidos.getColumnModel().getColumn(2).setPreferredWidth(585);
+
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/br/inatel/projeto/imagens/images.png")));
     }
 
@@ -40,13 +40,6 @@ public class Pedidos extends javax.swing.JFrame {
     private void initComponents() {
 
         pnl_Fundo = new javax.swing.JPanel();
-        pnl_Entrega = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        lbl_Endereco = new javax.swing.JLabel();
-        lbl_Numero = new javax.swing.JLabel();
-        lbl_Telefone = new javax.swing.JLabel();
         pnl_Informacoes = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         lbl_Responsavel = new javax.swing.JLabel();
@@ -74,54 +67,6 @@ public class Pedidos extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         pnl_Fundo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        pnl_Entrega.setBorder(javax.swing.BorderFactory.createTitledBorder("Entrega"));
-
-        jLabel1.setText("Endereço: ");
-
-        jLabel2.setText("Nº :");
-
-        jLabel3.setText("Telefone: ");
-
-        javax.swing.GroupLayout pnl_EntregaLayout = new javax.swing.GroupLayout(pnl_Entrega);
-        pnl_Entrega.setLayout(pnl_EntregaLayout);
-        pnl_EntregaLayout.setHorizontalGroup(
-            pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_Endereco, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
-                .addGap(10, 10, 10)
-                .addComponent(lbl_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addComponent(jLabel3)
-                .addGap(18, 18, 18)
-                .addComponent(lbl_Telefone, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-        pnl_EntregaLayout.setVerticalGroup(
-            pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbl_Endereco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(pnl_EntregaLayout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lbl_Numero, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(pnl_EntregaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel3))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(lbl_Telefone, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        pnl_Fundo.add(pnl_Entrega, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 850, -1));
 
         pnl_Informacoes.setBorder(javax.swing.BorderFactory.createTitledBorder("Informações"));
 
@@ -182,14 +127,14 @@ public class Pedidos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Produto", "Repartir", "Modificações"
+                "Produto", "Modificações"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -207,9 +152,9 @@ public class Pedidos extends javax.swing.JFrame {
         pnl_Produtos.setLayout(pnl_ProdutosLayout);
         pnl_ProdutosLayout.setHorizontalGroup(
             pnl_ProdutosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_ProdutosLayout.createSequentialGroup()
+            .addGroup(pnl_ProdutosLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 818, Short.MAX_VALUE)
                 .addContainerGap())
         );
         pnl_ProdutosLayout.setVerticalGroup(
@@ -220,7 +165,7 @@ public class Pedidos extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        pnl_Fundo.add(pnl_Produtos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 140, 854, -1));
+        pnl_Fundo.add(pnl_Produtos, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 850, -1));
 
         pnl_Botoes.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
@@ -251,11 +196,11 @@ public class Pedidos extends javax.swing.JFrame {
                 .addComponent(btn_Proximo)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Ultimo, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 302, Short.MAX_VALUE)
                 .addComponent(btn_Entregue)
                 .addGap(18, 18, 18)
                 .addComponent(btn_Cancelar)
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
         pnl_BotoesLayout.setVerticalGroup(
             pnl_BotoesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -271,9 +216,9 @@ public class Pedidos extends javax.swing.JFrame {
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
-        pnl_Fundo.add(pnl_Botoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 400, 854, -1));
+        pnl_Fundo.add(pnl_Botoes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 330, 850, -1));
 
-        getContentPane().add(pnl_Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 462));
+        getContentPane().add(pnl_Fundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 390));
 
         jMenu1.setText("Pedidos");
 
@@ -325,9 +270,6 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JButton btn_Primeiro;
     private javax.swing.JButton btn_Proximo;
     private javax.swing.JButton btn_Ultimo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -335,15 +277,11 @@ public class Pedidos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbl_Codigo;
     private javax.swing.JLabel lbl_Data;
-    private javax.swing.JLabel lbl_Endereco;
     private javax.swing.JLabel lbl_Hora;
-    private javax.swing.JLabel lbl_Numero;
     private javax.swing.JLabel lbl_Responsavel;
-    private javax.swing.JLabel lbl_Telefone;
     private javax.swing.JMenuBar mnu_Menu;
     private javax.swing.JMenuItem mnu_atualizar_pedidos;
     private javax.swing.JPanel pnl_Botoes;
-    private javax.swing.JPanel pnl_Entrega;
     private javax.swing.JPanel pnl_Fundo;
     private javax.swing.JPanel pnl_Informacoes;
     private javax.swing.JPanel pnl_Produtos;
@@ -374,18 +312,7 @@ public class Pedidos extends javax.swing.JFrame {
         return btn_Ultimo;
     }
 
-    public JLabel getjLabel1() {
-        return jLabel1;
-    }
-
-    public JLabel getjLabel2() {
-        return jLabel2;
-    }
-
-    public JLabel getjLabel3() {
-        return jLabel3;
-    }
-
+  
     public JLabel getjLabel4() {
         return jLabel4;
     }
@@ -414,24 +341,13 @@ public class Pedidos extends javax.swing.JFrame {
         return lbl_Data;
     }
 
-    public JLabel getLbl_Endereco() {
-        return lbl_Endereco;
-    }
-
     public JLabel getLbl_Hora() {
         return lbl_Hora;
     }
 
-    public JLabel getLbl_Numero() {
-        return lbl_Numero;
-    }
 
     public JLabel getLbl_Responsavel() {
         return lbl_Responsavel;
-    }
-
-    public JLabel getLbl_Telefone() {
-        return lbl_Telefone;
     }
 
     public JMenuBar getMnu_Menu() {
@@ -444,10 +360,6 @@ public class Pedidos extends javax.swing.JFrame {
 
     public JPanel getPnl_Botoes() {
         return pnl_Botoes;
-    }
-
-    public JPanel getPnl_Entrega() {
-        return pnl_Entrega;
     }
 
     public JPanel getPnl_Fundo() {
@@ -466,9 +378,5 @@ public class Pedidos extends javax.swing.JFrame {
         return tbl_Pedidos;
     }
 
-   
-
-    
-    
     
 }
