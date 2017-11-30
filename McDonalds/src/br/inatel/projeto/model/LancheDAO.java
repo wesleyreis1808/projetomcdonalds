@@ -129,19 +129,37 @@ public class LancheDAO {
     public boolean remover(Lanche l, CadastroLanche lanche) {
         abrirConexao();
         try {
-            // Preparo a exclusao
-            _pst = _con.prepareStatement("DELETE FROM Lanche_has_Ingredientes WHERE Lanche_idLanche = ?");
-            // Indico que a ? significa o Codigo do Autor
-            _pst.setInt(1, l.getId());
-            // Executo a exclusao
-            _pst.executeUpdate();
-            // Preparo a exclusao
-            _pst = _con.prepareStatement("DELETE FROM Lanche WHERE idLanche = ?");
-            // Indico que a ? significa o Codigo do Autor
-            _pst.setInt(1, l.getId());
-            // Executo a exclusao
-            _pst.executeUpdate();
-            //System.out.println("Sucesso! ;)");
+
+            _st = _con.createStatement();
+            // O ResultSet gera uma tabela de dados retornados por uma pesquisa SQL.
+            _rs = _st.executeQuery("SELECT Lanche.idLanche FROM Lanche JOIN Vendas_has_Lanche ON Lanche.idLanche = Vendas_has_Lanche.Lanche_idLanche WHERE Lanche.idLanche = " + l.getId());
+
+            int cont = 0;
+
+            while (_rs.next()) {
+                cont++;
+                System.out.println("Registro encontrados" + cont);
+            }
+
+            if (cont == 0) {
+                // Preparo a exclusao
+                _pst = _con.prepareStatement("DELETE FROM Lanche_has_Ingredientes WHERE Lanche_idLanche = ?");
+                // Indico que a ? significa o Codigo do Autor
+                _pst.setInt(1, l.getId());
+                // Executo a exclusao
+                _pst.executeUpdate();
+                // Preparo a exclusao
+                _pst = _con.prepareStatement("DELETE FROM Lanche WHERE idLanche = ?");
+                // Indico que a ? significa o Codigo do Autor
+                _pst.setInt(1, l.getId());
+                // Executo a exclusao
+                _pst.executeUpdate();
+                //System.out.println("Sucesso! ;)");
+            } else {
+                JOptionPane.showMessageDialog(lanche, "Lanche encontra-se cadastrado em vendas! Exclua as vendas que contenha esse lanche e tente novamente.", "Erro", JOptionPane.ERROR_MESSAGE);
+                fecharConexao();
+                return false;
+            }
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
             fecharConexao();
@@ -155,8 +173,48 @@ public class LancheDAO {
     }
 
     public void editar(Lanche l) {
-        remover(l,null);
-        cadastrar(l);
+        //remover(l, null);
+        //cadastrar(l);
+
+        abrirConexao();
+        try {
+
+            // Preparo a atualizacao
+            _pst = _con.prepareStatement("UPDATE Lanche l SET l.nomeLanches = ?, l.precoLanches = ? WHERE l.idLanche = ?");
+            _pst.setString(1, l.getNome());
+            _pst.setFloat(2, l.getPreco());
+            _pst.setInt(3, l.getId());
+            // Executo a atualizacao
+            _pst.executeUpdate();
+
+            
+            // INGREDIENTES - APAGA
+            _pst = _con.prepareStatement("DELETE FROM Lanche_has_Ingredientes WHERE Lanche_idLanche = ?");
+            // Indico que a ? significa o Codigo do Autor
+            _pst.setInt(1, l.getId());
+            // Executo a exclusao
+            _pst.executeUpdate();
+            
+            // INGREDIENTES - INSERE
+            for (int i = 0; i < l.getIngredientes().size(); i++) {
+                // Preparo a insercao
+                _pst = _con.prepareStatement("INSERT INTO Lanche_has_Ingredientes (Lanche_idLanche, Ingredientes_idIngredientes) VALUES( ?,  ?)");
+                // Cada numero indica a posicao que o valor sera inserido nas ? acima
+                _pst.setInt(1, l.getId());
+                _pst.setInt(2, l.getIngredientes().get(i).getId());
+                // Executo a pesquisa
+                _pst.executeUpdate();
+            }
+            
+
+        } catch (SQLException ex) {
+            System.out.println("Erro: Conexão Banco! :(");
+            System.out.println(ex);
+        } finally {
+            // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
+            fecharConexao();
+        }
+
     }
 
     public boolean abrirConexao() {

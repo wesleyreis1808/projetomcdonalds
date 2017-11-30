@@ -95,14 +95,16 @@ public class BebidasDAO {
             // Preparo a atualizacao
             _pst = _con.prepareStatement("UPDATE Bebidas SET tamanhoBebidas = ?,imgPathBebidas = ?,nomeBebida = ?,precos = ? where idBebidas = ?");
             _pst.setString(1, b.getTamanho());
-            _pst.setString(2, b.getNome());
-            _pst.setString(3, b.getImage_path());
+            _pst.setString(2, b.getImage_path());
+            _pst.setString(3, b.getNome());
+            _pst.setFloat(4, b.getPreco());
             _pst.setInt(5, b.getId());
             // Executo a atualizacao
             _pst.executeUpdate();
             
         } catch (SQLException ex) {
             System.out.println("Erro: Conexão Banco! :(");
+            System.out.println(ex);
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
             fecharConexao();

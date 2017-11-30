@@ -40,6 +40,8 @@
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btn_salvarEdicao" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_deletar" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
@@ -55,11 +57,14 @@
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="247" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="btn_deletar" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="btn_deletar" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="btn_salvarEdicao" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <Component id="Painel_Bebidas" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="24" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -302,7 +307,12 @@
     </Container>
     <Component class="javax.swing.JButton" name="btn_deletar">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Deletar"/>
+        <Property name="text" type="java.lang.String" value="DELETAR"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btn_salvarEdicao">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="SALVAR EDI&#xc7;&#xc2;O"/>
       </Properties>
     </Component>
   </SubComponents>

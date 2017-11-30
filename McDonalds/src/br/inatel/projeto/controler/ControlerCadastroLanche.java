@@ -128,11 +128,12 @@ public class ControlerCadastroLanche implements ActionListener, Tabela {
         limpaCampos();
         //this.produtos.remove(tbl_Carrinho.getSelectedRow());
         if (this.cadastroLanche.getjTable1().getSelectedRow() >= 0) {
-            dtm.removeRow(posiSelect);
+         
             //BD remove
             if (lancheBD.remover(lanches.get(posiSelect), this.cadastroLanche)) {
 
                 this.lanches.remove(posiSelect);
+                   dtm.removeRow(posiSelect);
                 if (this.ingredientesLanche != null) {
                     this.ingredientesLanche.clear();
                 }

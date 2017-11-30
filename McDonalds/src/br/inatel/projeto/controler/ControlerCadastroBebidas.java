@@ -27,6 +27,7 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
         this.cadastroBebida.getBtm_cancelar().addActionListener(this);
         this.cadastroBebida.getBtm_salvar().addActionListener(this);
         this.cadastroBebida.getBtn_deletar().addActionListener(this);
+        this.cadastroBebida.getBtn_salvarEdicao().addActionListener(this);
         this.cadastroBebida.getjTable1().addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTable1MouseClicked(evt);
@@ -57,6 +58,8 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
         } else if (obj == this.cadastroBebida.getBtn_deletar()) {
             limpaCampos();
             removerItemSelecionado();
+        } else if (obj == this.cadastroBebida.getBtn_salvarEdicao()) {
+            atualizarCadastro();
         }
     }
 
@@ -118,13 +121,14 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
     @Override
     public void preencheTabela() {
         dtm = (DefaultTableModel) this.cadastroBebida.getjTable1().getModel();
-
+        dtm.getDataVector().removeAllElements();
         for (Bebidas bebi : bebidas) {
             dtm.insertRow(dtm.getRowCount(), new Object[]{
                 bebi.getNome(),
                 bebi.getPreco(),
                 bebi.getTamanho(),});
         }
+        this.cadastroBebida.getjTable1().repaint();
     }
 
     @Override
@@ -204,23 +208,30 @@ public class ControlerCadastroBebidas implements ActionListener, Tabela {
 
     @Override
     public void atualizarCadastro() {
-//        if (posiSelect >= 0) {
-//            Bebidas b = new Bebidas();
-//            b.setNome(this.cadastroBebida.getComBox_Refri().getSelectedItem().toString());
-//            b.setImage_path("VAZIO");
-//            b.setTamanho(this.cadastroBebida.getR);
-//            b.setSenha(this.cadastroBebida.getTxt_senha().getText());
-//            b.setId(this.bebidas.get(posiSelect).getId());
-//            if (this.cadastroBebida.getRd_vendedor().isSelected()) {
-//                b.setNivel_acesso(1);
-//            } else {
-//                b.setNivel_acesso(2);
-//            }
-//            
-//            funcBD.editar(f);
-//            
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
-//        }
+        BebidasDAO bebDB = new BebidasDAO();
+
+        if (posiSelect >= 0) {
+            Bebidas bebida = this.bebidas.get(posiSelect);
+
+            bebida.setImage_path("VAZIO");
+            bebida.setNome(this.cadastroBebida.getComBox_Refri().getSelectedItem().toString());
+            bebida.setPreco(Float.parseFloat(this.cadastroBebida.getTxf_preco().getText()));
+            if (this.cadastroBebida.getRbtn_tamanho1().isSelected()) {
+                bebida.setTamanho(this.cadastroBebida.getRbtn_tamanho1().getText());
+            } else if (this.cadastroBebida.getRbtn_tamanho2().isSelected()) {
+                bebida.setTamanho(this.cadastroBebida.getRbtn_tamanho2().getText());
+            } else if (this.cadastroBebida.getRbtn_tamanho3().isSelected()) {
+                bebida.setTamanho(this.cadastroBebida.getRbtn_tamanho3().getText());
+            } else if (this.cadastroBebida.getRbtn_tamanho4().isSelected()) {
+                bebida.setTamanho(this.cadastroBebida.getRbtn_tamanho4().getText());
+            }
+
+            bebDB.editar(bebida);
+            limpaCampos();
+            preencheTabela();
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhuma linha não selecionada!");
+        }
     }
 }

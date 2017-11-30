@@ -25,7 +25,7 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
     CadastroFuncionario cadastroFuncionario;
     FuncionarioDAO funcBD = new FuncionarioDAO();
     DefaultTableModel dtm;
-    ArrayList<Funcionarios> funcionarios;
+    ArrayList<Funcionarios> funcionarios = new ArrayList<>();
     Object[][] dados;
     private int posiSelect;
 
@@ -87,8 +87,9 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     @Override
     public void preencheTabela() {
-
+        
         dtm = (DefaultTableModel) this.cadastroFuncionario.getjTable1().getModel();
+        dtm.getDataVector().removeAllElements();
         for (Funcionarios func : funcionarios) {
             dtm.insertRow(dtm.getRowCount(), new Object[]{
                 func.getNome(),
@@ -98,6 +99,7 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
             });
         }
 
+        
     }
 
     @Override
@@ -118,7 +120,8 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
 
     @Override
     public void getDados() {
-        funcionarios = funcBD.listar();
+        this.funcionarios.clear();
+        this.funcionarios = funcBD.listar();
     }
 
     @Override
@@ -200,9 +203,9 @@ public class ControlerCadastroFuncionario implements ActionListener, Tabela {
             
             funcBD.editar(f);
             
-            this.cadastroFuncionario.getBtn_salvar().setEnabled(true);
-            this.cadastroFuncionario.getBtn_delete().setEnabled(true);
             limpaCampos();
+            getDados();
+            preencheTabela();
             
             //limpa tabela e insere a atualização
 //            this.funcionarios.remove(posiSelect);
