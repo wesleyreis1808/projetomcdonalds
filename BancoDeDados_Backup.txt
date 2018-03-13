@@ -7,8 +7,8 @@ public class BancoDeDadosDAO {
     private static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
     private static final String _url = "jdbc:mysql://sql122.main-hosting.eu:3306/u295754093_smart";
 
-    private static final String _user = "u295754093_root";
-    private static final String _password = "u_Root#2017";
+    private static final String _user = "";
+    private static final String _password = "";
     
     private Connection _con = null;
     private ResultSet _rs = null;
@@ -18,10 +18,10 @@ public class BancoDeDadosDAO {
     private boolean abrirConexao(){
         try {
             _con = DriverManager.getConnection(_url, _user, _password);
-            System.out.println("Conex„o Banco! :)");
+            System.out.println("Conex√£o Banco! :)");
             return true;
         } catch (SQLException ex) {
-            System.out.println("Erro: Conex„o Banco! :(");
+            System.out.println("Erro: Conex√£o Banco! :(");
             return false;
         }
     }
@@ -38,7 +38,7 @@ public class BancoDeDadosDAO {
                     _con.close();
                 }
             } catch (SQLException ex) {
-                System.out.println("Erro seleciona todos: Conex„o n„o pode ser fechada! :(");
+                System.out.println("Erro seleciona todos: Conex√£o n√£o pode ser fechada! :(");
             }
     }
     
@@ -53,11 +53,11 @@ public class BancoDeDadosDAO {
             // O metodo next() caminha entre as linhas da tabela de resultados retornada.
             while (_rs.next()) {
                 System.out.println("Nome: " + _rs.getString(1));
-                System.out.println("TraduÁ„o: " + _rs.getString(2)); 
+                System.out.println("Tradu√ß√£o: " + _rs.getString(2)); 
                 System.out.println("Dificuldade: " + _rs.getInt(3));
             }
         } catch (SQLException ex) {
-            System.out.println("Erro seleciona todos: Conex„o Banco! :(");
+            System.out.println("Erro seleciona todos: Conex√£o Banco! :(");
         } finally {
             // Independente se a conexao deu certo ou errado, fecha as conexoes pendentes
             fecharConexao();
